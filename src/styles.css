@@ -1,0 +1,89 @@
+/* =============================================================================
+   Global CSS — Wedding Invitation
+   Tailwind v4 base + custom design tokens + Google Fonts import
+   ============================================================================= */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap');
+
+/* ---------- Tailwind v4 ---------- */
+@import "tailwindcss";
+
+/* ---------- Custom Design Tokens (CSS Variables) ---------- */
+@theme {
+  /* Fonts */
+  --font-script:    'Great Vibes', cursive;
+  --font-serif:     'Cormorant Garamond', serif;
+  --font-sans:      'Montserrat', sans-serif;
+
+  /* Brand palette */
+  --color-ocean-darkest:   #0a1628;
+  --color-ocean-dark:      #0d1f3c;
+  --color-gold-soft:       #ffd682;
+  --color-gold-muted:      rgba(255, 220, 150, 0.7);
+  --color-gold-glow:       rgba(255, 180, 50, 0.25);
+  --color-cream:           rgba(255, 240, 200, 0.85);
+
+  /* Animations */
+  --animate-fade-up:       fadeUp 1s ease forwards;
+  --animate-bounce-arrow:  bounceDown 1.8s ease-in-out infinite;
+  --animate-float:         floatParticle linear infinite;
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: rotate(45deg) translateY(0);   opacity: 0.6; }
+  50%       { transform: rotate(45deg) translateY(6px); opacity: 1;   }
+}
+
+@keyframes floatParticle {
+  0%   { transform: translateY(100vh) scale(0);   opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+
+/* ---------- Base Resets ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #app {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-ocean-darkest);
+  color: #fff;
+  font-family: var(--font-serif);
+  overflow-x: hidden;
+}
+
+/* ---------- Utility Classes (reusable across components) ---------- */
+
+/* Animated fade-up with staggered delays */
+.animate-fade-up            { opacity: 0; animation: var(--animate-fade-up); }
+.animate-delay-300          { animation-delay: 0.3s; }
+.animate-delay-550          { animation-delay: 0.55s; }
+.animate-delay-800          { animation-delay: 0.8s; }
+.animate-delay-1200         { animation-delay: 1.2s; }
+
+/* Floating particle */
+.animate-float-particle     { animation: var(--animate-float); opacity: 0; }
+
+/* Scroll arrow bounce */
+.animate-bounce-arrow       { animation: var(--animate-bounce-arrow); }
+
+/* Paint-texture overlay via SVG noise */
+.paint-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
