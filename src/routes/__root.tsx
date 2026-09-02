@@ -15,11 +15,11 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Rizky & Anisa — Wedding Invitation',
+        title: 'Chaca & Fedrik — Wedding Invitation',
       },
       {
         name: 'description',
-        content: 'Undangan Pernikahan Rizky & Anisa — Sabtu, 15 Februari 2025. Kami mengundang Anda untuk merayakan momen istimewa bersama kami.',
+        content: 'Undangan Pernikahan Chaca & Fedrik — Sabtu, 10 Oktober 2026. Kami mengundang Anda untuk merayakan momen istimewa bersama kami.',
       },
     ],
     links: [
