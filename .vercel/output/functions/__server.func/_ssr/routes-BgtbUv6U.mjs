@@ -1,8 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
-import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-devtools+[...].mjs";
-import { useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$3 } from "./router-COT9JR_U.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-rI9hSmD8.js
+import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
+import { Route$3 } from "./router-RiAPfZwd.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BgtbUv6U.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var WEDDING = {

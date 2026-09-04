@@ -1,8 +1,6 @@
-import { TanStackDevtools, require_jsx_runtime } from "../_libs/@tanstack/react-devtools+[...].mjs";
-import { HeadContent, Scripts, createFileRoute, createRootRoute, createRouter, lazyRouteComponent } from "../_libs/@tanstack/react-router+[...].mjs";
-import { TanStackRouterDevtoolsPanel } from "../_libs/@tanstack/react-router-devtools+[...].mjs";
+import { HeadContent, Scripts, createFileRoute, createRootRoute, createRouter, lazyRouteComponent, require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { object, string } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-COT9JR_U.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-RiAPfZwd.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -79,20 +77,10 @@ var Route$4 = createRootRoute({
 function RootDocument({ children }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("html", {
 		lang: "en",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("head", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", { children: [
-			children,
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TanStackDevtools, {
-				config: { position: "bottom-right" },
-				plugins: [{
-					name: "Tanstack Router",
-					render: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TanStackRouterDevtoolsPanel, {})
-				}]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})
-		] })]
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("head", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", { children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})] })]
 	});
 }
-var $$splitComponentImporter$3 = () => import("./routes-rI9hSmD8.mjs");
+var $$splitComponentImporter$3 = () => import("./routes-BgtbUv6U.mjs");
 var guestSchema = object({
 	to: string().optional(),
 	name: string().optional()
