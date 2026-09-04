@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
-import { supabase } from "./supabase-CIK0RTCb.mjs";
+import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-C7iCzUT6.js
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-BRGx_nvt.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**

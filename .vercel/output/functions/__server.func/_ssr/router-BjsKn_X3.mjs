@@ -1,6 +1,6 @@
 import { HeadContent, Scripts, createFileRoute, createRootRoute, createRouter, lazyRouteComponent, require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { object, string } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-RiAPfZwd.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BjsKn_X3.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -80,7 +80,7 @@ function RootDocument({ children }) {
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("head", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", { children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})] })]
 	});
 }
-var $$splitComponentImporter$3 = () => import("./routes-BgtbUv6U.mjs");
+var $$splitComponentImporter$3 = () => import("./routes-A78__Oxy.mjs");
 var guestSchema = object({
 	to: string().optional(),
 	name: string().optional()
@@ -89,11 +89,11 @@ var Route$3 = createFileRoute("/")({
 	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
 	validateSearch: guestSchema
 });
-var $$splitComponentImporter$2 = () => import("./dashboard-CDxTpzud.mjs");
+var $$splitComponentImporter$2 = () => import("./dashboard-WTCRr8oL.mjs");
 var Route$2 = createFileRoute("/dashboard")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./invitation-C7iCzUT6.mjs");
+var $$splitComponentImporter$1 = () => import("./invitation-BRGx_nvt.mjs");
 var Route$1 = createFileRoute("/invitation")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./messages-CYtEKhLE.mjs");
+var $$splitComponentImporter = () => import("./messages-T9hGn3dB.mjs");
 var Route = createFileRoute("/messages")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$3.update({
