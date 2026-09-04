@@ -1,6 +1,6 @@
 import { HeadContent, Scripts, createFileRoute, createRootRoute, createRouter, lazyRouteComponent, require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { object, string } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CDOA6Paq.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BLK7tFOr.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -87,7 +87,7 @@ var WEDDING = {
 	recipient: "Bapak/Ibu Tamu",
 	bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAeh2RjuzzvJ2fTRprJ0os5DcRmf9OSmT14ofJmQ3ElbwVXggWxf1DEO67JT3DjPYhWOEA6zJXKMULVgdIt8kZ2Fp8yQUfreBZJh7cS-gn8IKKwIEUh_CWjDeHF_JvoMmxQUeSbEsiC4Q7U42QOoryfd1dC_M7IDgNLq6E9Od9gtZKytVg-AO-BE7jTvKEySSPY5d9p0I73M9SZ-rn15blgGD_kgIx5rV7wrzVatqBU79Px8L-yemX5lQ"
 };
-var $$splitComponentImporter$3 = () => import("./routes-CT5qEL4W.mjs");
+var $$splitComponentImporter$3 = () => import("./routes-CzfI4L0_.mjs");
 var guestSchema = object({
 	to: string().optional(),
 	name: string().optional()
@@ -95,16 +95,10 @@ var guestSchema = object({
 var Route$3 = createFileRoute("/")({
 	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
 	validateSearch: guestSchema,
-	loader: ({ search }) => {
-		return {
-			to: search.to ?? "",
-			name: search.name ?? ""
-		};
-	},
-	head: ({ loaderData }) => {
-		const to = loaderData.to || "Bapak/Ibu";
-		const name = loaderData.name || "Tamu";
-		const hasGuest = Boolean(loaderData.to && loaderData.name);
+	head: ({ search }) => {
+		const to = search?.to || "Bapak/Ibu";
+		const name = search?.name || "Tamu";
+		const hasGuest = Boolean(search?.to && search?.name);
 		const title = hasGuest ? `Kepada ${to} ${name} — The Wedding of Chaca & Fedrik` : "The Wedding of Chaca & Fedrik";
 		const desc = hasGuest ? `Sabtu, 10 Oktober 2026 — Kami mengundang ${to} ${name} untuk merayakan momen istimewa bersama kami.` : "Sabtu, 10 Oktober 2026 — Kami mengundang Anda untuk merayakan momen istimewa bersama kami.";
 		return { meta: [

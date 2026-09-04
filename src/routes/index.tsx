@@ -1,6 +1,15 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { z } from 'zod'
 
+const WEDDING = {
+  groomName: 'Fedrik',
+  brideName: 'Chaca',
+  date: '10 OCTOBER 2026',
+  recipient: 'Bapak/Ibu Tamu',
+  bgImage:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuAeh2RjuzzvJ2fTRprJ0os5DcRmf9OSmT14ofJmQ3ElbwVXggWxf1DEO67JT3DjPYhWOEA6zJXKMULVgdIt8kZ2Fp8yQUfreBZJh7cS-gn8IKKwIEUh_CWjDeHF_JvoMmxQUeSbEsiC4Q7U42QOoryfd1dC_M7IDgNLq6E9Od9gtZKytVg-AO-BE7jTvKEySSPY5d9p0I73M9SZ-rn15blgGD_kgIx5rV7wrzVatqBU79Px8L-yemX5lQ',
+}
+
 const guestSchema = z.object({
   to: z.string().optional(),
   name: z.string().optional(),
@@ -9,14 +18,13 @@ const guestSchema = z.object({
 export const Route = createFileRoute('/')({
   component: LandingPage,
   validateSearch: guestSchema,
-  loader: ({ search }) => {
-    return { to: search.to ?? '', name: search.name ?? '' }
-  },
-  head: ({ loaderData }) => {
-    const to = loaderData.to || 'Bapak/Ibu'
-    const name = loaderData.name || 'Tamu'
-    const hasGuest = Boolean(loaderData.to && loaderData.name)
-    const title = hasGuest ? `Kepada ${to} ${name} — The Wedding of Chaca & Fedrik` : 'The Wedding of Chaca & Fedrik'
+  head: ({ search }) => {
+    const to = (search as any)?.to || 'Bapak/Ibu'
+    const name = (search as any)?.name || 'Tamu'
+    const hasGuest = Boolean((search as any)?.to && (search as any)?.name)
+    const title = hasGuest
+      ? `Kepada ${to} ${name} — The Wedding of Chaca & Fedrik`
+      : 'The Wedding of Chaca & Fedrik'
     const desc = hasGuest
       ? `Sabtu, 10 Oktober 2026 — Kami mengundang ${to} ${name} untuk merayakan momen istimewa bersama kami.`
       : 'Sabtu, 10 Oktober 2026 — Kami mengundang Anda untuk merayakan momen istimewa bersama kami.'
@@ -34,15 +42,6 @@ export const Route = createFileRoute('/')({
     }
   },
 })
-
-const WEDDING = {
-  groomName: 'Fedrik',
-  brideName: 'Chaca',
-  date: '10 OCTOBER 2026',
-  recipient: 'Bapak/Ibu Tamu',
-  bgImage:
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuAeh2RjuzzvJ2fTRprJ0os5DcRmf9OSmT14ofJmQ3ElbwVXggWxf1DEO67JT3DjPYhWOEA6zJXKMULVgdIt8kZ2Fp8yQUfreBZJh7cS-gn8IKKwIEUh_CWjDeHF_JvoMmxQUeSbEsiC4Q7U42QOoryfd1dC_M7IDgNLq6E9Od9gtZKytVg-AO-BE7jTvKEySSPY5d9p0I73M9SZ-rn15blgGD_kgIx5rV7wrzVatqBU79Px8L-yemX5lQ',
-}
 
 function LandingPage() {
   const navigate = useNavigate()
