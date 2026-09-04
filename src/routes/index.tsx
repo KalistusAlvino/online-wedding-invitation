@@ -10,6 +10,25 @@ const guestSchema = z.object({
 export const Route = createFileRoute('/')({
   component: LandingPage,
   validateSearch: guestSchema,
+  head: ({ search }) => {
+    const to = search.to || 'Bapak/Ibu'
+    const name = search.name || 'Tamu'
+    const hasGuest = Boolean(search.to && search.name)
+    const title = hasGuest ? `Kepada ${to} ${name} — The Wedding of Chaca & Fedrik` : 'The Wedding of Chaca & Fedrik'
+    const desc = hasGuest
+      ? `Sabtu, 10 Oktober 2026 — Kami mengundang ${to} ${name} untuk merayakan momen istimewa bersama kami.`
+      : 'Sabtu, 10 Oktober 2026 — Kami mengundang Anda untuk merayakan momen istimewa bersama kami.'
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: desc },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: desc },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: desc },
+      ],
+    }
+  },
 })
 
 const WEDDING = {

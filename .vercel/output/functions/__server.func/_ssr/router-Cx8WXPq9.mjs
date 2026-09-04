@@ -1,6 +1,6 @@
 import { HeadContent, Scripts, createFileRoute, createRootRoute, createRouter, lazyRouteComponent, require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { object, string } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BjsKn_X3.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-Cx8WXPq9.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -80,14 +80,44 @@ function RootDocument({ children }) {
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("head", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", { children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})] })]
 	});
 }
-var $$splitComponentImporter$3 = () => import("./routes-A78__Oxy.mjs");
+var $$splitComponentImporter$3 = () => import("./routes-CToj3j71.mjs");
 var guestSchema = object({
 	to: string().optional(),
 	name: string().optional()
 });
 var Route$3 = createFileRoute("/")({
 	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
-	validateSearch: guestSchema
+	validateSearch: guestSchema,
+	head: ({ search }) => {
+		const to = search.to || "Bapak/Ibu";
+		const name = search.name || "Tamu";
+		const hasGuest = Boolean(search.to && search.name);
+		const title = hasGuest ? `Kepada ${to} ${name} — The Wedding of Chaca & Fedrik` : "The Wedding of Chaca & Fedrik";
+		const desc = hasGuest ? `Sabtu, 10 Oktober 2026 — Kami mengundang ${to} ${name} untuk merayakan momen istimewa bersama kami.` : "Sabtu, 10 Oktober 2026 — Kami mengundang Anda untuk merayakan momen istimewa bersama kami.";
+		return { meta: [
+			{ title },
+			{
+				name: "description",
+				content: desc
+			},
+			{
+				property: "og:title",
+				content: title
+			},
+			{
+				property: "og:description",
+				content: desc
+			},
+			{
+				name: "twitter:title",
+				content: title
+			},
+			{
+				name: "twitter:description",
+				content: desc
+			}
+		] };
+	}
 });
 var $$splitComponentImporter$2 = () => import("./dashboard-WTCRr8oL.mjs");
 var Route$2 = createFileRoute("/dashboard")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
