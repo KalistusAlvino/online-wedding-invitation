@@ -1,8 +1,9 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 
 import { useRevealOnScroll } from '../lib/useRevealOnScroll'
+import { supabase } from '../lib/supabase'
 import {
   BANK_ACCOUNTS,
   CLOSING_IMAGE,
@@ -10,7 +11,7 @@ import {
   COUPLE_MEMBERS,
   EVENTS,
   GALLERY,
-  HERO_IMAGE,
+  HERO_VIDEO_ID,
 } from '../data/wedding'
 
 export const Route = createFileRoute('/invitation')({ component: InvitationPage })
@@ -20,12 +21,42 @@ function cx(...parts: Array<string | false | undefined>) {
   return parts.filter(Boolean).join(' ')
 }
 
+/* Thin-line botanical sprig used as an understated divider under titles */
+function BotanicalSprig() {
+  const leaves = [
+    { x: 30, y: 26, r: -70, s: 0.9 },
+    { x: 48, y: 23, r: -118, s: 0.8 },
+    { x: 68, y: 19, r: -68, s: 1 },
+    { x: 87, y: 15, r: -118, s: 0.72 },
+    { x: 103, y: 11, r: -66, s: 0.68 },
+  ]
+
+  return (
+    <span className="section-head__botanical" aria-hidden="true">
+      <svg viewBox="0 0 120 34" fill="none">
+        {/* central stem */}
+        <path d="M4 30 C 38 27, 84 17, 114 5" />
+        {/* leaves */}
+        {leaves.map((leaf, index) => (
+          <path
+            key={index}
+            transform={`translate(${leaf.x} ${leaf.y}) scale(${leaf.s}) rotate(${leaf.r})`}
+            d="M-7 0 C -3 -4.5, 3 -4.5, 7 0 C 3 4.5, -3 4.5, -7 0 Z"
+          />
+        ))}
+        {/* bud */}
+        <circle cx="115" cy="4.5" r="1.6" />
+      </svg>
+    </span>
+  )
+}
+
 /* Centered serif section title with a divider rule */
 function SectionHead({ children, large = false }: { children: string; large?: boolean }) {
   return (
     <div className={cx('section-head', large && 'section-head--large')}>
       <h2 className="section-head__title">{children}</h2>
-      <div className="section-head__rule" />
+      <BotanicalSprig />
     </div>
   )
 }
@@ -36,7 +67,15 @@ function SectionHead({ children, large = false }: { children: string; large?: bo
 function HeroSection() {
   return (
     <section id="home" className="hero">
-      <div className="hero__media" style={{ backgroundImage: `url('${HERO_IMAGE}')` }} />
+      <div className="hero__media hero__media--video">
+        <iframe
+          className="hero__video"
+          title="Video latar belakang undangan"
+          src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&controls=0&loop=1&playlist=${HERO_VIDEO_ID}&playsinline=1&rel=0&modestbranding=1`}
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
       <div className="hero__overlay" />
       <div className="hero__content">
         <p className="hero__eyebrow label-caps uppercase">The Wedding of</p>
@@ -58,19 +97,21 @@ function HeroSection() {
    --------------------------------------------------------------------------- */
 function VerseSection() {
   return (
-    <section className="section container verse">
-      <div className="cross js-reveal" />
-      <div className="verse__quote headline headline--lg js-reveal">
-        <p>
-          &ldquo;Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah
-          dipersatukan Allah, tidak boleh diceraikan manusia.&rdquo;
-        </p>
-      </div>
-      <p className="verse__cite label-caps label-caps--wide js-reveal">Matius 19:6</p>
-      <div className="verse__ornament js-reveal" aria-hidden="true">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <path d="M50 90 C50 60, 20 40, 20 10 M50 90 C50 60, 80 40, 80 10 M50 90 L50 40 M35 50 C40 40, 60 40, 65 50" />
-        </svg>
+    <section className="section verse">
+      <div className="container verse__content">
+        <div className="cross js-reveal" />
+        <div className="verse__quote headline headline--lg js-reveal">
+          <p>
+            &ldquo;Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah
+            dipersatukan Allah, tidak boleh diceraikan manusia.&rdquo;
+          </p>
+        </div>
+        <p className="verse__cite label-caps label-caps--wide js-reveal">Matius 19:6</p>
+        <div className="verse__ornament js-reveal" aria-hidden="true">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 90 C50 60, 20 40, 20 10 M50 90 C50 60, 80 40, 80 10 M50 90 L50 40 M35 50 C40 40, 60 40, 65 50" />
+          </svg>
+        </div>
       </div>
     </section>
   )
@@ -176,8 +217,57 @@ function GallerySection() {
 /* -----------------------------------------------------------------------------
    Wedding gift & RSVP
    --------------------------------------------------------------------------- */
+interface Message {
+  id: number
+  sapaan: string
+  name: string
+  attendance: string
+  message: string
+  created_at: string
+}
+
 function GiftSection() {
   const [copiedBank, setCopiedBank] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitMsg, setSubmitMsg] = useState<{ type: 'ok' | 'err'; text: string } | null>(null)
+  const [messages, setMessages] = useState<Message[]>([])
+  const [msgLimit, setMsgLimit] = useState(4)
+
+  const refreshMessages = async () => {
+    const { data, error } = await supabase
+      .from('messages')
+      .select('id, sapaan, name, attendance, message, created_at')
+      .order('created_at', { ascending: false })
+      .limit(50)
+    if (error) {
+      console.error('[Messages] Error:', error.code, error.message, error.details)
+    } else {
+      console.log('[Messages] Loaded:', data?.length ?? 0, 'rows', data)
+      setMessages(data ?? [])
+    }
+  }
+
+  useEffect(() => {
+    refreshMessages()
+  }, [])
+
+  /* responsive limit */
+  useEffect(() => {
+    const mqMobile = window.matchMedia('(max-width: 47rem)')
+    const mqTablet = window.matchMedia('(max-width: 80rem)')
+    const update = () => {
+      if (mqMobile.matches) setMsgLimit(4)
+      else if (mqTablet.matches) setMsgLimit(6)
+      else setMsgLimit(8)
+    }
+    update()
+    mqMobile.addEventListener('change', update)
+    mqTablet.addEventListener('change', update)
+    return () => {
+      mqMobile.removeEventListener('change', update)
+      mqTablet.removeEventListener('change', update)
+    }
+  }, [])
 
   const handleCopy = async (number: string, bank: string) => {
     try {
@@ -189,108 +279,212 @@ function GiftSection() {
     window.setTimeout(() => setCopiedBank(null), 1600)
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    window.alert('Terima kasih atas konfirmasinya.')
-    event.currentTarget.reset()
+    const form = event.currentTarget
+    const fd = new FormData(form)
+    const sapaan = String(fd.get('sapaan') || 'Bapak/Ibu')
+    const name = String(fd.get('name') || '').trim()
+    const attendance = String(fd.get('attendance') || 'hadir')
+    const message = String(fd.get('message') || '').trim()
+
+    if (!name) return
+
+    setSubmitting(true)
+    setSubmitMsg(null)
+
+    const { error } = await supabase.from('messages').insert({ sapaan, name, attendance, message })
+
+    setSubmitting(false)
+    if (error) {
+      setSubmitMsg({ type: 'err', text: 'Gagal mengirim. Coba lagi.' })
+    } else {
+      setSubmitMsg({ type: 'ok', text: 'Terima kasih atas doa dan ucapannya!' })
+      form.reset()
+      refreshMessages()
+    }
   }
 
+  const visibleMessages = messages.slice(0, msgLimit)
+
   return (
-    <section id="rsvp" className="section section--tan-strong">
-      <div className="container">
-        <div className="panel">
-          {/* Wedding gift column */}
-          <div className="panel__column js-reveal">
-            <div className="gift__intro">
-              <h2 className="gift__title uppercase">Wedding Gift</h2>
-              <p className="gift__desc body--sm">
-                Your presence is the greatest gift. However, if you wish to honor us with a gift,
-                you may do so through the details below.
-              </p>
+    <>
+      {/* Gift + RSVP panel */}
+      <section id="rsvp" className="section section--tan-strong">
+        <div className="container">
+          <div className="panel">
+            {/* Wedding gift column */}
+            <div className="panel__column js-reveal">
+              <div className="gift__intro">
+                <h2 className="gift__title uppercase">Wedding Gift</h2>
+                <p className="gift__desc body--sm">
+                  Your presence is the greatest gift. However, if you wish to honor us with a gift,
+                  you may do so through the details below.
+                </p>
+              </div>
+
+              <div className="gift__accounts">
+                {BANK_ACCOUNTS.map((account) => (
+                  <div key={account.bank} className="gift__account">
+                    <p className="gift__bank label-caps uppercase">{account.bank}</p>
+                    <div className="gift__account-detail">
+                      <p className="gift__number headline headline--md">{account.number}</p>
+                      <p className="gift__holder body--sm">{account.holder}</p>
+                    </div>
+                    <button
+                      type="button"
+                      className="gift__copy label-caps uppercase"
+                      onClick={() => handleCopy(account.number, account.bank)}
+                    >
+                      {copiedBank === account.bank ? 'Tersalin ✓' : 'Copy Rekening'}
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="gift__accounts">
-              {BANK_ACCOUNTS.map((account) => (
-                <div key={account.bank} className="gift__account">
-                  <p className="gift__bank label-caps uppercase">{account.bank}</p>
-                  <div className="gift__account-detail">
-                    <p className="gift__number headline headline--md">{account.number}</p>
-                    <p className="gift__holder body--sm">{account.holder}</p>
-                  </div>
-                  <button
-                    type="button"
-                    className="gift__copy label-caps uppercase"
-                    onClick={() => handleCopy(account.number, account.bank)}
+            {/* RSVP column */}
+            <div className="panel__column js-reveal">
+              <div className="panel__intro">
+                <h2 className="panel__title uppercase">RSVP</h2>
+                <p className="body--sm">Kindly confirm your attendance by October 1st, 2026.</p>
+              </div>
+
+              <form className="form" onSubmit={handleSubmit}>
+                <div className="field">
+                  <label className="field__label label-caps uppercase" htmlFor="rsvp-sapaan">
+                    Sapaan
+                  </label>
+                  <select
+                    className="field__control field__control--select body--md"
+                    id="rsvp-sapaan"
+                    name="sapaan"
+                    required
+                    defaultValue="Bapak/Ibu"
                   >
-                    {copiedBank === account.bank ? 'Tersalin ✓' : 'Copy Rekening'}
-                  </button>
+                    <option value="Bapak/Ibu">Bapak/Ibu</option>
+                    <option value="Bapak">Bapak</option>
+                    <option value="Ibu">Ibu</option>
+                    <option value="Saudara">Saudara</option>
+                    <option value="Saudari">Saudari</option>
+                    <option value="Keluarga">Keluarga</option>
+                  </select>
+                </div>
+
+                <div className="field">
+                  <label className="field__label label-caps uppercase" htmlFor="rsvp-name">
+                    Full Name
+                  </label>
+                  <input
+                    className="field__control body--md"
+                    id="rsvp-name"
+                    name="name"
+                    type="text"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
+
+                <div className="field">
+                  <label className="field__label label-caps uppercase" htmlFor="rsvp-attendance">
+                    Will you attend?
+                  </label>
+                  <select
+                    className="field__control field__control--select body--md"
+                    id="rsvp-attendance"
+                    name="attendance"
+                    required
+                    defaultValue="hadir"
+                  >
+                    <option value="hadir">Yes, gladly</option>
+                    <option value="tidak_hadir">Regretfully decline</option>
+                  </select>
+                </div>
+
+                <div className="field">
+                  <label className="field__label label-caps uppercase" htmlFor="rsvp-message">
+                    Message for the Couple
+                  </label>
+                  <textarea
+                    className="field__control field__control--area body--md"
+                    id="rsvp-message"
+                    name="message"
+                    rows={3}
+                    placeholder="Write your wishes here..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn--primary btn--block uppercase"
+                  disabled={submitting}
+                  style={{ opacity: submitting ? 0.6 : 1 }}
+                >
+                  {submitting ? 'Mengirim...' : 'Send Confirmation'}
+                </button>
+              </form>
+
+              {submitMsg && (
+                <p
+                  className="body--sm"
+                  style={{
+                    marginTop: 12,
+                    padding: '10px 14px',
+                    borderRadius: 6,
+                    background: submitMsg.type === 'ok' ? '#e8f5e9' : '#fdecea',
+                    color: submitMsg.type === 'ok' ? '#1b5e20' : '#b71c1c',
+                  }}
+                >
+                  {submitMsg.text}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ucapan & Doa — full-width section */}
+      {messages.length > 0 && (
+        <section className="section">
+          <div className="container">
+            <SectionHead>Ucapan & Doa</SectionHead>
+
+            <div className="wishes__grid">
+              {visibleMessages.map((msg) => (
+                <div key={msg.id} className="wish-card">
+                  <p className="wish-card__name">
+                    {msg.sapaan} {msg.name}
+                    {msg.attendance === 'tidak_hadir' && (
+                      <span className="wish-card__badge wish-card__badge--absent">
+                        tidak hadir
+                      </span>
+                    )}
+                  </p>
+                  {msg.message && (
+                    <p className="wish-card__message">&ldquo;{msg.message}&rdquo;</p>
+                  )}
+                  <span className="wish-card__time">
+                    {new Date(msg.created_at).toLocaleDateString('id-ID', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    })}
+                  </span>
                 </div>
               ))}
             </div>
+
+            {messages.length > msgLimit && (
+              <div style={{ textAlign: 'center', marginTop: 40 }}>
+                <a href="/messages" className="btn btn--ghost uppercase">
+                  Lihat Semua Pesan ({messages.length})
+                </a>
+              </div>
+            )}
           </div>
-
-          {/* RSVP column */}
-          <div className="panel__column js-reveal">
-            <div className="panel__intro">
-              <h2 className="panel__title uppercase">RSVP</h2>
-              <p className="body--sm">Kindly confirm your attendance by October 1st, 2026.</p>
-            </div>
-
-            <form className="form" onSubmit={handleSubmit}>
-              <div className="field">
-                <label className="field__label label-caps uppercase" htmlFor="rsvp-name">
-                  Full Name
-                </label>
-                <input
-                  className="field__control body--md"
-                  id="rsvp-name"
-                  name="name"
-                  type="text"
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
-
-              <div className="field">
-                <label className="field__label label-caps uppercase" htmlFor="rsvp-attendance">
-                  Will you attend?
-                </label>
-                <select
-                  className="field__control field__control--select body--md"
-                  id="rsvp-attendance"
-                  name="attendance"
-                  required
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    Please select...
-                  </option>
-                  <option value="yes">Yes, gladly</option>
-                  <option value="no">Regretfully decline</option>
-                </select>
-              </div>
-
-              <div className="field">
-                <label className="field__label label-caps uppercase" htmlFor="rsvp-message">
-                  Message for the Couple
-                </label>
-                <textarea
-                  className="field__control field__control--area body--md"
-                  id="rsvp-message"
-                  name="message"
-                  rows={3}
-                  placeholder="Write your wishes here..."
-                />
-              </div>
-
-              <button type="submit" className="btn btn--primary btn--block uppercase">
-                Send Confirmation
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      )}
+    </>
   )
 }
 

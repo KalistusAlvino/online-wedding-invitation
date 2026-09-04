@@ -15,12 +15,15 @@
     "check": "prettier --check ."
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.115.0",
     "@tanstack/react-devtools": "latest",
     "@tanstack/react-router": "latest",
     "@tanstack/react-router-devtools": "latest",
     "@tanstack/react-start": "latest",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "xlsx": "^0.18.5",
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@tanstack/devtools-vite": "latest",

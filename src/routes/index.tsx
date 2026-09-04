@@ -1,6 +1,16 @@
+import { useEffect } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { z } from 'zod'
 
-export const Route = createFileRoute('/')({ component: LandingPage })
+const guestSchema = z.object({
+  to: z.string().optional(),
+  name: z.string().optional(),
+})
+
+export const Route = createFileRoute('/')({
+  component: LandingPage,
+  validateSearch: guestSchema,
+})
 
 const WEDDING = {
   groomName: 'Fedrik',
@@ -13,6 +23,34 @@ const WEDDING = {
 
 function LandingPage() {
   const navigate = useNavigate()
+  const { to, name } = Route.useSearch()
+
+  const hasGuest = Boolean(to && name)
+  const recipientLabel = hasGuest ? `${to} ${name}` : WEDDING.recipient
+
+  /* Dynamic OG tags for personalized sharing */
+  useEffect(() => {
+    if (!hasGuest) return
+    const title = `Kepada ${to} ${name} — The Wedding of Chaca & Fedrik`
+    const desc = `Sabtu, 10 Oktober 2026 — Kami mengundang ${to} ${name} untuk merayakan momen istimewa bersama kami.`
+
+    document.title = title
+
+    const setMeta = (attr: string, key: string, content: string) => {
+      let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null
+      if (!el) {
+        el = document.createElement('meta')
+        el.setAttribute(attr, key)
+        document.head.appendChild(el)
+      }
+      el.setAttribute('content', content)
+    }
+
+    setMeta('property', 'og:title', title)
+    setMeta('property', 'og:description', desc)
+    setMeta('name', 'twitter:title', title)
+    setMeta('name', 'twitter:description', desc)
+  }, [hasGuest, to, name])
 
   return (
     <main className="cover">
@@ -52,7 +90,7 @@ function LandingPage() {
         <div className="cover__guest fade-in-up delay-500">
           <span className="cover__guest-label body--sm text-muted">Kepada Yth.</span>
           <span className="cover__guest-name headline headline--md text-primary">
-            {WEDDING.recipient}
+            {recipientLabel}
           </span>
           <span className="cover__guest-place body--sm text-muted">di tempat</span>
         </div>
