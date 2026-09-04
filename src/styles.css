@@ -718,8 +718,11 @@ textarea {
   color: var(--color-primary);
 }
 
-.couple__social .material-symbols-outlined {
-  font-size: 18px;
+.couple__social-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  flex-shrink: 0;
 }
 
 /* --- Events --- */
