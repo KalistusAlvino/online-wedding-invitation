@@ -274,27 +274,25 @@ textarea {
 }
 
 .btn--primary {
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-  box-shadow: var(--shadow-card);
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: var(--color-pure-white);
 }
 
 .btn--primary:hover {
-  background-color: var(--color-primary-container);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Outlined pill button */
 .btn--ghost {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   color: var(--color-pure-white);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .btn--ghost:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  border-color: var(--color-primary);
 }
 
 /* Full-width pill (forms) */
@@ -431,6 +429,7 @@ textarea {
   width: 100%;
   padding-inline: var(--gutter);
   text-align: center;
+  color: var(--color-on-surface);
 }
 
 .cover__top {
@@ -446,7 +445,7 @@ textarea {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--color-on-surface-variant);
 }
 
 .cover__divider-line {
@@ -485,6 +484,7 @@ textarea {
 
 .cover__guest-label {
   margin-bottom: 4px;
+  color: var(--color-on-surface-variant);
 }
 
 .cover__guest-name {
@@ -494,15 +494,16 @@ textarea {
     var(--color-tertiary-fixed-dim) 50%,
     transparent
   );
+  color: var(--color-primary);
 }
 
 .cover__guest-place {
-  margin-top: 4px;
+  color: var(--color-on-surface-variant);
 }
 
 .cover__hint {
   margin-top: 24px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--color-on-surface-variant);
 }
 
 .cover__cta-icon {
@@ -511,6 +512,16 @@ textarea {
 
 .cover__cta:hover .cover__cta-icon {
   transform: translateY(2px);
+}
+
+/* Cover CTA button uses dark style on light background */
+.cover__cta.btn--primary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.cover__cta.btn--primary:hover {
+  background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
 }
 
 /* -----------------------------------------------------------------------------
