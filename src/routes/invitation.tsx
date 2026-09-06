@@ -6,11 +6,13 @@ import { useRevealOnScroll } from '../lib/useRevealOnScroll'
 import { supabase } from '../lib/supabase'
 import {
   BANK_ACCOUNTS,
+  CHAPTERS,
   CLOSING_IMAGE,
   COUPLE,
   COUPLE_MEMBERS,
   EVENTS,
   GALLERY,
+  GALLERY_CAROUSEL,
   HERO_VIDEO_ID,
 } from '../data/wedding'
 
@@ -67,25 +69,32 @@ function SectionHead({ children, large = false }: { children: string; large?: bo
 function HeroSection() {
   return (
     <section id="home" className="hero">
-      <div className="hero__media hero__media--video">
-        <iframe
-          className="hero__video"
-          title="Video latar belakang undangan"
-          src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&controls=0&loop=1&playlist=${HERO_VIDEO_ID}&playsinline=1&rel=0&modestbranding=1`}
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-      <div className="hero__overlay" />
       <div className="hero__content">
-        <p className="hero__eyebrow label-caps uppercase">The Wedding of</p>
-        <h1 className="hero__title display-hero">
-          {COUPLE.brideName} <span className="display-hero__amp">&amp;</span> {COUPLE.groomName}
-        </h1>
-        <div className="hero__meta">
-          <span className="hero__meta-line" />
-          <span className="hero__meta-date headline headline--md">{COUPLE.dateShort}</span>
-          <span className="hero__meta-line" />
+        <div className="hero__top">
+          <span className="hero__story">The Story<br />of Two</span>
+          <span className="hero__rule" />
+        </div>
+
+        <div className="hero__names-block">
+          <h1 className="hero__name">{COUPLE.brideName}</h1>
+          <span className="hero__and">and</span>
+          <h1 className="hero__name">{COUPLE.groomName}</h1>
+        </div>
+
+        <div className="hero__bottom">
+          <span className="hero__vline" />
+          <div className="hero__date-stack">
+            <span>10</span>
+            <span className="hero__date-dot">&bull;</span>
+            <span>10</span>
+            <span className="hero__date-dot">&bull;</span>
+            <span>2026</span>
+          </div>
+          <p className="hero__tagline">
+            a celebration of love<br />
+            a promise made<br />
+            for a lifetime
+          </p>
         </div>
       </div>
     </section>
@@ -120,38 +129,154 @@ function VerseSection() {
 /* -----------------------------------------------------------------------------
    Couple
    --------------------------------------------------------------------------- */
+function CoupleCard({ member }: { member: (typeof COUPLE_MEMBERS)[number] }) {
+  const [photoIdx, setPhotoIdx] = useState(0)
+
+  useEffect(() => {
+    if (member.photos.length <= 1) return
+    const id = window.setInterval(() => {
+      setPhotoIdx((i) => (i + 1) % member.photos.length)
+    }, 4000)
+    return () => window.clearInterval(id)
+  }, [member.photos.length])
+
+  return (
+    <article className="couple-card">
+      {member.photos.map((src, i) => (
+        <div
+          key={src}
+          className={cx('couple-card__bg', i === photoIdx && 'couple-card__bg--active')}
+        >
+          <img src={src} alt={member.alt} />
+        </div>
+      ))}
+      <div className="couple-card__overlay" />
+      <div className="couple-card__content">
+        <span className="couple-card__gender">{member.role}</span>
+        <span className="couple-card__rule" />
+        <div className="couple-card__title-wrap">
+          <div className="couple-card__title-row">
+            <h2 className="couple-card__title">{member.role === 'HER' ? 'The\nBride' : 'The\nGroom'}</h2>
+            <span className="couple-card__script">{member.firstName}</span>
+          </div>
+        </div>
+        <div className="couple-card__bottom">
+          <span className="couple-card__vline" />
+          <div className="couple-card__info">
+            <p className="couple-card__fullname">{member.name.replace('\n', ' ')}</p>
+            <p className="couple-card__parents-label">{member.parentsLabel}</p>
+            <p className="couple-card__parents">{member.parents}</p>
+            <a
+              className="couple-card__social"
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <svg className="couple-card__social-icon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.058 1.266.069 1.646.069 4.849 0 3.205-.012 3.584-.069 4.849-.054 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.82.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.058-1.646.069-4.849.069-3.204 0-3.584-.012-4.849-.069-1.17-.054-1.805-.249-2.227-.413a3.736 3.736 0 0 1-1.381-.896 3.642 3.642 0 0 1-.896-1.381c-.164-.422-.36-1.057-.413-2.227-.058-1.266-.069-1.646-.069-4.849 0-3.204.012-3.584.069-4.849.054-1.17.249-1.805.413-2.227.217-.562.477-.96.896-1.382a3.642 3.642 0 0 1 1.381-.896c.422-.164 1.057-.36 2.227-.413 1.266-.058 1.646-.069 4.849-.069M12 0C8.741 0 8.333.014 7.053.072 5.775.13 4.902.333 4.14.63a5.87 5.87 0 0 0-2.126 1.384A5.855 5.855 0 0 0 .63 4.14C.333 4.902.13 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.058 1.277.261 2.15.558 2.913a5.885 5.885 0 0 0 1.384 2.126A5.868 5.868 0 0 0 4.14 23.37c.764.297 1.637.5 2.913.558C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.058 2.15-.261 2.913-.558a5.898 5.898 0 0 0 2.126-1.384 5.86 5.86 0 0 0 1.384-2.126c.297-.764.5-1.637.558-2.913.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.277-.261-2.15-.558-2.913a5.87 5.87 0 0 0-1.384-2.126A5.855 5.855 0 0 0 19.86.63c-.764-.297-1.637-.5-2.913-.558C15.668.014 15.259 0 12 0Zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z" />
+              </svg>
+              INSTAGRAM | {member.handle}
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
+
 function CoupleSection() {
   return (
-    <section className="section section--tan">
-      <div className="container">
-        <SectionHead large>The Couple</SectionHead>
-        <div className="couple__grid">
-          {COUPLE_MEMBERS.map((member) => (
-            <article
-              key={member.name}
-              className={cx('couple js-reveal', member.offset && 'couple--second')}
-            >
-              <div className="couple__frame">
-                <img className="couple__photo" src={member.photo} alt={member.alt} loading="lazy" />
-              </div>
-              <div className="couple__details">
-                <h3 className="couple__name headline headline--lg">{member.name}</h3>
-                <p className="couple__role label-caps">{member.role}</p>
-              </div>
-              <a
-                className="couple__social label-caps"
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg className="couple__social-icon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.058 1.266.069 1.646.069 4.849 0 3.205-.012 3.584-.069 4.849-.054 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.82.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.058-1.646.069-4.849.069-3.204 0-3.584-.012-4.849-.069-1.17-.054-1.805-.249-2.227-.413a3.736 3.736 0 0 1-1.381-.896 3.642 3.642 0 0 1-.896-1.381c-.164-.422-.36-1.057-.413-2.227-.058-1.266-.069-1.646-.069-4.849 0-3.204.012-3.584.069-4.849.054-1.17.249-1.805.413-2.227.217-.562.477-.96.896-1.382a3.642 3.642 0 0 1 1.381-.896c.422-.164 1.057-.36 2.227-.413 1.266-.058 1.646-.069 4.849-.069M12 0C8.741 0 8.333.014 7.053.072 5.775.13 4.902.333 4.14.63a5.87 5.87 0 0 0-2.126 1.384A5.855 5.855 0 0 0 .63 4.14C.333 4.902.13 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.058 1.277.261 2.15.558 2.913a5.885 5.885 0 0 0 1.384 2.126A5.868 5.868 0 0 0 4.14 23.37c.764.297 1.637.5 2.913.558C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.058 2.15-.261 2.913-.558a5.898 5.898 0 0 0 2.126-1.384 5.86 5.86 0 0 0 1.384-2.126c.297-.764.5-1.637.558-2.913.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.277-.261-2.15-.558-2.913a5.87 5.87 0 0 0-1.384-2.126A5.855 5.855 0 0 0 19.86.63c-.764-.297-1.637-.5-2.913-.558C15.668.014 15.259 0 12 0Zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z" />
-                </svg>
-                {member.handle}
-              </a>
-            </article>
-          ))}
+    <section className="couple-section">
+      {COUPLE_MEMBERS.map((member) => (
+        <CoupleCard key={member.name} member={member} />
+      ))}
+    </section>
+  )
+}
+
+/* -----------------------------------------------------------------------------
+   Countdown (THE WAIT)
+   --------------------------------------------------------------------------- */
+const WEDDING_DATE = new Date('2026-10-10T09:00:00+07:00').getTime()
+
+function CountdownSection() {
+  const [now, setNow] = useState(Date.now())
+
+  useEffect(() => {
+    const id = window.setInterval(() => setNow(Date.now()), 1000)
+    return () => window.clearInterval(id)
+  }, [])
+
+  const diff = Math.max(0, WEDDING_DATE - now)
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24)
+  const minutes = Math.floor((diff / (1000 * 60)) % 60)
+  const seconds = Math.floor((diff / 1000) % 60)
+
+  const units = [
+    { value: days, label: 'DAYS' },
+    { value: hours, label: 'HOURS' },
+    { value: minutes, label: 'MINUTES' },
+    { value: seconds, label: 'SECONDS' },
+  ]
+
+  return (
+    <section className="countdown">
+      <div className="countdown__content">
+        <h2 className="countdown__heading">
+          The<br />Wait
+        </h2>
+        <span className="countdown__heading-rule" />
+        <div className="countdown__circle">
+          <div className="countdown__circle-border" />
+          <div className="countdown__circle-inner">
+            <span className="countdown__until">UNTIL</span>
+            <span className="countdown__until-sub">WE SAY</span>
+            <p className="countdown__ido">I Do</p>
+            <span className="countdown__date">10 &middot; 10 &middot; 2026</span>
+            <div className="countdown__numbers">
+              {units.map((u) => (
+                <div key={u.label} className="countdown__unit">
+                  <span className="countdown__num">{String(u.value).padStart(2, '0')}</span>
+                  <span className="countdown__label">{u.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+  )
+}
+
+/* -----------------------------------------------------------------------------
+   Chapters (Love Story Timeline)
+   --------------------------------------------------------------------------- */
+function ChaptersSection() {
+  return (
+    <section className="section container">
+      <SectionHead large>The Chapters We Share</SectionHead>
+      <div className="chapters">
+        {CHAPTERS.map((chapter) => (
+          <article key={chapter.year} className="chapter js-reveal">
+            <div className="chapter__image-wrap">
+              <img
+                className="chapter__image"
+                src={chapter.image}
+                alt={chapter.alt}
+                loading="lazy"
+              />
+            </div>
+            <div className="chapter__content">
+              <span className="chapter__year">{chapter.year}</span>
+              <h3 className="chapter__title">
+                {chapter.title} &bull; {chapter.year}
+              </h3>
+              <p className="chapter__quote">{chapter.quote}</p>
+              <p className="chapter__desc">{chapter.description}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   )
@@ -197,17 +322,78 @@ function EventsSection() {
    Gallery
    --------------------------------------------------------------------------- */
 function GallerySection() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % GALLERY_CAROUSEL.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const getSlideIndex = (offset: number) =>
+    (currentSlide + offset + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length
+
   return (
     <section id="gallery" className="section container">
       <SectionHead>Our Moments</SectionHead>
-      <div className="gallery__grid">
+
+      {/* Carousel with peeking sides */}
+      <div className="gallery__carousel">
+        <div className="gallery__carousel-viewport">
+          {/* Left peek */}
+          <div className="gallery__carousel-side gallery__carousel-side--left">
+            <img
+              className="gallery__carousel-side-img"
+              src={GALLERY_CAROUSEL[getSlideIndex(-1)].photo}
+              alt={GALLERY_CAROUSEL[getSlideIndex(-1)].alt}
+              loading="lazy"
+            />
+          </div>
+
+          {/* Center main slide */}
+          <div className="gallery__carousel-center">
+            <img
+              className="gallery__carousel-center-img"
+              src={GALLERY_CAROUSEL[currentSlide].photo}
+              alt={GALLERY_CAROUSEL[currentSlide].alt}
+              loading="lazy"
+            />
+          </div>
+
+          {/* Right peek */}
+          <div className="gallery__carousel-side gallery__carousel-side--right">
+            <img
+              className="gallery__carousel-side-img"
+              src={GALLERY_CAROUSEL[getSlideIndex(1)].photo}
+              alt={GALLERY_CAROUSEL[getSlideIndex(1)].alt}
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div className="gallery__carousel-dots">
+          {GALLERY_CAROUSEL.map((photo, index) => (
+            <button
+              key={photo.alt}
+              type="button"
+              className={cx('gallery__carousel-dot', index === currentSlide && 'gallery__carousel-dot--active')}
+              onClick={() => setCurrentSlide(index)}
+              aria-label={`Slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Random Masonry Grid */}
+      <div className="gallery__masonry">
         {GALLERY.map((item, index) => (
           <div
             key={item.tile}
-            className={cx('gallery__item', `gallery__item--${item.tile}`, 'js-reveal')}
+            className={cx('gallery__masonry-item', `gallery__masonry-item--${item.tile}`, 'js-reveal')}
             style={{ animationDelay: `${index * 60}ms` }}
           >
-            <img className="gallery__img" src={item.photo} alt={item.alt} loading="lazy" />
+            <img className="gallery__masonry-img" src={item.photo} alt={item.alt} loading="lazy" />
             <div className="gallery__shade" />
           </div>
         ))}
@@ -318,10 +504,15 @@ function GiftSection() {
             {/* Wedding gift column */}
             <div className="panel__column js-reveal">
               <div className="gift__intro">
-                <h2 className="gift__title uppercase">Wedding Gift</h2>
-                <p className="gift__desc body--sm">
-                  Your presence is the greatest gift. However, if you wish to honor us with a gift,
-                  you may do so through the details below.
+                <span className="gift__eyebrow label-caps uppercase">Wedding Gift</span>
+                <span className="gift__rule" />
+                <h2 className="gift__title">A Token<br />of Love</h2>
+                <span className="gift__vline" />
+                <p className="gift__desc">
+                  Your kindness<br />
+                  means the world to us.<br />
+                  Thank you for being<br />
+                  part of our journey.
                 </p>
               </div>
 
@@ -493,17 +684,44 @@ function GiftSection() {
 /* -----------------------------------------------------------------------------
    Closing
    --------------------------------------------------------------------------- */
+function StillSection() {
+  return (
+    <section className="still">
+      <div className="still__media" style={{ backgroundImage: `url('${CLOSING_IMAGE}')` }} />
+      <div className="still__scrim" />
+      <div className="still__content">
+        <p className="still__word">STILL</p>
+        <div className="still__line" />
+        <p className="still__word">HERE</p>
+        <div className="still__line" />
+        <p className="still__word">TOGETHER</p>
+        <div className="still__line" />
+      </div>
+    </section>
+  )
+}
+
 function ClosingSection() {
   return (
     <section className="closing">
-      <div className="closing__media" style={{ backgroundImage: `url('${CLOSING_IMAGE}')` }} />
-      <div className="closing__scrim" />
       <div className="closing__content">
-        <p className="closing__eyebrow label-caps uppercase">Thank You</p>
-        <h2 className="closing__title display-hero">
-          {COUPLE.brideName} <span className="display-hero__amp">&amp;</span> {COUPLE.groomName}
+        <p className="closing__intro">
+          We can't wait to start<br />this beautiful journey together.
+        </p>
+        <h2 className="closing__title">
+          <span className="closing__title-script">Thank</span>
+          <span className="closing__title-serif">YOU</span>
         </h2>
-        <p className="closing__note headline headline--lg">With Love.</p>
+        <p className="closing__subtitle">SEE YOU<br />AT THE AISLE</p>
+        <div className="closing__divider" />
+        <p className="closing__note">
+          For being part of our special day<br />
+          and for your kind wishes, love, and<br />
+          prayers.
+        </p>
+        <p className="closing__names">
+          {COUPLE.brideName} <span className="closing__names-amp">&amp;</span> {COUPLE.groomName}
+        </p>
       </div>
     </section>
   )
@@ -517,12 +735,29 @@ function InvitationPage() {
 
   return (
     <main>
+      {/* Fixed video background */}
+      <div className="fixed-bg">
+        <iframe
+          className="fixed-bg__video"
+          title="Video latar belakang undangan"
+          src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&controls=0&loop=1&playlist=${HERO_VIDEO_ID}&playsinline=1&rel=0&modestbranding=1`}
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowFullScreen
+        />
+        <div className="fixed-bg__overlay" />
+      </div>
+
       <HeroSection />
-      <VerseSection />
       <CoupleSection />
+      <div className="verse-countdown">
+        <VerseSection />
+        <CountdownSection />
+      </div>
+      <ChaptersSection />
       <EventsSection />
       <GallerySection />
       <GiftSection />
+      <StillSection />
       <ClosingSection />
     </main>
   )
