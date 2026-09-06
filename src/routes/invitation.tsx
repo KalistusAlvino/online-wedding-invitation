@@ -186,7 +186,7 @@ function CoupleCard({ member }: { member: (typeof COUPLE_MEMBERS)[number] }) {
 
 function CoupleSection() {
   return (
-    <section className="couple-section">
+    <section className="couple-section js-reveal">
       {COUPLE_MEMBERS.map((member) => (
         <CoupleCard key={member.name} member={member} />
       ))}
@@ -254,7 +254,7 @@ function CountdownSection() {
    --------------------------------------------------------------------------- */
 function ChaptersSection() {
   return (
-    <section className="section container">
+    <section className="section container js-reveal">
       <SectionHead large>The Chapters We Share</SectionHead>
       <div className="chapters">
         {CHAPTERS.map((chapter) => (
@@ -287,7 +287,7 @@ function ChaptersSection() {
    --------------------------------------------------------------------------- */
 function EventsSection() {
   return (
-    <section id="event" className="section container">
+    <section id="event" className="section container js-reveal">
       <SectionHead large>Event Details</SectionHead>
       <div className="events">
         {EVENTS.map((event, index) => (
@@ -335,7 +335,7 @@ function GallerySection() {
     (currentSlide + offset + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length
 
   return (
-    <section id="gallery" className="section container">
+    <section id="gallery" className="section container js-reveal">
       <SectionHead>Our Moments</SectionHead>
 
       {/* Carousel with peeking sides */}
@@ -498,7 +498,7 @@ function GiftSection() {
   return (
     <>
       {/* Gift + RSVP panel */}
-      <section id="rsvp" className="section section--tan-strong">
+      <section id="rsvp" className="section section--tan-strong js-reveal">
         <div className="container">
           <div className="panel">
             {/* Wedding gift column */}
@@ -686,7 +686,7 @@ function GiftSection() {
    --------------------------------------------------------------------------- */
 function StillSection() {
   return (
-    <section className="still">
+    <section className="still js-reveal">
       <div className="still__media" style={{ backgroundImage: `url('${CLOSING_IMAGE}')` }} />
       <div className="still__scrim" />
       <div className="still__content">
@@ -703,7 +703,7 @@ function StillSection() {
 
 function ClosingSection() {
   return (
-    <section className="closing">
+    <section className="closing js-reveal">
       <div className="closing__content">
         <p className="closing__intro">
           We can't wait to start<br />this beautiful journey together.
@@ -749,7 +749,7 @@ function InvitationPage() {
 
       <HeroSection />
       <CoupleSection />
-      <div className="verse-countdown">
+      <div className="verse-countdown js-reveal">
         <VerseSection />
         <CountdownSection />
       </div>

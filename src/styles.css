@@ -155,15 +155,29 @@ textarea {
 }
 
 .section {
+  position: relative;
   padding-block: var(--section-gap-mobile);
 }
 
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
 .section--tan {
-  background-color: color-mix(in oklab, var(--color-surface-tan) 30%, transparent);
+  background-color: transparent;
 }
 
 .section--tan-strong {
-  background-color: color-mix(in oklab, var(--color-surface-tan) 40%, transparent);
+  background-color: transparent;
 }
 
 /* --- Typography --- */
@@ -785,8 +799,22 @@ textarea {
 /* --- Couple --- */
 /* --- Couple (Full-screen photo cards) --- */
 .couple-section {
+  position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.couple-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.couple-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .couple-card {
@@ -1995,8 +2023,8 @@ textarea {
 /* Scroll-reveal: JS toggles .is-visible */
 .js-reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
 }
 
 .js-reveal.is-visible {

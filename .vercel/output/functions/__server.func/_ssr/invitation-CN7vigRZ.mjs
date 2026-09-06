@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-jQ2fdSjt.js
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-CN7vigRZ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -454,7 +454,7 @@ function CoupleCard({ member }) {
 }
 function CoupleSection() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-		className: "couple-section",
+		className: "couple-section js-reveal",
 		children: COUPLE_MEMBERS.map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CoupleCard, { member }, member.name))
 	});
 }
@@ -544,7 +544,7 @@ function CountdownSection() {
 }
 function ChaptersSection() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "section container",
+		className: "section container js-reveal",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHead, {
 			large: true,
 			children: "The Chapters We Share"
@@ -592,7 +592,7 @@ function ChaptersSection() {
 function EventsSection() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		id: "event",
-		className: "section container",
+		className: "section container js-reveal",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHead, {
 			large: true,
 			children: "Event Details"
@@ -651,7 +651,7 @@ function GallerySection() {
 	const getSlideIndex = (offset) => (currentSlide + offset + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		id: "gallery",
-		className: "section container",
+		className: "section container js-reveal",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHead, { children: "Our Moments" }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -787,7 +787,7 @@ function GiftSection() {
 	const visibleMessages = messages.slice(0, msgLimit);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		id: "rsvp",
-		className: "section section--tan-strong",
+		className: "section section--tan-strong js-reveal",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "container",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -1046,7 +1046,7 @@ function GiftSection() {
 }
 function StillSection() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "still",
+		className: "still js-reveal",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "still__media",
@@ -1078,7 +1078,7 @@ function StillSection() {
 }
 function ClosingSection() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-		className: "closing",
+		className: "closing js-reveal",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "closing__content",
 			children: [
@@ -1152,7 +1152,7 @@ function InvitationPage() {
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeroSection, {}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CoupleSection, {}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "verse-countdown",
+			className: "verse-countdown js-reveal",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(VerseSection, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CountdownSection, {})]
 		}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChaptersSection, {}),

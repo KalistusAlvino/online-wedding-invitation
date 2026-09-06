@@ -67,11 +67,6 @@ function LandingPage() {
       {/* Top: THE WEDDING OF */}
       <header className="cover__top cover__content fade-in-up">
         <span className="cover__eyebrow label-caps text-muted">THE WEDDING OF</span>
-        <div className="cover__divider">
-          <span className="cover__divider-line" />
-          <span className="cover__divider-icon material-symbols-outlined">replace_video</span>
-          <span className="cover__divider-line" />
-        </div>
       </header>
 
       {/* Middle: Couple names + date */}
@@ -99,7 +94,6 @@ function LandingPage() {
           onClick={() => navigate({ to: '/invitation' })}
         >
           <span>BUKA UNDANGAN</span>
-          <span className="cover__cta-icon material-symbols-outlined">expand_more</span>
         </button>
 
         <p className="cover__hint label-caps animate-bounce-subtle">Tap untuk membuka undangan</p>

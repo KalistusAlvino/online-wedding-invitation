@@ -1,6 +1,6 @@
 import { require_jsx_runtime, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$3, WEDDING } from "./router-UHlykqR_.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-JTTbGlsz.js
+import { Route$3, WEDDING } from "./router-C0eF9Pxs.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-B7LdYP3W.js
 var import_jsx_runtime = require_jsx_runtime();
 function LandingPage() {
 	const navigate = useNavigate();
@@ -22,22 +22,12 @@ function LandingPage() {
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "cover__media-fade" })
 				]
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
 				className: "cover__top cover__content fade-in-up",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 					className: "cover__eyebrow label-caps text-muted",
 					children: "THE WEDDING OF"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "cover__divider",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "cover__divider-line" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "cover__divider-icon material-symbols-outlined",
-							children: "replace_video"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "cover__divider-line" })
-					]
-				})]
+				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 				className: "cover__middle cover__content",
@@ -78,14 +68,11 @@ function LandingPage() {
 							})
 						]
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						type: "button",
 						className: "cover__cta btn btn--primary fade-in-up delay-700",
 						onClick: () => navigate({ to: "/invitation" }),
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "BUKA UNDANGAN" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "cover__cta-icon material-symbols-outlined",
-							children: "expand_more"
-						})]
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "BUKA UNDANGAN" })
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "cover__hint label-caps animate-bounce-subtle",
