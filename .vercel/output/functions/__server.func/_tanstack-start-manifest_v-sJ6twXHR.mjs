@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-Dv-omG16.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-sJ6twXHR.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "D:/Coding/online-wedding-invitation/src/routes/__root.tsx",
@@ -8,32 +8,32 @@ var tsrStartManifest = () => ({ routes: {
 			"/invitation",
 			"/messages"
 		],
-		preloads: ["/assets/index-wQdcqEJx.js"],
+		preloads: ["/assets/index-CJsGWoZi.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-wQdcqEJx.js"
+			src: "/assets/index-CJsGWoZi.js"
 		} }]
 	},
 	"/": {
 		filePath: "D:/Coding/online-wedding-invitation/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-DXYWvDuo.js"]
+		preloads: ["/assets/routes-BqP5veu7.js"]
 	},
 	"/dashboard": {
 		filePath: "D:/Coding/online-wedding-invitation/src/routes/dashboard.tsx",
 		children: void 0,
-		preloads: ["/assets/dashboard-Cg6PgaNN.js", "/assets/supabase-CBAtAmA8.js"]
+		preloads: ["/assets/dashboard-D8kdnufU.js", "/assets/supabase-CBAtAmA8.js"]
 	},
 	"/invitation": {
 		filePath: "D:/Coding/online-wedding-invitation/src/routes/invitation.tsx",
 		children: void 0,
-		preloads: ["/assets/invitation-7BW8oqp4.js", "/assets/supabase-CBAtAmA8.js"]
+		preloads: ["/assets/invitation-B81iIQko.js", "/assets/supabase-CBAtAmA8.js"]
 	},
 	"/messages": {
 		filePath: "D:/Coding/online-wedding-invitation/src/routes/messages.tsx",
 		children: void 0,
-		preloads: ["/assets/messages-baLPXCM4.js", "/assets/supabase-CBAtAmA8.js"]
+		preloads: ["/assets/messages-jF8ffRG6.js", "/assets/supabase-CBAtAmA8.js"]
 	}
 } });
 //#endregion

@@ -1,6 +1,6 @@
 import { HeadContent, Scripts, createFileRoute, createRootRoute, createRouter, lazyRouteComponent, require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { object, string } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-C0eF9Pxs.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-D5V-lxo6.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -12,7 +12,7 @@ var __exportAll = (all, no_symbols) => {
 	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
 	return target;
 };
-var styles_default = "/assets/styles-BsiwhzRk.css";
+var styles_default = "/assets/styles-CkTmHeQt.css";
 var Route$4 = createRootRoute({
 	head: () => ({
 		meta: [
@@ -87,7 +87,7 @@ var WEDDING = {
 	recipient: "Bapak/Ibu Tamu",
 	bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAeh2RjuzzvJ2fTRprJ0os5DcRmf9OSmT14ofJmQ3ElbwVXggWxf1DEO67JT3DjPYhWOEA6zJXKMULVgdIt8kZ2Fp8yQUfreBZJh7cS-gn8IKKwIEUh_CWjDeHF_JvoMmxQUeSbEsiC4Q7U42QOoryfd1dC_M7IDgNLq6E9Od9gtZKytVg-AO-BE7jTvKEySSPY5d9p0I73M9SZ-rn15blgGD_kgIx5rV7wrzVatqBU79Px8L-yemX5lQ"
 };
-var $$splitComponentImporter$3 = () => import("./routes-B7LdYP3W.mjs");
+var $$splitComponentImporter$3 = () => import("./routes-BGR8KS27.mjs");
 var guestSchema = object({
 	to: string().optional(),
 	name: string().optional()

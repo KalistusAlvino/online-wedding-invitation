@@ -172,6 +172,12 @@ textarea {
   z-index: 1;
 }
 
+.section.container::before {
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .section--tan {
   background-color: transparent;
 }

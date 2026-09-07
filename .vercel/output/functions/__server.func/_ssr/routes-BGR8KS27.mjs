@@ -1,6 +1,6 @@
 import { require_jsx_runtime, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$3, WEDDING } from "./router-C0eF9Pxs.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-B7LdYP3W.js
+import { Route$3, WEDDING } from "./router-D5V-lxo6.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BGR8KS27.js
 var import_jsx_runtime = require_jsx_runtime();
 function LandingPage() {
 	const navigate = useNavigate();
