@@ -200,9 +200,11 @@ function CoupleSection() {
 const WEDDING_DATE = new Date('2026-10-10T09:00:00+07:00').getTime()
 
 function CountdownSection() {
-  const [now, setNow] = useState(Date.now())
+  const [now, setNow] = useState(0)
 
   useEffect(() => {
+    // Initialize on client only to avoid SSR hydration mismatch (React #419)
+    setNow(Date.now())
     const id = window.setInterval(() => setNow(Date.now()), 1000)
     return () => window.clearInterval(id)
   }, [])
