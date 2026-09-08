@@ -171,29 +171,60 @@ Terima kasih banyak atas perhatiannya.`
     [buildLink],
   )
 
+  const copyToClipboard = useCallback(
+    async (text: string): Promise<boolean> => {
+      // Modern Clipboard API (requires HTTPS or localhost)
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        try {
+          await navigator.clipboard.writeText(text)
+          return true
+        } catch {
+          // fall through to execCommand fallback
+        }
+      }
+      // Fallback: execCommand (works in most browsers without permission)
+      try {
+        const ta = document.createElement('textarea')
+        ta.value = text
+        ta.style.position = 'fixed'
+        ta.style.top = '-9999px'
+        ta.style.left = '-9999px'
+        document.body.appendChild(ta)
+        ta.focus()
+        ta.select()
+        const ok = document.execCommand('copy')
+        document.body.removeChild(ta)
+        return ok
+      } catch {
+        return false
+      }
+    },
+    [],
+  )
+
   const copyLink = useCallback(
     async (guest: Guest) => {
-      try {
-        await navigator.clipboard.writeText(buildMessage(guest))
-      } catch {
-        /* ignore */
+      const ok = await copyToClipboard(buildMessage(guest))
+      if (!ok) {
+        showToast('error', 'Gagal menyalin — pastikan halaman dibuka via HTTPS.')
+        return
       }
       setCopiedIdx(guest.id)
       window.setTimeout(() => setCopiedIdx(null), 1500)
     },
-    [buildMessage],
+    [buildMessage, copyToClipboard, showToast],
   )
 
   const copyAllLinks = useCallback(async () => {
     const all = guests.map((g) => buildMessage(g)).join('\n\n---\n\n')
-    try {
-      await navigator.clipboard.writeText(all)
-    } catch {
-      /* ignore */
+    const ok = await copyToClipboard(all)
+    if (!ok) {
+      showToast('error', 'Gagal menyalin — pastikan halaman dibuka via HTTPS.')
+      return
     }
     setCopiedIdx(-1)
     window.setTimeout(() => setCopiedIdx(null), 1500)
-  }, [guests, buildMessage])
+  }, [guests, buildMessage, copyToClipboard, showToast])
 
   const downloadTemplate = useCallback(() => {
     const header = 'Sapaan,Nama\n'
@@ -236,7 +267,10 @@ Terima kasih banyak atas perhatiannya.`
 
   return (
     <div style={S.page}>
-      <style>{`@keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }`}</style>
+      <style>{`
+        @keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+        select option { background: #ffffff !important; color: #0f2019 !important; }
+      `}</style>
       <div style={S.card}>
         <h1 style={S.title}>Dashboard Undangan</h1>
         <p style={S.subtitle}>Upload Excel atau input manual untuk membuat link undangan personal.</p>
