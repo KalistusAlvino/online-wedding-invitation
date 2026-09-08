@@ -31,7 +31,13 @@ function DashboardPage() {
   const [importLoading, setImportLoading] = useState(false)
   const [clearLoading, setClearLoading] = useState(false)
   const [toasts, setToasts] = useState<Toast[]>([])
+  const [origin, setOrigin] = useState(PLACEHOLDER_HOST)
   const fileRef = useRef<HTMLInputElement>(null)
+
+  // Set origin only on client to avoid SSR hydration mismatch (React error #419)
+  useEffect(() => {
+    setOrigin(window.location.origin)
+  }, [])
 
   const showToast = useCallback((type: Toast['type'], message: string) => {
     const id = ++toastId
@@ -142,10 +148,9 @@ function DashboardPage() {
   )
 
   const buildLink = useCallback((guest: Guest) => {
-    const base = typeof window !== 'undefined' ? window.location.origin : PLACEHOLDER_HOST
     const params = new URLSearchParams({ to: guest.sapaan, name: guest.name })
-    return `${base}/?${params.toString()}`
-  }, [])
+    return `${origin}/?${params.toString()}`
+  }, [origin])
 
   const buildMessage = useCallback(
     (guest: Guest) => {
@@ -220,8 +225,6 @@ Terima kasih banyak atas perhatiannya.`
     },
     [handleExcel],
   )
-
-  const base = typeof window !== 'undefined' ? window.location.origin : PLACEHOLDER_HOST
 
   const stats = useMemo(() => {
     const titles = guests.reduce<Record<string, number>>((acc, g) => {
@@ -414,7 +417,7 @@ Terima kasih banyak atas perhatiannya.`
                       <td style={S.td}>{guest.sapaan}</td>
                       <td style={S.tdName}>{guest.name}</td>
                       <td style={S.tdLink}>
-                        <span style={S.linkPreview}>{base}/?to=...&amp;name=...</span>
+                        <span style={S.linkPreview}>{origin}/?to=...&amp;name=...</span>
                       </td>
                       <td style={S.tdActions}>
                         <button
