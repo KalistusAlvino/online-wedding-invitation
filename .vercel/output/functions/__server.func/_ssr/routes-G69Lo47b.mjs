@@ -1,11 +1,22 @@
-import { require_jsx_runtime, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$3, WEDDING } from "./router-D5V-lxo6.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BGR8KS27.js
+import { __toESM } from "../_runtime.mjs";
+import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
+import { Route$3, WEDDING } from "./router-CP_jDJi8.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-G69Lo47b.js
+var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function LandingPage() {
 	const navigate = useNavigate();
 	const { to, name } = Route$3.useSearch();
-	const recipientLabel = Boolean(to && name) ? `${to} ${name}` : WEDDING.recipient;
+	const hasGuest = Boolean(to && name);
+	const [recipientLabel, setRecipientLabel] = (0, import_react.useState)(WEDDING.recipient);
+	(0, import_react.useEffect)(() => {
+		setRecipientLabel(hasGuest ? `${to} ${name}` : WEDDING.recipient);
+		if (hasGuest) document.title = `Kepada ${to} ${name} — The Wedding of Chaca & Fedrik`;
+	}, [
+		hasGuest,
+		to,
+		name
+	]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 		className: "cover",
 		children: [

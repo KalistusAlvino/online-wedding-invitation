@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-CN7vigRZ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-BQyxwNR4.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -460,8 +460,9 @@ function CoupleSection() {
 }
 var WEDDING_DATE = (/* @__PURE__ */ new Date("2026-10-10T09:00:00+07:00")).getTime();
 function CountdownSection() {
-	const [now, setNow] = (0, import_react.useState)(Date.now());
+	const [now, setNow] = (0, import_react.useState)(0);
 	(0, import_react.useEffect)(() => {
+		setNow(Date.now());
 		const id = window.setInterval(() => setNow(Date.now()), 1e3);
 		return () => window.clearInterval(id);
 	}, []);

@@ -1,6 +1,6 @@
 import { HeadContent, Scripts, createFileRoute, createRootRoute, createRouter, lazyRouteComponent, require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { object, string } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-D5V-lxo6.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CP_jDJi8.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -12,7 +12,7 @@ var __exportAll = (all, no_symbols) => {
 	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
 	return target;
 };
-var styles_default = "/assets/styles-CkTmHeQt.css";
+var styles_default = "/assets/styles-C_iKLRxt.css";
 var Route$4 = createRootRoute({
 	head: () => ({
 		meta: [
@@ -77,7 +77,11 @@ var Route$4 = createRootRoute({
 function RootDocument({ children }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("html", {
 		lang: "en",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("head", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", { children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})] })]
+		suppressHydrationWarning: true,
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("head", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", {
+			suppressHydrationWarning: true,
+			children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})]
+		})]
 	});
 }
 var WEDDING = {
@@ -87,56 +91,54 @@ var WEDDING = {
 	recipient: "Bapak/Ibu Tamu",
 	bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAeh2RjuzzvJ2fTRprJ0os5DcRmf9OSmT14ofJmQ3ElbwVXggWxf1DEO67JT3DjPYhWOEA6zJXKMULVgdIt8kZ2Fp8yQUfreBZJh7cS-gn8IKKwIEUh_CWjDeHF_JvoMmxQUeSbEsiC4Q7U42QOoryfd1dC_M7IDgNLq6E9Od9gtZKytVg-AO-BE7jTvKEySSPY5d9p0I73M9SZ-rn15blgGD_kgIx5rV7wrzVatqBU79Px8L-yemX5lQ"
 };
-var $$splitComponentImporter$3 = () => import("./routes-BGR8KS27.mjs");
+var $$splitComponentImporter$3 = () => import("./routes-G69Lo47b.mjs");
 var guestSchema = object({
 	to: string().optional(),
 	name: string().optional()
 });
+var DEFAULT_TITLE = "The Wedding of Chaca & Fedrik";
+var DEFAULT_DESC = "Sabtu, 10 Oktober 2026 — Kami mengundang Anda untuk merayakan momen istimewa bersama kami.";
 var Route$3 = createFileRoute("/")({
 	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
 	validateSearch: guestSchema,
-	head: ({ search }) => {
-		const to = search?.to || "Bapak/Ibu";
-		const name = search?.name || "Tamu";
-		const hasGuest = Boolean(search?.to && search?.name);
-		const title = hasGuest ? `Kepada ${to} ${name} — The Wedding of Chaca & Fedrik` : "The Wedding of Chaca & Fedrik";
-		const desc = hasGuest ? `Sabtu, 10 Oktober 2026 — Kami mengundang ${to} ${name} untuk merayakan momen istimewa bersama kami.` : "Sabtu, 10 Oktober 2026 — Kami mengundang Anda untuk merayakan momen istimewa bersama kami.";
-		return { meta: [
-			{ title },
-			{
-				name: "description",
-				content: desc
-			},
-			{
-				property: "og:title",
-				content: title
-			},
-			{
-				property: "og:description",
-				content: desc
-			},
-			{
-				property: "og:image",
-				content: WEDDING.bgImage
-			},
-			{
-				name: "twitter:title",
-				content: title
-			},
-			{
-				name: "twitter:description",
-				content: desc
-			},
-			{
-				name: "twitter:image",
-				content: WEDDING.bgImage
-			}
-		] };
-	}
+	head: () => ({ meta: [
+		{ title: DEFAULT_TITLE },
+		{
+			name: "description",
+			content: DEFAULT_DESC
+		},
+		{
+			property: "og:title",
+			content: DEFAULT_TITLE
+		},
+		{
+			property: "og:description",
+			content: DEFAULT_DESC
+		},
+		{
+			property: "og:image",
+			content: WEDDING.bgImage
+		},
+		{
+			name: "twitter:title",
+			content: DEFAULT_TITLE
+		},
+		{
+			name: "twitter:description",
+			content: DEFAULT_DESC
+		},
+		{
+			name: "twitter:image",
+			content: WEDDING.bgImage
+		}
+	] })
 });
-var $$splitComponentImporter$2 = () => import("./dashboard-WTCRr8oL.mjs");
-var Route$2 = createFileRoute("/dashboard")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./invitation-CN7vigRZ.mjs");
+var $$splitComponentImporter$2 = () => import("./dashboard-DF89_iWb.mjs");
+var Route$2 = createFileRoute("/dashboard")({
+	ssr: false,
+	component: lazyRouteComponent($$splitComponentImporter$2, "component")
+});
+var $$splitComponentImporter$1 = () => import("./invitation-BQyxwNR4.mjs");
 var Route$1 = createFileRoute("/invitation")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
 var $$splitComponentImporter = () => import("./messages-T9hGn3dB.mjs");
 var Route = createFileRoute("/messages")({ component: lazyRouteComponent($$splitComponentImporter, "component") });

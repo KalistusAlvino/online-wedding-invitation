@@ -137,6 +137,11 @@ textarea {
   color: inherit;
 }
 
+select option {
+  background-color: #ffffff !important;
+  color: #0f2019 !important;
+}
+
 ::selection {
   background-color: var(--color-surface-tan);
   color: var(--color-pure-white);

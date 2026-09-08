@@ -4,7 +4,10 @@ import * as XLSX from 'xlsx'
 
 import { supabase } from '../lib/supabase'
 
-export const Route = createFileRoute('/dashboard')({ component: DashboardPage })
+export const Route = createFileRoute('/dashboard')({
+  ssr: false,
+  component: DashboardPage,
+})
 
 interface Guest {
   id: number
@@ -171,42 +174,47 @@ Terima kasih banyak atas perhatiannya.`
     [buildLink],
   )
 
-  const copyToClipboard = useCallback(
-    async (text: string): Promise<boolean> => {
-      // Modern Clipboard API (requires HTTPS or localhost)
-      if (typeof navigator !== 'undefined' && navigator.clipboard) {
-        try {
-          await navigator.clipboard.writeText(text)
-          return true
-        } catch {
-          // fall through to execCommand fallback
-        }
-      }
-      // Fallback: execCommand (works in most browsers without permission)
-      try {
-        const ta = document.createElement('textarea')
-        ta.value = text
-        ta.style.position = 'fixed'
-        ta.style.top = '-9999px'
-        ta.style.left = '-9999px'
-        document.body.appendChild(ta)
-        ta.focus()
-        ta.select()
-        const ok = document.execCommand('copy')
-        document.body.removeChild(ta)
-        return ok
-      } catch {
-        return false
-      }
-    },
-    [],
-  )
+  const copyToClipboard = useCallback((text: string): boolean => {
+    let success = false
+    // 1. execCommand fallback (always synchronous, works everywhere when visible/in-viewport)
+    try {
+      const ta = document.createElement('textarea')
+      ta.value = text
+      ta.style.position = 'fixed'
+      ta.style.top = '0'
+      ta.style.left = '0'
+      ta.style.width = '1px'
+      ta.style.height = '1px'
+      ta.style.padding = '0'
+      ta.style.border = 'none'
+      ta.style.outline = 'none'
+      ta.style.boxShadow = 'none'
+      ta.style.background = 'transparent'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.focus()
+      ta.select()
+      success = document.execCommand('copy')
+      document.body.removeChild(ta)
+    } catch {
+      success = false
+    }
+
+    // 2. Modern navigator.clipboard API if execCommand didn't succeed
+    if (!success && typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(text).catch(() => {})
+      success = true
+    }
+
+    return success
+  }, [])
 
   const copyLink = useCallback(
-    async (guest: Guest) => {
-      const ok = await copyToClipboard(buildMessage(guest))
+    (guest: Guest) => {
+      const msg = buildMessage(guest)
+      const ok = copyToClipboard(msg)
       if (!ok) {
-        showToast('error', 'Gagal menyalin — pastikan halaman dibuka via HTTPS.')
+        showToast('error', 'Gagal menyalin text. Silakan coba lagi.')
         return
       }
       setCopiedIdx(guest.id)
@@ -215,11 +223,11 @@ Terima kasih banyak atas perhatiannya.`
     [buildMessage, copyToClipboard, showToast],
   )
 
-  const copyAllLinks = useCallback(async () => {
+  const copyAllLinks = useCallback(() => {
     const all = guests.map((g) => buildMessage(g)).join('\n\n---\n\n')
-    const ok = await copyToClipboard(all)
+    const ok = copyToClipboard(all)
     if (!ok) {
-      showToast('error', 'Gagal menyalin — pastikan halaman dibuka via HTTPS.')
+      showToast('error', 'Gagal menyalin text. Silakan coba lagi.')
       return
     }
     setCopiedIdx(-1)
@@ -286,14 +294,14 @@ Terima kasih banyak atas perhatiannya.`
                 value={toInput}
                 onChange={(e) => setToInput(e.target.value)}
               >
-                <option value="Bapak/Ibu">Bapak/Ibu</option>
-                <option value="Bapak">Bapak</option>
-                <option value="Ibu">Ibu</option>
-                <option value="Saudara">Saudara</option>
-                <option value="Saudari">Saudari</option>
-                <option value="Keluarga">Keluarga</option>
-                <option value="Dr.">Dr.</option>
-                <option value="Prof.">Prof.</option>
+                <option value="Bapak/Ibu" style={S.option}>Bapak/Ibu</option>
+                <option value="Bapak" style={S.option}>Bapak</option>
+                <option value="Ibu" style={S.option}>Ibu</option>
+                <option value="Saudara" style={S.option}>Saudara</option>
+                <option value="Saudari" style={S.option}>Saudari</option>
+                <option value="Keluarga" style={S.option}>Keluarga</option>
+                <option value="Dr." style={S.option}>Dr.</option>
+                <option value="Prof." style={S.option}>Prof.</option>
               </select>
             </div>
             <div style={S.fieldLarge}>
@@ -607,6 +615,10 @@ const S: Record<string, React.CSSProperties> = {
     color: '#0f2019',
     background: '#ffffff',
     outline: 'none',
+  },
+  option: {
+    color: '#0f2019',
+    background: '#ffffff',
   },
   btnPrimary: {
     padding: '10px 24px',

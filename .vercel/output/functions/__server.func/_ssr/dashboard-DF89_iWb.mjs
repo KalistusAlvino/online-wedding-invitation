@@ -2,7 +2,7 @@ import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
 import { readSync, utils } from "../_libs/xlsx.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/dashboard-WTCRr8oL.js
+//#region node_modules/.nitro/vite/services/ssr/assets/dashboard-DF89_iWb.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var PLACEHOLDER_HOST = "https://your-domain.com";
@@ -17,7 +17,11 @@ function DashboardPage() {
 	const [importLoading, setImportLoading] = (0, import_react.useState)(false);
 	const [clearLoading, setClearLoading] = (0, import_react.useState)(false);
 	const [toasts, setToasts] = (0, import_react.useState)([]);
+	const [origin, setOrigin] = (0, import_react.useState)(PLACEHOLDER_HOST);
 	const fileRef = (0, import_react.useRef)(null);
+	(0, import_react.useEffect)(() => {
+		setOrigin(window.location.origin);
+	}, []);
 	const showToast = (0, import_react.useCallback)((type, message) => {
 		const id = ++toastId;
 		setToasts((prev) => [...prev, {
@@ -107,26 +111,83 @@ function DashboardPage() {
 		reader.readAsArrayBuffer(file);
 	}, [showToast]);
 	const buildLink = (0, import_react.useCallback)((guest) => {
-		return `${window.location.origin}/?${new URLSearchParams({
+		const params = new URLSearchParams({
 			to: guest.sapaan,
 			name: guest.name
-		}).toString()}`;
-	}, []);
-	const copyLink = (0, import_react.useCallback)(async (guest) => {
+		});
+		return `${origin}/?${params.toString()}`;
+	}, [origin]);
+	const buildMessage = (0, import_react.useCallback)((guest) => {
+		const link = buildLink(guest);
+		return `Tanpa mengurangi rasa hormat, perkenankan kami mengundang ${`${guest.sapaan} ${guest.name}`.trim()} untuk menghadiri acara kami.
+
+Berikut link undangan kami, untuk info lengkap dari acara bisa kunjungi:
+
+${link}
+
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.
+
+Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.
+
+Terima kasih banyak atas perhatiannya.`;
+	}, [buildLink]);
+	const copyToClipboard = (0, import_react.useCallback)((text) => {
+		let success = false;
 		try {
-			await navigator.clipboard.writeText(buildLink(guest));
-		} catch {}
+			const ta = document.createElement("textarea");
+			ta.value = text;
+			ta.style.position = "fixed";
+			ta.style.top = "0";
+			ta.style.left = "0";
+			ta.style.width = "1px";
+			ta.style.height = "1px";
+			ta.style.padding = "0";
+			ta.style.border = "none";
+			ta.style.outline = "none";
+			ta.style.boxShadow = "none";
+			ta.style.background = "transparent";
+			ta.style.opacity = "0";
+			document.body.appendChild(ta);
+			ta.focus();
+			ta.select();
+			success = document.execCommand("copy");
+			document.body.removeChild(ta);
+		} catch {
+			success = false;
+		}
+		if (!success && typeof navigator !== "undefined" && navigator.clipboard) {
+			navigator.clipboard.writeText(text).catch(() => {});
+			success = true;
+		}
+		return success;
+	}, []);
+	const copyLink = (0, import_react.useCallback)((guest) => {
+		const msg = buildMessage(guest);
+		if (!copyToClipboard(msg)) {
+			showToast("error", "Gagal menyalin text. Silakan coba lagi.");
+			return;
+		}
 		setCopiedIdx(guest.id);
 		window.setTimeout(() => setCopiedIdx(null), 1500);
-	}, [buildLink]);
-	const copyAllLinks = (0, import_react.useCallback)(async () => {
-		const all = guests.map((g) => `${g.sapaan} ${g.name} → ${buildLink(g)}`).join("\n");
-		try {
-			await navigator.clipboard.writeText(all);
-		} catch {}
+	}, [
+		buildMessage,
+		copyToClipboard,
+		showToast
+	]);
+	const copyAllLinks = (0, import_react.useCallback)(() => {
+		const all = guests.map((g) => buildMessage(g)).join("\n\n---\n\n");
+		if (!copyToClipboard(all)) {
+			showToast("error", "Gagal menyalin text. Silakan coba lagi.");
+			return;
+		}
 		setCopiedIdx(-1);
 		window.setTimeout(() => setCopiedIdx(null), 1500);
-	}, [guests, buildLink]);
+	}, [
+		guests,
+		buildMessage,
+		copyToClipboard,
+		showToast
+	]);
 	const downloadTemplate = (0, import_react.useCallback)(() => {
 		const csv = "Sapaan,Nama\n" + [
 			"Bapak,Ahmad Susanto",
@@ -151,7 +212,6 @@ function DashboardPage() {
 		handleExcel(file);
 		e.target.value = "";
 	}, [handleExcel]);
-	const base = typeof window !== "undefined" ? window.location.origin : PLACEHOLDER_HOST;
 	const stats = (0, import_react.useMemo)(() => {
 		const titles = guests.reduce((acc, g) => {
 			acc[g.sapaan] = (acc[g.sapaan] || 0) + 1;
@@ -165,7 +225,10 @@ function DashboardPage() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		style: S.page,
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("style", { children: `@keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }` }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("style", { children: `
+        @keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+        select option { background: #ffffff !important; color: #0f2019 !important; }
+      ` }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				style: S.card,
 				children: [
@@ -197,34 +260,42 @@ function DashboardPage() {
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 												value: "Bapak/Ibu",
+												style: S.option,
 												children: "Bapak/Ibu"
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 												value: "Bapak",
+												style: S.option,
 												children: "Bapak"
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 												value: "Ibu",
+												style: S.option,
 												children: "Ibu"
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 												value: "Saudara",
+												style: S.option,
 												children: "Saudara"
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 												value: "Saudari",
+												style: S.option,
 												children: "Saudari"
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 												value: "Keluarga",
+												style: S.option,
 												children: "Keluarga"
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 												value: "Dr.",
+												style: S.option,
 												children: "Dr."
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 												value: "Prof.",
+												style: S.option,
 												children: "Prof."
 											})
 										]
@@ -531,7 +602,7 @@ function DashboardPage() {
 											style: S.tdLink,
 											children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 												style: S.linkPreview,
-												children: [base, "/?to=...&name=..."]
+												children: [origin, "/?to=...&name=..."]
 											})
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
@@ -670,6 +741,8 @@ var S = {
 		borderRadius: 6,
 		fontSize: 14,
 		fontFamily: "inherit",
+		color: "#0f2019",
+		background: "#ffffff",
 		outline: "none",
 		transition: "border-color .2s"
 	},
@@ -680,8 +753,13 @@ var S = {
 		borderRadius: 6,
 		fontSize: 14,
 		fontFamily: "inherit",
-		background: "#fff",
+		color: "#0f2019",
+		background: "#ffffff",
 		outline: "none"
+	},
+	option: {
+		color: "#0f2019",
+		background: "#ffffff"
 	},
 	btnPrimary: {
 		padding: "10px 24px",
