@@ -142,26 +142,45 @@ function DashboardPage() {
   )
 
   const buildLink = useCallback((guest: Guest) => {
-    const base = window.location.origin
+    const base = typeof window !== 'undefined' ? window.location.origin : PLACEHOLDER_HOST
     const params = new URLSearchParams({ to: guest.sapaan, name: guest.name })
     return `${base}/?${params.toString()}`
   }, [])
 
+  const buildMessage = useCallback(
+    (guest: Guest) => {
+      const link = buildLink(guest)
+      const recipient = `${guest.sapaan} ${guest.name}`.trim()
+      return `Tanpa mengurangi rasa hormat, perkenankan kami mengundang ${recipient} untuk menghadiri acara kami.
+
+Berikut link undangan kami, untuk info lengkap dari acara bisa kunjungi:
+
+${link}
+
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.
+
+Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.
+
+Terima kasih banyak atas perhatiannya.`
+    },
+    [buildLink],
+  )
+
   const copyLink = useCallback(
     async (guest: Guest) => {
       try {
-        await navigator.clipboard.writeText(buildLink(guest))
+        await navigator.clipboard.writeText(buildMessage(guest))
       } catch {
         /* ignore */
       }
       setCopiedIdx(guest.id)
       window.setTimeout(() => setCopiedIdx(null), 1500)
     },
-    [buildLink],
+    [buildMessage],
   )
 
   const copyAllLinks = useCallback(async () => {
-    const all = guests.map((g) => `${g.sapaan} ${g.name} → ${buildLink(g)}`).join('\n')
+    const all = guests.map((g) => buildMessage(g)).join('\n\n---\n\n')
     try {
       await navigator.clipboard.writeText(all)
     } catch {
@@ -169,7 +188,7 @@ function DashboardPage() {
     }
     setCopiedIdx(-1)
     window.setTimeout(() => setCopiedIdx(null), 1500)
-  }, [guests, buildLink])
+  }, [guests, buildMessage])
 
   const downloadTemplate = useCallback(() => {
     const header = 'Sapaan,Nama\n'
