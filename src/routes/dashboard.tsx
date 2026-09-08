@@ -555,6 +555,8 @@ const S: Record<string, React.CSSProperties> = {
     borderRadius: 6,
     fontSize: 14,
     fontFamily: 'inherit',
+    color: '#0f2019',
+    background: '#ffffff',
     outline: 'none',
     transition: 'border-color .2s',
   },
@@ -565,7 +567,8 @@ const S: Record<string, React.CSSProperties> = {
     borderRadius: 6,
     fontSize: 14,
     fontFamily: 'inherit',
-    background: '#fff',
+    color: '#0f2019',
+    background: '#ffffff',
     outline: 'none',
   },
   btnPrimary: {
