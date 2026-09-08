@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { z } from 'zod'
 
@@ -15,40 +16,42 @@ const guestSchema = z.object({
   name: z.string().optional(),
 })
 
-export const Route = createFileRoute('/')({
+const DEFAULT_TITLE = 'The Wedding of Chaca & Fedrik'
+const DEFAULT_DESC = 'Sabtu, 10 Oktober 2026 — Kami mengundang Anda untuk merayakan momen istimewa bersama kami.'
+
+export const Route = createFileRoute('/')({ 
   component: LandingPage,
   validateSearch: guestSchema,
-  head: ({ search }) => {
-    const to = (search as any)?.to || 'Bapak/Ibu'
-    const name = (search as any)?.name || 'Tamu'
-    const hasGuest = Boolean((search as any)?.to && (search as any)?.name)
-    const title = hasGuest
-      ? `Kepada ${to} ${name} — The Wedding of Chaca & Fedrik`
-      : 'The Wedding of Chaca & Fedrik'
-    const desc = hasGuest
-      ? `Sabtu, 10 Oktober 2026 — Kami mengundang ${to} ${name} untuk merayakan momen istimewa bersama kami.`
-      : 'Sabtu, 10 Oktober 2026 — Kami mengundang Anda untuk merayakan momen istimewa bersama kami.'
-    return {
-      meta: [
-        { title },
-        { name: 'description', content: desc },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: desc },
-        { property: 'og:image', content: WEDDING.bgImage },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: desc },
-        { name: 'twitter:image', content: WEDDING.bgImage },
-      ],
-    }
-  },
+  // head() does not receive search params in TanStack Start's asset context;
+  // we use static defaults here. Dynamic <title> is set client-side via useEffect.
+  head: () => ({
+    meta: [
+      { title: DEFAULT_TITLE },
+      { name: 'description', content: DEFAULT_DESC },
+      { property: 'og:title', content: DEFAULT_TITLE },
+      { property: 'og:description', content: DEFAULT_DESC },
+      { property: 'og:image', content: WEDDING.bgImage },
+      { name: 'twitter:title', content: DEFAULT_TITLE },
+      { name: 'twitter:description', content: DEFAULT_DESC },
+      { name: 'twitter:image', content: WEDDING.bgImage },
+    ],
+  }),
 })
 
 function LandingPage() {
   const navigate = useNavigate()
   const { to, name } = Route.useSearch()
 
+  // Defer recipient label to client-side only to avoid SSR hydration mismatch
+  // (React error #419). Server always renders the default; client updates after mount.
   const hasGuest = Boolean(to && name)
-  const recipientLabel = hasGuest ? `${to} ${name}` : WEDDING.recipient
+  const [recipientLabel, setRecipientLabel] = useState(WEDDING.recipient)
+  useEffect(() => {
+    setRecipientLabel(hasGuest ? `${to} ${name}` : WEDDING.recipient)
+    if (hasGuest) {
+      document.title = `Kepada ${to} ${name} — The Wedding of Chaca & Fedrik`
+    }
+  }, [hasGuest, to, name])
 
   return (
     <main className="cover">
