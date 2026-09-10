@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
-import { supabase } from "./supabase-BhETzSkU.mjs";
+import { supabase } from "./supabase-BCsmZRy6.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-BQyxwNR4.js
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-DCNO155i.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -45,7 +45,7 @@ var COUPLE = {
 * YouTube video used as the autoplay hero background (replaces HERO_IMAGE).
 * Change HERO_VIDEO_ID to your wedding video id (the part after ?v= in the URL).
 */
-var HERO_VIDEO_ID = "aqz-KE-bpKQ";
+var HERO_VIDEO_ID = "9aAwjS6v1g0";
 var CLOSING_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuBXRuz6yWqxEVERi1H78b2FY-OEpb6cFr_-biZ0oCmlgFHDFTrEesoMPvBio2DOMFDVGAlylSltAFRtm4_aSLYdEOwtf9WHx2iqOtsXr0IXOyYp3OvCnO5jonTdIKveKsdtd0nenyLWN_MMDjzmwvWHaNaT0R6e2iM569T1XofHLVfhVMJcw97canTkmgOneGrqrBR5hYNnKvVt36AZhds8JLMjmGrHn98RO46_-IQ4UIwE0IQgpfNfnw";
 var COUPLE_MEMBERS = [{
 	name: "Anastasia Imelda\nMei Liana Tobing",
