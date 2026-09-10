@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BCsmZRy6.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-B1zx58_t.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-CdBEkhsZ.js
+import { Route$1 } from "./router-h6tbjF91.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-B4j7h0lV.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -54,7 +54,8 @@ var COUPLE_MEMBERS = [{
 	role: "HER",
 	parentsLabel: "Putri dari",
 	parents: "Bapak Tobing & Ibu Tobing",
-	handle: "@CHACA",
+	handle: "@ch4ca__",
+	instagramUrl: "https://www.instagram.com/ch4ca__/?hl=id",
 	offset: false,
 	photos: [
 		"https://lh3.googleusercontent.com/aida-public/AB6AXuD0Xla4MK2WS2ybGpv6tMfkvsOkR-_3mT-fiqhGCGEtJo3sFicGQnKDcyOsNa7HMICs7F3Up1sUq86vVLVQ__oy0CSt9zNNaujZZqQw4gXkewHNa7MnS0hqbjVZO83nLL1VTC90GTj6Q2fsj_VAeT2FAJB39MD_W0IrfDf2Isfqk6Xfh9UZdWlqCzw9fRyhm56MZj0TROr2dz9vIvwJ1ARBlBwnl0tEvQmr_ZmnVTgkkwDL2XYq9vMBZw",
@@ -68,7 +69,8 @@ var COUPLE_MEMBERS = [{
 	role: "HIM",
 	parentsLabel: "Putra dari",
 	parents: "Bapak Lehilaka & Ibu Lehilaka",
-	handle: "@FEDRIK",
+	handle: "@fedrikstarsss",
+	instagramUrl: "https://www.instagram.com/fedrikstarsss/?hl=id",
 	offset: true,
 	photos: [
 		"https://lh3.googleusercontent.com/aida-public/AB6AXuCzxMC8XF7v5WPGMu74s6Xb-bmrFMaCsAF4PMpDlYb4oVUB4bmZt3HlXx6PUY94MPJ3IJH4XzooN3Cg2Z95yx_BUqrS0AV5gDJWsM9Yn5f-APoUiEvYrSdAJo4RxmPjTAOmiU6Auf6xaHiv3yXY-jWx-YM4jZ7Tx5AOJwVVTOss7hXAUXUQ__lq9VP07sSTBnlnQpjKz65Mj9QhQQG0nk0ZKrJTIVuEH9FywBA-XgxMjZhax-0AIXra6g",
@@ -83,14 +85,16 @@ var EVENTS = [{
 	time: "09.00 - End",
 	day: "Saturday, October 10th, 2026",
 	venue: "Gereja GPIB Pengharapan",
-	address: "Jl. Nama Jalan No. 123, Kota, Provinsi"
+	address: "Jl. Komp. Bekang, Cibinong, Kec. Cibinong, Kabupaten Bogor, Jawa Barat 16911",
+	mapUrl: "https://share.google/t1AzvSZvf4kIa2G5p"
 }, {
 	kind: "Wedding Reception",
 	kindSub: "Resepsi",
 	time: "11.00 - 15.00 WIB",
 	day: "Saturday, October 10th, 2026",
 	venue: "Gedung Welasih",
-	address: "Jl. Nama Jalan No. 456, Kota, Provinsi"
+	address: "Jl. Baru Puspa Negara No.01, Puspanegara, Kec. Citeureup, Kabupaten Bogor, Jawa Barat 16810",
+	mapUrl: "https://share.google/x7BK9IyFaO8PmYRs6"
 }];
 var GALLERY = [
 	{
@@ -435,7 +439,7 @@ function CoupleCard({ member }) {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 									className: "couple-card__social",
-									href: "https://instagram.com",
+									href: member.instagramUrl || "#",
 									target: "_blank",
 									rel: "noreferrer",
 									children: [
@@ -658,8 +662,10 @@ function EventsSection() {
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "event__actions",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							type: "button",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+							href: event.mapUrl || "#",
+							target: "_blank",
+							rel: "noreferrer",
 							className: "btn btn--ghost uppercase",
 							children: "View Location"
 						})

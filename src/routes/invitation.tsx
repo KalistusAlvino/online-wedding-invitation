@@ -178,7 +178,7 @@ function CoupleCard({ member }: { member: (typeof COUPLE_MEMBERS)[number] }) {
             <p className="couple-card__parents">{member.parents}</p>
             <a
               className="couple-card__social"
-              href="https://instagram.com"
+              href={member.instagramUrl || '#'}
               target="_blank"
               rel="noreferrer"
             >
@@ -334,9 +334,14 @@ function EventsSection() {
               </div>
 
               <div className="event__actions">
-                <button type="button" className="btn btn--ghost uppercase">
+                <a
+                  href={event.mapUrl || '#'}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn--ghost uppercase"
+                >
                   View Location
-                </button>
+                </a>
               </div>
             </div>
           </Fragment>

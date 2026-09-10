@@ -7,6 +7,7 @@ export interface CoupleMember {
   parentsLabel: string
   parents: string
   handle: string
+  instagramUrl?: string
   photos: string[]
   alt: string
   offset?: boolean // stagger position on desktop
@@ -19,6 +20,7 @@ export interface EventBlock {
   day: string
   venue: string
   address: string
+  mapUrl?: string
 }
 
 export interface GalleryItem {
@@ -79,7 +81,8 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     role: 'HER',
     parentsLabel: 'Putri dari',
     parents: 'Bapak Tobing & Ibu Tobing',
-    handle: '@CHACA',
+    handle: '@ch4ca__',
+    instagramUrl: 'https://www.instagram.com/ch4ca__/?hl=id',
     offset: false,
     photos: [
       'https://lh3.googleusercontent.com/aida-public/AB6AXuD0Xla4MK2WS2ybGpv6tMfkvsOkR-_3mT-fiqhGCGEtJo3sFicGQnKDcyOsNa7HMICs7F3Up1sUq86vVLVQ__oy0CSt9zNNaujZZqQw4gXkewHNa7MnS0hqbjVZO83nLL1VTC90GTj6Q2fsj_VAeT2FAJB39MD_W0IrfDf2Isfqk6Xfh9UZdWlqCzw9fRyhm56MZj0TROr2dz9vIvwJ1ARBlBwnl0tEvQmr_ZmnVTgkkwDL2XYq9vMBZw',
@@ -94,7 +97,8 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     role: 'HIM',
     parentsLabel: 'Putra dari',
     parents: 'Bapak Lehilaka & Ibu Lehilaka',
-    handle: '@FEDRIK',
+    handle: '@fedrikstarsss',
+    instagramUrl: 'https://www.instagram.com/fedrikstarsss/?hl=id',
     offset: true,
     photos: [
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCzxMC8XF7v5WPGMu74s6Xb-bmrFMaCsAF4PMpDlYb4oVUB4bmZt3HlXx6PUY94MPJ3IJH4XzooN3Cg2Z95yx_BUqrS0AV5gDJWsM9Yn5f-APoUiEvYrSdAJo4RxmPjTAOmiU6Auf6xaHiv3yXY-jWx-YM4jZ7Tx5AOJwVVTOss7hXAUXUQ__lq9VP07sSTBnlnQpjKz65Mj9QhQQG0nk0ZKrJTIVuEH9FywBA-XgxMjZhax-0AIXra6g',
@@ -112,7 +116,8 @@ export const EVENTS: EventBlock[] = [
     time: '09.00 - End',
     day: 'Saturday, October 10th, 2026',
     venue: 'Gereja GPIB Pengharapan',
-    address: 'Jl. Nama Jalan No. 123, Kota, Provinsi',
+    address: 'Jl. Komp. Bekang, Cibinong, Kec. Cibinong, Kabupaten Bogor, Jawa Barat 16911',
+    mapUrl: 'https://share.google/t1AzvSZvf4kIa2G5p',
   },
   {
     kind: 'Wedding Reception',
@@ -120,7 +125,8 @@ export const EVENTS: EventBlock[] = [
     time: '11.00 - 15.00 WIB',
     day: 'Saturday, October 10th, 2026',
     venue: 'Gedung Welasih',
-    address: 'Jl. Nama Jalan No. 456, Kota, Provinsi',
+    address: 'Jl. Baru Puspa Negara No.01, Puspanegara, Kec. Citeureup, Kabupaten Bogor, Jawa Barat 16810',
+    mapUrl: 'https://share.google/x7BK9IyFaO8PmYRs6',
   },
 ]
 
