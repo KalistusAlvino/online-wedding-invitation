@@ -1,7 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BCsmZRy6.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-DCNO155i.js
+import { Route$1 } from "./router-B1zx58_t.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-CdBEkhsZ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -77,15 +78,17 @@ var COUPLE_MEMBERS = [{
 	alt: "Potret editorial Fedrik dengan setelan hijau tua di latar ivory"
 }];
 var EVENTS = [{
-	kind: "Pemberkatan",
-	time: "09:00 WIB",
-	day: "Sabtu, 10 Oktober 2026",
+	kind: "Holy Matrimony",
+	kindSub: "Pemberkatan",
+	time: "09.00 - End",
+	day: "Saturday, October 10th, 2026",
 	venue: "Gereja GPIB Pengharapan",
 	address: "Jl. Nama Jalan No. 123, Kota, Provinsi"
 }, {
-	kind: "Resepsi",
-	time: "11:00 WIB",
-	day: "Sabtu, 10 Oktober 2026",
+	kind: "Wedding Reception",
+	kindSub: "Resepsi",
+	time: "11.00 - 15.00 WIB",
+	day: "Saturday, October 10th, 2026",
 	venue: "Gedung Welasih",
 	address: "Jl. Nama Jalan No. 456, Kota, Provinsi"
 }];
@@ -178,30 +181,34 @@ var BANK_ACCOUNTS = [{
 	number: "0987 6543 21",
 	holder: "a.n Anastasia Imelda Mei Liana Tobing"
 }];
+var GIFT_ADDRESS = {
+	title: "PHYSICAL GIFT",
+	subtitle: "For physical gifts, you may send them to the following address:",
+	recipient: "Chaca & Fedrik",
+	address: "Jl. Nama Jalan No. 123, Kota, Provinsi 12345",
+	phone: "0812-3456-7890"
+};
 var CHAPTERS = [
 	{
-		year: "2019",
+		year: "2016",
 		title: "The First Hello",
 		image: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=800&q=80",
 		alt: "Foto pertemuan pertama pasangan",
-		quote: "Where a simple hello became the beginning.",
-		description: "Berawal dari sebuah pertemuan sederhana yang mungkin saat itu terasa biasa saja. Tak pernah terpikir bahwa sapaan singkat tersebut akan membawa kami pada sebuah perjalanan indah yang tak terduga."
+		quote: "We met by chance, and the moment I saw her, it was love at first sight."
 	},
 	{
-		year: "2020",
+		year: "2017",
 		title: "The Journey",
 		image: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80",
 		alt: "Foto perjalanan cinta pasangan",
-		quote: "Through every storm, we found shelter in each other.",
-		description: "Tahun yang mengajarkan kami arti kesabaran dan kebersamaan. Di tengah badai kehidupan, kami menemukan tempat pulang satu sama lain. Setiap tantangan justru semakin mempererat ikatan yang terjalin."
+		quote: "Our romantic journey officially began on October 19, 2017, with Dufan standing as the silent witness to my declaration of love."
 	},
 	{
 		year: "2024",
 		title: "The Proposal",
 		image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80",
 		alt: "Foto momen lamaran pasangan",
-		quote: "The moment I knew forever wasn't long enough.",
-		description: "Momen di mana waktu seolah berhenti. Dengan hati yang berdebar dan tangan yang gemetar, sebuah pertanyaan sederhana mengubah segalanya. Jawaban \"ya\" itu menjadi awal dari babak baru kehidupan kami."
+		quote: "On October 19, 2024 exactly seven years later I asked her to marry me. As a symbol of my love and commitment, I gave her a ring, with Ancol witnessing the start of our next chapter together."
 	}
 ];
 function cx(...parts) {
@@ -579,10 +586,6 @@ function ChaptersSection() {
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "chapter__quote",
 							children: chapter.quote
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "chapter__desc",
-							children: chapter.description
 						})
 					]
 				})]
@@ -607,33 +610,58 @@ function EventsSection() {
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 							className: "event__kind headline headline--md uppercase",
 							children: event.kind
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "event__when",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "event__time headline headline--md",
-								children: event.time
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "event__day label-caps uppercase",
-								children: event.day
-							})]
+						}), event.kindSub && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "event__day label-caps uppercase",
+							style: { marginTop: 4 },
+							children: [
+								"(",
+								event.kindSub,
+								")"
+							]
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "event__when",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "event__day label-caps uppercase",
+								style: { marginBottom: 4 },
+								children: "Date & Time"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "event__time headline headline--md",
+								children: event.time
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "event__day label-caps uppercase",
+								children: event.day
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "event__venue",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "event__venue-name body--md",
-							children: event.venue
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "event__venue-address body--sm",
-							children: event.address
-						})]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "event__day label-caps uppercase",
+								style: { marginBottom: 4 },
+								children: "Location / Place"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "event__venue-name body--md",
+								children: event.venue
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "event__venue-address body--sm",
+								children: event.address
+							})
+						]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "event__actions",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 							type: "button",
-							className: "btn btn--ghost",
-							children: "Lihat Lokasi"
+							className: "btn btn--ghost uppercase",
+							children: "View Location"
 						})
 					})
 				]
@@ -643,6 +671,9 @@ function EventsSection() {
 }
 function GallerySection() {
 	const [currentSlide, setCurrentSlide] = (0, import_react.useState)(0);
+	const [touchStartX, setTouchStartX] = (0, import_react.useState)(null);
+	const [touchEndX, setTouchEndX] = (0, import_react.useState)(null);
+	const [isDragging, setIsDragging] = (0, import_react.useState)(false);
 	(0, import_react.useEffect)(() => {
 		const timer = setInterval(() => {
 			setCurrentSlide((prev) => (prev + 1) % GALLERY_CAROUSEL.length);
@@ -650,6 +681,24 @@ function GallerySection() {
 		return () => clearInterval(timer);
 	}, []);
 	const getSlideIndex = (offset) => (currentSlide + offset + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length;
+	const handleStart = (clientX) => {
+		setTouchStartX(clientX);
+		setTouchEndX(clientX);
+		setIsDragging(true);
+	};
+	const handleMove = (clientX) => {
+		if (!isDragging) return;
+		setTouchEndX(clientX);
+	};
+	const handleEnd = () => {
+		if (!isDragging || touchStartX === null || touchEndX === null) return;
+		const distance = touchStartX - touchEndX;
+		if (distance > 40) setCurrentSlide((prev) => (prev + 1) % GALLERY_CAROUSEL.length);
+		else if (distance < -40) setCurrentSlide((prev) => (prev - 1 + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length);
+		setTouchStartX(null);
+		setTouchEndX(null);
+		setIsDragging(false);
+	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		id: "gallery",
 		className: "section container js-reveal",
@@ -659,14 +708,29 @@ function GallerySection() {
 				className: "gallery__carousel",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "gallery__carousel-viewport",
+					style: {
+						cursor: isDragging ? "grabbing" : "grab",
+						userSelect: "none",
+						touchAction: "pan-y"
+					},
+					onTouchStart: (e) => handleStart(e.touches[0].clientX),
+					onTouchMove: (e) => handleMove(e.touches[0].clientX),
+					onTouchEnd: handleEnd,
+					onMouseDown: (e) => handleStart(e.clientX),
+					onMouseMove: (e) => handleMove(e.clientX),
+					onMouseUp: handleEnd,
+					onMouseLeave: handleEnd,
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "gallery__carousel-side gallery__carousel-side--left",
+							onClick: () => setCurrentSlide((prev) => (prev - 1 + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length),
+							style: { cursor: "pointer" },
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 								className: "gallery__carousel-side-img",
 								src: GALLERY_CAROUSEL[getSlideIndex(-1)].photo,
 								alt: GALLERY_CAROUSEL[getSlideIndex(-1)].alt,
-								loading: "lazy"
+								loading: "lazy",
+								draggable: false
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -675,16 +739,20 @@ function GallerySection() {
 								className: "gallery__carousel-center-img",
 								src: GALLERY_CAROUSEL[currentSlide].photo,
 								alt: GALLERY_CAROUSEL[currentSlide].alt,
-								loading: "lazy"
+								loading: "lazy",
+								draggable: false
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "gallery__carousel-side gallery__carousel-side--right",
+							onClick: () => setCurrentSlide((prev) => (prev + 1) % GALLERY_CAROUSEL.length),
+							style: { cursor: "pointer" },
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 								className: "gallery__carousel-side-img",
 								src: GALLERY_CAROUSEL[getSlideIndex(1)].photo,
 								alt: GALLERY_CAROUSEL[getSlideIndex(1)].alt,
-								loading: "lazy"
+								loading: "lazy",
+								draggable: false
 							})
 						})
 					]
@@ -715,13 +783,14 @@ function GallerySection() {
 	});
 }
 function GiftSection() {
+	const { name: guestName } = Route$1.useSearch();
 	const [copiedBank, setCopiedBank] = (0, import_react.useState)(null);
 	const [submitting, setSubmitting] = (0, import_react.useState)(false);
 	const [submitMsg, setSubmitMsg] = (0, import_react.useState)(null);
 	const [messages, setMessages] = (0, import_react.useState)([]);
 	const [msgLimit, setMsgLimit] = (0, import_react.useState)(4);
 	const refreshMessages = async () => {
-		const { data, error } = await supabase.from("messages").select("id, sapaan, name, attendance, message, created_at").order("created_at", { ascending: false }).limit(50);
+		const { data, error } = await supabase.from("messages").select("id, name, attendance, message, created_at").order("created_at", { ascending: false }).limit(50);
 		if (error) console.error("[Messages] Error:", error.code, error.message, error.details);
 		else {
 			console.log("[Messages] Loaded:", data?.length ?? 0, "rows", data);
@@ -758,7 +827,6 @@ function GiftSection() {
 		event.preventDefault();
 		const form = event.currentTarget;
 		const fd = new FormData(form);
-		const sapaan = String(fd.get("sapaan") || "Bapak/Ibu");
 		const name = String(fd.get("name") || "").trim();
 		const attendance = String(fd.get("attendance") || "hadir");
 		const message = String(fd.get("message") || "").trim();
@@ -766,7 +834,6 @@ function GiftSection() {
 		setSubmitting(true);
 		setSubmitMsg(null);
 		const { error } = await supabase.from("messages").insert({
-			sapaan,
 			name,
 			attendance,
 			message
@@ -825,9 +892,9 @@ function GiftSection() {
 								]
 							})
 						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "gift__accounts",
-						children: BANK_ACCOUNTS.map((account) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						children: [BANK_ACCOUNTS.map((account) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "gift__account",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -851,7 +918,52 @@ function GiftSection() {
 									children: copiedBank === account.bank ? "Tersalin ✓" : "Copy Rekening"
 								})
 							]
-						}, account.bank))
+						}, account.bank)), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "gift__account",
+							style: { marginTop: 8 },
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "gift__bank label-caps uppercase",
+									children: GIFT_ADDRESS.title
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "body--sm",
+									style: {
+										color: "rgba(255, 255, 255, 0.7)",
+										fontSize: "13px",
+										margin: "4px 0"
+									},
+									children: GIFT_ADDRESS.subtitle
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "gift__account-detail",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "gift__holder body--md",
+											style: {
+												color: "#fff",
+												fontWeight: 500
+											},
+											children: GIFT_ADDRESS.recipient
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "gift__holder body--sm",
+											children: GIFT_ADDRESS.address
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "gift__holder body--sm",
+											children: ["Phone: ", GIFT_ADDRESS.phone]
+										})
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+									type: "button",
+									className: "gift__copy label-caps uppercase",
+									onClick: () => handleCopy(`${GIFT_ADDRESS.recipient}\n${GIFT_ADDRESS.address}\nPhone: ${GIFT_ADDRESS.phone}`, "ADDRESS"),
+									children: copiedBank === "ADDRESS" ? "Tersalin ✓" : "Copy Address"
+								})
+							]
+						})]
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "panel__column js-reveal",
@@ -874,46 +986,6 @@ function GiftSection() {
 									className: "field",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
 										className: "field__label label-caps uppercase",
-										htmlFor: "rsvp-sapaan",
-										children: "Sapaan"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-										className: "field__control field__control--select body--md",
-										id: "rsvp-sapaan",
-										name: "sapaan",
-										required: true,
-										defaultValue: "Bapak/Ibu",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Bapak/Ibu",
-												children: "Bapak/Ibu"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Bapak",
-												children: "Bapak"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Ibu",
-												children: "Ibu"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Saudara",
-												children: "Saudara"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Saudari",
-												children: "Saudari"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Keluarga",
-												children: "Keluarga"
-											})
-										]
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "field",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-										className: "field__label label-caps uppercase",
 										htmlFor: "rsvp-name",
 										children: "Full Name"
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
@@ -922,8 +994,9 @@ function GiftSection() {
 										name: "name",
 										type: "text",
 										placeholder: "Enter your name",
+										defaultValue: guestName || "",
 										required: true
-									})]
+									}, guestName || "empty")]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "field",
@@ -997,15 +1070,10 @@ function GiftSection() {
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "wish-card__name",
-								children: [
-									msg.sapaan,
-									" ",
-									msg.name,
-									msg.attendance === "tidak_hadir" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "wish-card__badge wish-card__badge--absent",
-										children: "tidak hadir"
-									})
-								]
+								children: [msg.name, msg.attendance === "tidak_hadir" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "wish-card__badge wish-card__badge--absent",
+									children: "tidak hadir"
+								})]
 							}),
 							msg.message && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "wish-card__message",

@@ -1,14 +1,14 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BCsmZRy6.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/messages-CpKNBWyo.js
+//#region node_modules/.nitro/vite/services/ssr/assets/messages-Dr4BeL24.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function MessagesPage() {
 	const [messages, setMessages] = (0, import_react.useState)([]);
 	const [loading, setLoading] = (0, import_react.useState)(true);
 	(0, import_react.useEffect)(() => {
-		supabase.from("messages").select("id, sapaan, name, attendance, message, created_at").order("created_at", { ascending: false }).then(({ data, error }) => {
+		supabase.from("messages").select("id, name, attendance, message, created_at").order("created_at", { ascending: false }).then(({ data, error }) => {
 			if (!error && data) setMessages(data);
 			setLoading(false);
 		});
@@ -103,13 +103,9 @@ function MessagesPage() {
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "messages-page__item-head",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "messages-page__item-name",
-								children: [
-									msg.sapaan,
-									" ",
-									msg.name
-								]
+								children: msg.name
 							}), msg.attendance === "hadir" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "messages-page__badge messages-page__badge--hadir",
 								children: "Hadir"

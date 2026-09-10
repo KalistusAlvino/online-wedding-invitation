@@ -7,7 +7,6 @@ export const Route = createFileRoute('/messages')({ component: MessagesPage })
 
 interface Message {
   id: number
-  sapaan: string
   name: string
   attendance: string
   message: string
@@ -21,7 +20,7 @@ function MessagesPage() {
   useEffect(() => {
     supabase
       .from('messages')
-      .select('id, sapaan, name, attendance, message, created_at')
+      .select('id, name, attendance, message, created_at')
       .order('created_at', { ascending: false })
       .then(({ data, error }) => {
         if (!error && data) setMessages(data)
@@ -86,7 +85,7 @@ function MessagesPage() {
                 <article key={msg.id} className="messages-page__item">
                   <div className="messages-page__item-head">
                     <span className="messages-page__item-name">
-                      {msg.sapaan} {msg.name}
+                      {msg.name}
                     </span>
                     {msg.attendance === 'hadir' ? (
                       <span className="messages-page__badge messages-page__badge--hadir">

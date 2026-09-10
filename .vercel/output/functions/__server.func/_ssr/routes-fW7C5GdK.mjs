@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
 import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$3, WEDDING } from "./router-BYr-jn1F.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-dV3Aw__K.js
+import { Route$3, WEDDING } from "./router-B1zx58_t.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-fW7C5GdK.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function LandingPage() {
@@ -82,7 +82,13 @@ function LandingPage() {
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						type: "button",
 						className: "cover__cta btn btn--primary fade-in-up delay-700",
-						onClick: () => navigate({ to: "/invitation" }),
+						onClick: () => navigate({
+							to: "/invitation",
+							search: {
+								to,
+								name
+							}
+						}),
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "BUKA UNDANGAN" })
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {

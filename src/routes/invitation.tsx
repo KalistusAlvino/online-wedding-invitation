@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
+import { z } from 'zod'
 
 import { useRevealOnScroll } from '../lib/useRevealOnScroll'
 import { supabase } from '../lib/supabase'
@@ -13,10 +14,19 @@ import {
   EVENTS,
   GALLERY,
   GALLERY_CAROUSEL,
+  GIFT_ADDRESS,
   HERO_VIDEO_ID,
 } from '../data/wedding'
 
-export const Route = createFileRoute('/invitation')({ component: InvitationPage })
+const guestSchema = z.object({
+  to: z.string().optional(),
+  name: z.string().optional(),
+})
+
+export const Route = createFileRoute('/invitation')({
+  component: InvitationPage,
+  validateSearch: guestSchema,
+})
 
 /* Small helper to join class names conditionally */
 function cx(...parts: Array<string | false | undefined>) {
@@ -275,7 +285,6 @@ function ChaptersSection() {
                 {chapter.title} &bull; {chapter.year}
               </h3>
               <p className="chapter__quote">{chapter.quote}</p>
-              <p className="chapter__desc">{chapter.description}</p>
             </div>
           </article>
         ))}
@@ -284,6 +293,9 @@ function ChaptersSection() {
   )
 }
 
+/* -----------------------------------------------------------------------------
+   Events
+   --------------------------------------------------------------------------- */
 /* -----------------------------------------------------------------------------
    Events
    --------------------------------------------------------------------------- */
@@ -298,18 +310,32 @@ function EventsSection() {
             <div className="event js-reveal">
               <div className="event__kind-wrap">
                 <h3 className="event__kind headline headline--md uppercase">{event.kind}</h3>
-                <div className="event__when">
-                  <p className="event__time headline headline--md">{event.time}</p>
-                  <p className="event__day label-caps uppercase">{event.day}</p>
-                </div>
+                {event.kindSub && (
+                  <p className="event__day label-caps uppercase" style={{ marginTop: 4 }}>
+                    ({event.kindSub})
+                  </p>
+                )}
               </div>
+
+              <div className="event__when">
+                <p className="event__day label-caps uppercase" style={{ marginBottom: 4 }}>
+                  Date &amp; Time
+                </p>
+                <p className="event__time headline headline--md">{event.time}</p>
+                <p className="event__day label-caps uppercase">{event.day}</p>
+              </div>
+
               <div className="event__venue">
+                <p className="event__day label-caps uppercase" style={{ marginBottom: 4 }}>
+                  Location / Place
+                </p>
                 <p className="event__venue-name body--md">{event.venue}</p>
                 <p className="event__venue-address body--sm">{event.address}</p>
               </div>
+
               <div className="event__actions">
-                <button type="button" className="btn btn--ghost">
-                  Lihat Lokasi
+                <button type="button" className="btn btn--ghost uppercase">
+                  View Location
                 </button>
               </div>
             </div>
@@ -325,6 +351,9 @@ function EventsSection() {
    --------------------------------------------------------------------------- */
 function GallerySection() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [touchStartX, setTouchStartX] = useState<number | null>(null)
+  const [touchEndX, setTouchEndX] = useState<number | null>(null)
+  const [isDragging, setIsDragging] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -336,20 +365,62 @@ function GallerySection() {
   const getSlideIndex = (offset: number) =>
     (currentSlide + offset + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length
 
+  const handleStart = (clientX: number) => {
+    setTouchStartX(clientX)
+    setTouchEndX(clientX)
+    setIsDragging(true)
+  }
+
+  const handleMove = (clientX: number) => {
+    if (!isDragging) return
+    setTouchEndX(clientX)
+  }
+
+  const handleEnd = () => {
+    if (!isDragging || touchStartX === null || touchEndX === null) return
+    const distance = touchStartX - touchEndX
+    const minSwipeDistance = 40
+
+    if (distance > minSwipeDistance) {
+      setCurrentSlide((prev) => (prev + 1) % GALLERY_CAROUSEL.length)
+    } else if (distance < -minSwipeDistance) {
+      setCurrentSlide((prev) => (prev - 1 + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length)
+    }
+
+    setTouchStartX(null)
+    setTouchEndX(null)
+    setIsDragging(false)
+  }
+
   return (
     <section id="gallery" className="section container js-reveal">
       <SectionHead>Our Moments</SectionHead>
 
-      {/* Carousel with peeking sides */}
+      {/* Carousel with touch & mouse drag swipe */}
       <div className="gallery__carousel">
-        <div className="gallery__carousel-viewport">
+        <div
+          className="gallery__carousel-viewport"
+          style={{ cursor: isDragging ? 'grabbing' : 'grab', userSelect: 'none', touchAction: 'pan-y' }}
+          onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+          onTouchMove={(e) => handleMove(e.touches[0].clientX)}
+          onTouchEnd={handleEnd}
+          onMouseDown={(e) => handleStart(e.clientX)}
+          onMouseMove={(e) => handleMove(e.clientX)}
+          onMouseUp={handleEnd}
+          onMouseLeave={handleEnd}
+        >
           {/* Left peek */}
-          <div className="gallery__carousel-side gallery__carousel-side--left">
+          <div
+            className="gallery__carousel-side gallery__carousel-side--left"
+            onClick={() => setCurrentSlide((prev) => (prev - 1 + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length)}
+            style={{ cursor: 'pointer' }}
+          >
             <img
               className="gallery__carousel-side-img"
               src={GALLERY_CAROUSEL[getSlideIndex(-1)].photo}
               alt={GALLERY_CAROUSEL[getSlideIndex(-1)].alt}
               loading="lazy"
+              draggable={false}
             />
           </div>
 
@@ -360,16 +431,22 @@ function GallerySection() {
               src={GALLERY_CAROUSEL[currentSlide].photo}
               alt={GALLERY_CAROUSEL[currentSlide].alt}
               loading="lazy"
+              draggable={false}
             />
           </div>
 
           {/* Right peek */}
-          <div className="gallery__carousel-side gallery__carousel-side--right">
+          <div
+            className="gallery__carousel-side gallery__carousel-side--right"
+            onClick={() => setCurrentSlide((prev) => (prev + 1) % GALLERY_CAROUSEL.length)}
+            style={{ cursor: 'pointer' }}
+          >
             <img
               className="gallery__carousel-side-img"
               src={GALLERY_CAROUSEL[getSlideIndex(1)].photo}
               alt={GALLERY_CAROUSEL[getSlideIndex(1)].alt}
               loading="lazy"
+              draggable={false}
             />
           </div>
         </div>
@@ -409,7 +486,6 @@ function GallerySection() {
    --------------------------------------------------------------------------- */
 interface Message {
   id: number
-  sapaan: string
   name: string
   attendance: string
   message: string
@@ -417,6 +493,7 @@ interface Message {
 }
 
 function GiftSection() {
+  const { name: guestName } = Route.useSearch()
   const [copiedBank, setCopiedBank] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [submitMsg, setSubmitMsg] = useState<{ type: 'ok' | 'err'; text: string } | null>(null)
@@ -426,7 +503,7 @@ function GiftSection() {
   const refreshMessages = async () => {
     const { data, error } = await supabase
       .from('messages')
-      .select('id, sapaan, name, attendance, message, created_at')
+      .select('id, name, attendance, message, created_at')
       .order('created_at', { ascending: false })
       .limit(50)
     if (error) {
@@ -473,7 +550,6 @@ function GiftSection() {
     event.preventDefault()
     const form = event.currentTarget
     const fd = new FormData(form)
-    const sapaan = String(fd.get('sapaan') || 'Bapak/Ibu')
     const name = String(fd.get('name') || '').trim()
     const attendance = String(fd.get('attendance') || 'hadir')
     const message = String(fd.get('message') || '').trim()
@@ -483,7 +559,7 @@ function GiftSection() {
     setSubmitting(true)
     setSubmitMsg(null)
 
-    const { error } = await supabase.from('messages').insert({ sapaan, name, attendance, message })
+    const { error } = await supabase.from('messages').insert({ name, attendance, message })
 
     setSubmitting(false)
     if (error) {
@@ -535,6 +611,33 @@ function GiftSection() {
                     </button>
                   </div>
                 ))}
+
+                {/* Physical Gift Address in English */}
+                <div className="gift__account" style={{ marginTop: 8 }}>
+                  <p className="gift__bank label-caps uppercase">{GIFT_ADDRESS.title}</p>
+                  <p className="body--sm" style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '13px', margin: '4px 0' }}>
+                    {GIFT_ADDRESS.subtitle}
+                  </p>
+                  <div className="gift__account-detail">
+                    <p className="gift__holder body--md" style={{ color: '#fff', fontWeight: 500 }}>
+                      {GIFT_ADDRESS.recipient}
+                    </p>
+                    <p className="gift__holder body--sm">{GIFT_ADDRESS.address}</p>
+                    <p className="gift__holder body--sm">Phone: {GIFT_ADDRESS.phone}</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="gift__copy label-caps uppercase"
+                    onClick={() =>
+                      handleCopy(
+                        `${GIFT_ADDRESS.recipient}\n${GIFT_ADDRESS.address}\nPhone: ${GIFT_ADDRESS.phone}`,
+                        'ADDRESS',
+                      )
+                    }
+                  >
+                    {copiedBank === 'ADDRESS' ? 'Tersalin ✓' : 'Copy Address'}
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -547,26 +650,6 @@ function GiftSection() {
 
               <form className="form" onSubmit={handleSubmit}>
                 <div className="field">
-                  <label className="field__label label-caps uppercase" htmlFor="rsvp-sapaan">
-                    Sapaan
-                  </label>
-                  <select
-                    className="field__control field__control--select body--md"
-                    id="rsvp-sapaan"
-                    name="sapaan"
-                    required
-                    defaultValue="Bapak/Ibu"
-                  >
-                    <option value="Bapak/Ibu">Bapak/Ibu</option>
-                    <option value="Bapak">Bapak</option>
-                    <option value="Ibu">Ibu</option>
-                    <option value="Saudara">Saudara</option>
-                    <option value="Saudari">Saudari</option>
-                    <option value="Keluarga">Keluarga</option>
-                  </select>
-                </div>
-
-                <div className="field">
                   <label className="field__label label-caps uppercase" htmlFor="rsvp-name">
                     Full Name
                   </label>
@@ -576,6 +659,8 @@ function GiftSection() {
                     name="name"
                     type="text"
                     placeholder="Enter your name"
+                    defaultValue={guestName || ''}
+                    key={guestName || 'empty'}
                     required
                   />
                 </div>
@@ -648,7 +733,7 @@ function GiftSection() {
               {visibleMessages.map((msg) => (
                 <div key={msg.id} className="wish-card">
                   <p className="wish-card__name">
-                    {msg.sapaan} {msg.name}
+                    {msg.name}
                     {msg.attendance === 'tidak_hadir' && (
                       <span className="wish-card__badge wish-card__badge--absent">
                         tidak hadir

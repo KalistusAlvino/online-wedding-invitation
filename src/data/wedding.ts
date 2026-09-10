@@ -14,6 +14,7 @@ export interface CoupleMember {
 
 export interface EventBlock {
   kind: string
+  kindSub?: string
   time: string
   day: string
   venue: string
@@ -37,13 +38,20 @@ export interface BankAccount {
   holder: string
 }
 
+export interface GiftAddress {
+  title: string
+  subtitle: string
+  recipient: string
+  address: string
+  phone: string
+}
+
 export interface Chapter {
   year: string
   title: string
   image: string
   alt: string
   quote: string
-  description: string
 }
 
 export const COUPLE = {
@@ -99,16 +107,18 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
 
 export const EVENTS: EventBlock[] = [
   {
-    kind: 'Pemberkatan',
-    time: '09:00 WIB',
-    day: 'Sabtu, 10 Oktober 2026',
+    kind: 'Holy Matrimony',
+    kindSub: 'Pemberkatan',
+    time: '09.00 - End',
+    day: 'Saturday, October 10th, 2026',
     venue: 'Gereja GPIB Pengharapan',
     address: 'Jl. Nama Jalan No. 123, Kota, Provinsi',
   },
   {
-    kind: 'Resepsi',
-    time: '11:00 WIB',
-    day: 'Sabtu, 10 Oktober 2026',
+    kind: 'Wedding Reception',
+    kindSub: 'Resepsi',
+    time: '11.00 - 15.00 WIB',
+    day: 'Saturday, October 10th, 2026',
     venue: 'Gedung Welasih',
     address: 'Jl. Nama Jalan No. 456, Kota, Provinsi',
   },
@@ -201,32 +211,34 @@ export const BANK_ACCOUNTS: BankAccount[] = [
   { bank: 'BRI', number: '0987 6543 21', holder: 'a.n Anastasia Imelda Mei Liana Tobing' },
 ]
 
+export const GIFT_ADDRESS: GiftAddress = {
+  title: 'PHYSICAL GIFT',
+  subtitle: 'For physical gifts, you may send them to the following address:',
+  recipient: 'Chaca & Fedrik',
+  address: 'Jl. Nama Jalan No. 123, Kota, Provinsi 12345',
+  phone: '0812-3456-7890',
+}
+
 export const CHAPTERS: Chapter[] = [
   {
-    year: '2019',
+    year: '2016',
     title: 'The First Hello',
     image: 'https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=800&q=80',
     alt: 'Foto pertemuan pertama pasangan',
-    quote: 'Where a simple hello became the beginning.',
-    description:
-      'Berawal dari sebuah pertemuan sederhana yang mungkin saat itu terasa biasa saja. Tak pernah terpikir bahwa sapaan singkat tersebut akan membawa kami pada sebuah perjalanan indah yang tak terduga.',
+    quote: 'We met by chance, and the moment I saw her, it was love at first sight.',
   },
   {
-    year: '2020',
+    year: '2017',
     title: 'The Journey',
     image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80',
     alt: 'Foto perjalanan cinta pasangan',
-    quote: 'Through every storm, we found shelter in each other.',
-    description:
-      'Tahun yang mengajarkan kami arti kesabaran dan kebersamaan. Di tengah badai kehidupan, kami menemukan tempat pulang satu sama lain. Setiap tantangan justru semakin mempererat ikatan yang terjalin.',
+    quote: 'Our romantic journey officially began on October 19, 2017, with Dufan standing as the silent witness to my declaration of love.',
   },
   {
     year: '2024',
     title: 'The Proposal',
     image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80',
     alt: 'Foto momen lamaran pasangan',
-    quote: 'The moment I knew forever wasn\'t long enough.',
-    description:
-      'Momen di mana waktu seolah berhenti. Dengan hati yang berdebar dan tangan yang gemetar, sebuah pertanyaan sederhana mengubah segalanya. Jawaban "ya" itu menjadi awal dari babak baru kehidupan kami.',
+    quote: 'On October 19, 2024 exactly seven years later I asked her to marry me. As a symbol of my love and commitment, I gave her a ring, with Ancol witnessing the start of our next chapter together.',
   },
 ]

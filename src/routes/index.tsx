@@ -94,7 +94,7 @@ function LandingPage() {
         <button
           type="button"
           className="cover__cta btn btn--primary fade-in-up delay-700"
-          onClick={() => navigate({ to: '/invitation' })}
+          onClick={() => navigate({ to: '/invitation', search: { to, name } })}
         >
           <span>BUKA UNDANGAN</span>
         </button>
