@@ -822,8 +822,26 @@ function ClosingSection() {
 /* -----------------------------------------------------------------------------
    Page
    --------------------------------------------------------------------------- */
+const HERO_VIDEO_ID_DESKTOP = HERO_VIDEO_ID
+const HERO_VIDEO_ID_MOBILE = 'IT7q99KZurI'
+const MOBILE_BREAKPOINT = 768
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`)
+    setIsMobile(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return isMobile
+}
+
 function InvitationPage() {
   useRevealOnScroll()
+  const isMobile = useIsMobile()
+  const videoId = isMobile ? HERO_VIDEO_ID_MOBILE : HERO_VIDEO_ID_DESKTOP
 
   return (
     <main>
@@ -832,7 +850,7 @@ function InvitationPage() {
         <iframe
           className="fixed-bg__video"
           title="Video latar belakang undangan"
-          src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&controls=0&loop=1&playlist=${HERO_VIDEO_ID}&playsinline=1&rel=0&modestbranding=1`}
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1`}
           allow="autoplay; encrypted-media; picture-in-picture"
           allowFullScreen
         />

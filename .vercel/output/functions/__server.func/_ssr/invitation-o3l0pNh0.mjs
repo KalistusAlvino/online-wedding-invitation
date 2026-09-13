@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
-import { supabase } from "./supabase-BCsmZRy6.mjs";
+import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-h6tbjF91.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-B4j7h0lV.js
+import { Route$1 } from "./router-C4vr3YYj.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-o3l0pNh0.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -57,11 +57,7 @@ var COUPLE_MEMBERS = [{
 	handle: "@ch4ca__",
 	instagramUrl: "https://www.instagram.com/ch4ca__/?hl=id",
 	offset: false,
-	photos: [
-		"https://lh3.googleusercontent.com/aida-public/AB6AXuD0Xla4MK2WS2ybGpv6tMfkvsOkR-_3mT-fiqhGCGEtJo3sFicGQnKDcyOsNa7HMICs7F3Up1sUq86vVLVQ__oy0CSt9zNNaujZZqQw4gXkewHNa7MnS0hqbjVZO83nLL1VTC90GTj6Q2fsj_VAeT2FAJB39MD_W0IrfDf2Isfqk6Xfh9UZdWlqCzw9fRyhm56MZj0TROr2dz9vIvwJ1ARBlBwnl0tEvQmr_ZmnVTgkkwDL2XYq9vMBZw",
-		"https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=800&q=80",
-		"https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80"
-	],
+	photos: ["https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-bridge/The%20Bride%201.jpg", "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-bridge/The%20Bride%202.jpg"],
 	alt: "Portrait editorial Chaca dengan gaun sutra putih di latar ivory yang hangat"
 }, {
 	name: "Fedrik Andrean\nLehilaka",
@@ -72,11 +68,7 @@ var COUPLE_MEMBERS = [{
 	handle: "@fedrikstarsss",
 	instagramUrl: "https://www.instagram.com/fedrikstarsss/?hl=id",
 	offset: true,
-	photos: [
-		"https://lh3.googleusercontent.com/aida-public/AB6AXuCzxMC8XF7v5WPGMu74s6Xb-bmrFMaCsAF4PMpDlYb4oVUB4bmZt3HlXx6PUY94MPJ3IJH4XzooN3Cg2Z95yx_BUqrS0AV5gDJWsM9Yn5f-APoUiEvYrSdAJo4RxmPjTAOmiU6Auf6xaHiv3yXY-jWx-YM4jZ7Tx5AOJwVVTOss7hXAUXUQ__lq9VP07sSTBnlnQpjKz65Mj9QhQQG0nk0ZKrJTIVuEH9FywBA-XgxMjZhax-0AIXra6g",
-		"https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80",
-		"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80"
-	],
+	photos: ["https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.jpg"],
 	alt: "Potret editorial Fedrik dengan setelan hijau tua di latar ivory"
 }];
 var EVENTS = [{
@@ -99,81 +91,71 @@ var EVENTS = [{
 var GALLERY = [
 	{
 		tile: "a",
-		photo: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/1.jpg",
 		alt: "Pasangan berjalan di pantai saat sunset"
 	},
 	{
 		tile: "b",
-		photo: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/2.jpg",
 		alt: "Momen sakral pernikahan di gereja"
 	},
 	{
 		tile: "c",
-		photo: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&q=80",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.jpg",
 		alt: "Potret romantis pasangan dengan bunga"
 	},
 	{
 		tile: "d",
-		photo: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/4.jpg",
 		alt: "Tangan bertautan dengan cincin"
 	},
 	{
 		tile: "e",
-		photo: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/5.jpg",
 		alt: "Pasangan tertawa bersama di taman"
 	},
 	{
 		tile: "f",
-		photo: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/6.jpg",
 		alt: "Momen intim pasangan di kafe"
 	},
 	{
 		tile: "g",
-		photo: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.jpg",
 		alt: "Pasangan berjalan di jalanan kota"
 	},
 	{
 		tile: "h",
-		photo: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=600&q=80",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/8.jpg",
 		alt: "Potret close-up pasangan tersenyum"
 	},
 	{
 		tile: "i",
-		photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.jpg",
 		alt: "Pasangan duduk berdua di bangku"
 	},
 	{
 		tile: "j",
-		photo: "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=600&q=80",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/11.jpg",
 		alt: "Pasangan di atas rooftop saat malam"
-	},
-	{
-		tile: "k",
-		photo: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=80",
-		alt: "Momen bahagia pasangan dengan bunga"
-	},
-	{
-		tile: "l",
-		photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&q=80",
-		alt: "Pasangan berpelukan di area terbuka"
 	}
 ];
 var GALLERY_CAROUSEL = [
 	{
-		photo: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80",
-		alt: "Pasangan berjalan di pantai saat sunset"
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%201.jpg",
+		alt: "Momen besar bersama"
 	},
 	{
-		photo: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80",
-		alt: "Momen sakral pernikahan di gereja"
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%202.jpg",
+		alt: "Momen besar bersama"
 	},
 	{
-		photo: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&q=80",
-		alt: "Potret romantis pasangan dengan bunga"
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%203.jpg",
+		alt: "Momen besar bersama"
 	},
 	{
-		photo: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80",
-		alt: "Tangan bertautan dengan cincin"
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%204.jpg",
+		alt: "Momen besar bersama"
 	}
 ];
 var BANK_ACCOUNTS = [{
@@ -196,21 +178,21 @@ var CHAPTERS = [
 	{
 		year: "2016",
 		title: "The First Hello",
-		image: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=800&q=80",
+		image: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20First%20Hello.jpg",
 		alt: "Foto pertemuan pertama pasangan",
 		quote: "We met by chance, and the moment I saw her, it was love at first sight."
 	},
 	{
 		year: "2017",
 		title: "The Journey",
-		image: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80",
+		image: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Journey.jpg",
 		alt: "Foto perjalanan cinta pasangan",
 		quote: "Our romantic journey officially began on October 19, 2017, with Dufan standing as the silent witness to my declaration of love."
 	},
 	{
 		year: "2024",
 		title: "The Proposal",
-		image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80",
+		image: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.jpg",
 		alt: "Foto momen lamaran pasangan",
 		quote: "On October 19, 2024 exactly seven years later I asked her to marry me. As a symbol of my love and commitment, I gave her a ring, with Ancol witnessing the start of our next chapter together."
 	}
@@ -1211,15 +1193,30 @@ function ClosingSection() {
 		})
 	});
 }
+var HERO_VIDEO_ID_DESKTOP = HERO_VIDEO_ID;
+var HERO_VIDEO_ID_MOBILE = "IT7q99KZurI";
+var MOBILE_BREAKPOINT = 768;
+function useIsMobile() {
+	const [isMobile, setIsMobile] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		const mq = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+		setIsMobile(mq.matches);
+		const handler = (e) => setIsMobile(e.matches);
+		mq.addEventListener("change", handler);
+		return () => mq.removeEventListener("change", handler);
+	}, []);
+	return isMobile;
+}
 function InvitationPage() {
 	useRevealOnScroll();
+	const videoId = useIsMobile() ? HERO_VIDEO_ID_MOBILE : HERO_VIDEO_ID_DESKTOP;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", { children: [
 		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "fixed-bg",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("iframe", {
 				className: "fixed-bg__video",
 				title: "Video latar belakang undangan",
-				src: `https://www.youtube.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&controls=0&loop=1&playlist=${HERO_VIDEO_ID}&playsinline=1&rel=0&modestbranding=1`,
+				src: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1`,
 				allow: "autoplay; encrypted-media; picture-in-picture",
 				allowFullScreen: true
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "fixed-bg__overlay" })]
