@@ -869,6 +869,14 @@ function InvitationPage() {
       <GiftSection />
       <StillSection />
       <ClosingSection />
+
+      {/* Background music */}
+      <iframe
+        className="bg-music"
+        title="Background music"
+        src="https://www.youtube.com/embed/um-vJRZZPM8?autoplay=1&start=131&mute=0&controls=0&loop=1&playlist=um-vJRZZPM8&playsinline=1&rel=0&modestbranding=1"
+        allow="autoplay; encrypted-media"
+      />
     </main>
   )
 }

@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
 import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$3, WEDDING } from "./router-CK_lFZqe.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BkiS6h8a.js
+import { Route$3, WEDDING } from "./router-BQA4Fpe2.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CQbqRvYx.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function LandingPage() {

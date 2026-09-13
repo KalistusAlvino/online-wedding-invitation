@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-CK_lFZqe.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-YSmEBMRq.js
+import { Route$1 } from "./router-BQA4Fpe2.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-DLOhDYzx.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -1232,7 +1232,13 @@ function InvitationPage() {
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GallerySection, {}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GiftSection, {}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StillSection, {}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClosingSection, {})
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClosingSection, {}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("iframe", {
+			className: "bg-music",
+			title: "Background music",
+			src: "https://www.youtube.com/embed/um-vJRZZPM8?autoplay=1&start=131&mute=0&controls=0&loop=1&playlist=um-vJRZZPM8&playsinline=1&rel=0&modestbranding=1",
+			allow: "autoplay; encrypted-media"
+		})
 	] });
 }
 //#endregion

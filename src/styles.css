@@ -2331,3 +2331,13 @@ select option {
     gap: 120px;
   }
 }
+
+/* Background music — hidden iframe */
+.bg-music {
+  position: fixed;
+  width: 0;
+  height: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
