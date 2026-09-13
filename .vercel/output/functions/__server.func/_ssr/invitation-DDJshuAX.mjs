@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-BQA4Fpe2.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-DLOhDYzx.js
+import { Route$1 } from "./router-b--Km-iD.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-DDJshuAX.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -1216,9 +1216,8 @@ function InvitationPage() {
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("iframe", {
 				className: "fixed-bg__video",
 				title: "Video latar belakang undangan",
-				src: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1`,
-				allow: "autoplay; encrypted-media; picture-in-picture",
-				allowFullScreen: true
+				src: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0`,
+				allow: "autoplay; encrypted-media; picture-in-picture"
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "fixed-bg__overlay" })]
 		}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeroSection, {}),
@@ -1236,7 +1235,7 @@ function InvitationPage() {
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("iframe", {
 			className: "bg-music",
 			title: "Background music",
-			src: "https://www.youtube.com/embed/um-vJRZZPM8?autoplay=1&start=131&mute=0&controls=0&loop=1&playlist=um-vJRZZPM8&playsinline=1&rel=0&modestbranding=1",
+			src: "https://www.youtube.com/embed/um-vJRZZPM8?autoplay=1&start=131&mute=0&controls=0&loop=1&playlist=um-vJRZZPM8&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1&fs=0",
 			allow: "autoplay; encrypted-media"
 		})
 	] });

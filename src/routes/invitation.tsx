@@ -850,9 +850,8 @@ function InvitationPage() {
         <iframe
           className="fixed-bg__video"
           title="Video latar belakang undangan"
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1`}
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0`}
           allow="autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
         />
         <div className="fixed-bg__overlay" />
       </div>
@@ -874,7 +873,7 @@ function InvitationPage() {
       <iframe
         className="bg-music"
         title="Background music"
-        src="https://www.youtube.com/embed/um-vJRZZPM8?autoplay=1&start=131&mute=0&controls=0&loop=1&playlist=um-vJRZZPM8&playsinline=1&rel=0&modestbranding=1"
+        src="https://www.youtube.com/embed/um-vJRZZPM8?autoplay=1&start=131&mute=0&controls=0&loop=1&playlist=um-vJRZZPM8&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1&fs=0"
         allow="autoplay; encrypted-media"
       />
     </main>
