@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-C4vr3YYj.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-o3l0pNh0.js
+import { Route$1 } from "./router-CK_lFZqe.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-YSmEBMRq.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -68,7 +68,7 @@ var COUPLE_MEMBERS = [{
 	handle: "@fedrikstarsss",
 	instagramUrl: "https://www.instagram.com/fedrikstarsss/?hl=id",
 	offset: true,
-	photos: ["https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.jpg"],
+	photos: ["https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-groom/The%20Groom%201.jpg"],
 	alt: "Potret editorial Fedrik dengan setelan hijau tua di latar ivory"
 }];
 var EVENTS = [{
@@ -142,7 +142,7 @@ var GALLERY = [
 ];
 var GALLERY_CAROUSEL = [
 	{
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%201.jpg",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.jpg",
 		alt: "Momen besar bersama"
 	},
 	{

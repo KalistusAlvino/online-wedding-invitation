@@ -100,7 +100,7 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     instagramUrl: 'https://www.instagram.com/fedrikstarsss/?hl=id',
     offset: true,
     photos: [
-      'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.jpg',
+      'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-groom/The%20Groom%201.jpg',
     ],
     alt: 'Potret editorial Fedrik dengan setelan hijau tua di latar ivory',
   },
@@ -182,7 +182,7 @@ export const GALLERY: GalleryItem[] = [
 
 export const GALLERY_CAROUSEL: GalleryPhoto[] = [
   {
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%201.jpg',
+    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.jpg',
     alt: 'Momen besar bersama',
   },
   {
