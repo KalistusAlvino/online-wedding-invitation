@@ -12,7 +12,7 @@ import {
   COUPLE,
   COUPLE_MEMBERS,
   EVENTS,
-  GALLERY,
+  GALLERY_ROWS,
   GALLERY_CAROUSEL,
   GIFT_ADDRESS,
   HERO_VIDEO_ID,
@@ -469,16 +469,15 @@ function GallerySection() {
         </div>
       </div>
 
-      {/* Random Masonry Grid */}
-      <div className="gallery__masonry">
-        {GALLERY.map((item, index) => (
+      {/* Editorial Photo Collage */}
+      <div className="gallery__collage">
+        {GALLERY_ROWS.flatMap((row) => row.items).map((item, index) => (
           <div
             key={item.tile}
-            className={cx('gallery__masonry-item', `gallery__masonry-item--${item.tile}`, 'js-reveal')}
+            className={cx('gallery__collage-item', `gallery__collage-item--${item.tile}`, 'js-reveal')}
             style={{ animationDelay: `${index * 60}ms` }}
           >
-            <img className="gallery__masonry-img" src={item.photo} alt={item.alt} loading="lazy" />
-            <div className="gallery__shade" />
+            <img className="gallery__collage-img" src={item.photo} alt={item.alt} loading="lazy" />
           </div>
         ))}
       </div>

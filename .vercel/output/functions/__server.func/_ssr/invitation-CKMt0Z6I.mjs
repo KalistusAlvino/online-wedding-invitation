@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-b--Km-iD.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-DDJshuAX.js
+import { Route$1 } from "./router-BXd401_9.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-CKMt0Z6I.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -46,14 +46,14 @@ var COUPLE = {
 * YouTube video used as the autoplay hero background (replaces HERO_IMAGE).
 * Change HERO_VIDEO_ID to your wedding video id (the part after ?v= in the URL).
 */
-var HERO_VIDEO_ID = "9aAwjS6v1g0";
-var CLOSING_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuBXRuz6yWqxEVERi1H78b2FY-OEpb6cFr_-biZ0oCmlgFHDFTrEesoMPvBio2DOMFDVGAlylSltAFRtm4_aSLYdEOwtf9WHx2iqOtsXr0IXOyYp3OvCnO5jonTdIKveKsdtd0nenyLWN_MMDjzmwvWHaNaT0R6e2iM569T1XofHLVfhVMJcw97canTkmgOneGrqrBR5hYNnKvVt36AZhds8JLMjmGrHn98RO46_-IQ4UIwE0IQgpfNfnw";
+var HERO_VIDEO_ID = "W6zu7qhXkAA";
+var CLOSING_IMAGE = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.jpg";
 var COUPLE_MEMBERS = [{
 	name: "Anastasia Imelda\nMei Liana Tobing",
 	firstName: "Chaca",
 	role: "HER",
 	parentsLabel: "Putri dari",
-	parents: "Bapak Tobing & Ibu Tobing",
+	parents: "Bapak Maruhum Pandapotan Tobing & Ibu Rosdiana Jeminar Butarbutar",
 	handle: "@ch4ca__",
 	instagramUrl: "https://www.instagram.com/ch4ca__/?hl=id",
 	offset: false,
@@ -64,7 +64,7 @@ var COUPLE_MEMBERS = [{
 	firstName: "Fedrik",
 	role: "HIM",
 	parentsLabel: "Putra dari",
-	parents: "Bapak Lehilaka & Ibu Lehilaka",
+	parents: "Bapak Jon Robinson Lehilaka (✝️) & Ibu Soeharni",
 	handle: "@fedrikstarsss",
 	instagramUrl: "https://www.instagram.com/fedrikstarsss/?hl=id",
 	offset: true,
@@ -88,57 +88,63 @@ var EVENTS = [{
 	address: "Jl. Baru Puspa Negara No.01, Puspanegara, Kec. Citeureup, Kabupaten Bogor, Jawa Barat 16810",
 	mapUrl: "https://share.google/x7BK9IyFaO8PmYRs6"
 }];
-var GALLERY = [
-	{
-		tile: "a",
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/1.jpg",
-		alt: "Pasangan berjalan di pantai saat sunset"
-	},
-	{
-		tile: "b",
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/2.jpg",
-		alt: "Momen sakral pernikahan di gereja"
-	},
-	{
-		tile: "c",
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.jpg",
-		alt: "Potret romantis pasangan dengan bunga"
-	},
-	{
-		tile: "d",
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/4.jpg",
-		alt: "Tangan bertautan dengan cincin"
-	},
-	{
-		tile: "e",
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/5.jpg",
-		alt: "Pasangan tertawa bersama di taman"
-	},
-	{
-		tile: "f",
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/6.jpg",
-		alt: "Momen intim pasangan di kafe"
-	},
-	{
-		tile: "g",
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.jpg",
-		alt: "Pasangan berjalan di jalanan kota"
-	},
-	{
-		tile: "h",
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/8.jpg",
-		alt: "Potret close-up pasangan tersenyum"
-	},
-	{
-		tile: "i",
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.jpg",
-		alt: "Pasangan duduk berdua di bangku"
-	},
-	{
-		tile: "j",
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/11.jpg",
-		alt: "Pasangan di atas rooftop saat malam"
-	}
+var GALLERY_ROWS = [
+	{ items: [
+		{
+			tile: "a",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/1.jpg",
+			alt: "Foto 1"
+		},
+		{
+			tile: "b",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/2.jpg",
+			alt: "Foto 2"
+		},
+		{
+			tile: "c",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.jpg",
+			alt: "Foto 3"
+		},
+		{
+			tile: "d",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/4.jpg",
+			alt: "Foto 4"
+		}
+	] },
+	{ items: [
+		{
+			tile: "e",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/5.jpg",
+			alt: "Foto 5"
+		},
+		{
+			tile: "f",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/6.jpg",
+			alt: "Foto 6"
+		},
+		{
+			tile: "g",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.jpg",
+			alt: "Foto 7"
+		}
+	] },
+	{ items: [
+		{
+			tile: "h",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/8.jpg",
+			alt: "Foto 8"
+		},
+		{
+			tile: "i",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.jpg",
+			alt: "Foto 9"
+		},
+		{
+			tile: "j",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/11.jpg",
+			alt: "Foto 10"
+		}
+	] }
 ];
 var GALLERY_CAROUSEL = [
 	{
@@ -160,18 +166,18 @@ var GALLERY_CAROUSEL = [
 ];
 var BANK_ACCOUNTS = [{
 	bank: "BCA",
-	number: "1234 5678 90",
+	number: "1671567973",
 	holder: "a.n Fedrik Andrean Lehilaka"
 }, {
 	bank: "BRI",
-	number: "0987 6543 21",
+	number: "0531-01-016293-501",
 	holder: "a.n Anastasia Imelda Mei Liana Tobing"
 }];
 var GIFT_ADDRESS = {
 	title: "PHYSICAL GIFT",
 	subtitle: "For physical gifts, you may send them to the following address:",
 	recipient: "Chaca & Fedrik",
-	address: "Jl. Nama Jalan No. 123, Kota, Provinsi 12345",
+	address: "Puri Nirwana 3 Blok DN 14 Jl. Anggur 1, Karadenan - Cibinong, Kab Bogor",
 	phone: "0812-3456-7890"
 };
 var CHAPTERS = [
@@ -755,16 +761,16 @@ function GallerySection() {
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "gallery__masonry",
-				children: GALLERY.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: cx("gallery__masonry-item", `gallery__masonry-item--${item.tile}`, "js-reveal"),
+				className: "gallery__collage",
+				children: GALLERY_ROWS.flatMap((row) => row.items).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: cx("gallery__collage-item", `gallery__collage-item--${item.tile}`, "js-reveal"),
 					style: { animationDelay: `${index * 60}ms` },
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-						className: "gallery__masonry-img",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+						className: "gallery__collage-img",
 						src: item.photo,
 						alt: item.alt,
 						loading: "lazy"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "gallery__shade" })]
+					})
 				}, item.tile))
 			})
 		]

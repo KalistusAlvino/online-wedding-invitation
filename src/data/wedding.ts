@@ -69,10 +69,10 @@ export const HERO_IMAGE =
  * YouTube video used as the autoplay hero background (replaces HERO_IMAGE).
  * Change HERO_VIDEO_ID to your wedding video id (the part after ?v= in the URL).
  */
-export const HERO_VIDEO_ID = '9aAwjS6v1g0'
+export const HERO_VIDEO_ID = 'W6zu7qhXkAA'
 
 export const CLOSING_IMAGE =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuBXRuz6yWqxEVERi1H78b2FY-OEpb6cFr_-biZ0oCmlgFHDFTrEesoMPvBio2DOMFDVGAlylSltAFRtm4_aSLYdEOwtf9WHx2iqOtsXr0IXOyYp3OvCnO5jonTdIKveKsdtd0nenyLWN_MMDjzmwvWHaNaT0R6e2iM569T1XofHLVfhVMJcw97canTkmgOneGrqrBR5hYNnKvVt36AZhds8JLMjmGrHn98RO46_-IQ4UIwE0IQgpfNfnw'
+  'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.jpg'
 
 export const COUPLE_MEMBERS: CoupleMember[] = [
   {
@@ -80,7 +80,7 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     firstName: 'Chaca',
     role: 'HER',
     parentsLabel: 'Putri dari',
-    parents: 'Bapak Tobing & Ibu Tobing',
+    parents: 'Bapak Maruhum Pandapotan Tobing & Ibu Rosdiana Jeminar Butarbutar',
     handle: '@ch4ca__',
     instagramUrl: 'https://www.instagram.com/ch4ca__/?hl=id',
     offset: false,
@@ -95,7 +95,7 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     firstName: 'Fedrik',
     role: 'HIM',
     parentsLabel: 'Putra dari',
-    parents: 'Bapak Lehilaka & Ibu Lehilaka',
+    parents: 'Bapak Jon Robinson Lehilaka (✝️) & Ibu Soeharni',
     handle: '@fedrikstarsss',
     instagramUrl: 'https://www.instagram.com/fedrikstarsss/?hl=id',
     offset: true,
@@ -127,56 +127,32 @@ export const EVENTS: EventBlock[] = [
   },
 ]
 
-export const GALLERY: GalleryItem[] = [
+export interface GalleryRow {
+  items: GalleryItem[]
+}
+
+export const GALLERY_ROWS: GalleryRow[] = [
   {
-    tile: 'a',
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/1.jpg',
-    alt: 'Pasangan berjalan di pantai saat sunset',
+    items: [
+      { tile: 'a', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/1.jpg', alt: 'Foto 1' },
+      { tile: 'b', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/2.jpg', alt: 'Foto 2' },
+      { tile: 'c', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.jpg', alt: 'Foto 3' },
+      { tile: 'd', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/4.jpg', alt: 'Foto 4' },
+    ],
   },
   {
-    tile: 'b',
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/2.jpg',
-    alt: 'Momen sakral pernikahan di gereja',
+    items: [
+      { tile: 'e', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/5.jpg', alt: 'Foto 5' },
+      { tile: 'f', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/6.jpg', alt: 'Foto 6' },
+      { tile: 'g', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.jpg', alt: 'Foto 7' },
+    ],
   },
   {
-    tile: 'c',
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.jpg',
-    alt: 'Potret romantis pasangan dengan bunga',
-  },
-  {
-    tile: 'd',
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/4.jpg',
-    alt: 'Tangan bertautan dengan cincin',
-  },
-  {
-    tile: 'e',
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/5.jpg',
-    alt: 'Pasangan tertawa bersama di taman',
-  },
-  {
-    tile: 'f',
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/6.jpg',
-    alt: 'Momen intim pasangan di kafe',
-  },
-  {
-    tile: 'g',
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.jpg',
-    alt: 'Pasangan berjalan di jalanan kota',
-  },
-  {
-    tile: 'h',
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/8.jpg',
-    alt: 'Potret close-up pasangan tersenyum',
-  },
-  {
-    tile: 'i',
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.jpg',
-    alt: 'Pasangan duduk berdua di bangku',
-  },
-  {
-    tile: 'j',
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/11.jpg',
-    alt: 'Pasangan di atas rooftop saat malam',
+    items: [
+      { tile: 'h', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/8.jpg', alt: 'Foto 8' },
+      { tile: 'i', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.jpg', alt: 'Foto 9' },
+      { tile: 'j', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/11.jpg', alt: 'Foto 10' },
+    ],
   },
 ]
 
@@ -200,15 +176,15 @@ export const GALLERY_CAROUSEL: GalleryPhoto[] = [
 ]
 
 export const BANK_ACCOUNTS: BankAccount[] = [
-  { bank: 'BCA', number: '1234 5678 90', holder: 'a.n Fedrik Andrean Lehilaka' },
-  { bank: 'BRI', number: '0987 6543 21', holder: 'a.n Anastasia Imelda Mei Liana Tobing' },
+  { bank: 'BCA', number: '1671567973', holder: 'a.n Fedrik Andrean Lehilaka' },
+  { bank: 'BRI', number: '0531-01-016293-501', holder: 'a.n Anastasia Imelda Mei Liana Tobing' },
 ]
 
 export const GIFT_ADDRESS: GiftAddress = {
   title: 'PHYSICAL GIFT',
   subtitle: 'For physical gifts, you may send them to the following address:',
   recipient: 'Chaca & Fedrik',
-  address: 'Jl. Nama Jalan No. 123, Kota, Provinsi 12345',
+  address: 'Puri Nirwana 3 Blok DN 14 Jl. Anggur 1, Karadenan - Cibinong, Kab Bogor',
   phone: '0812-3456-7890',
 }
 
