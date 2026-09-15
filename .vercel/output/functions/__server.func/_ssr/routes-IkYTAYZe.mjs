@@ -1,12 +1,30 @@
 import { __toESM } from "../_runtime.mjs";
 import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$3, WEDDING } from "./router-BXd401_9.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-nxZqyowH.js
+import { BG_LANDSCAPE, Route$3 } from "./router-Bi9ogyfA.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-IkYTAYZe.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
+var BG_PORTRAIT = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%203.webp";
+var WEDDING = {
+	groomName: "Fedrik",
+	brideName: "Chaca",
+	date: "10 OCTOBER 2026",
+	recipient: "Bapak/Ibu Tamu"
+};
+function useIsPortrait() {
+	const [isPortrait, setIsPortrait] = (0, import_react.useState)(() => window.matchMedia("(orientation: portrait)").matches);
+	(0, import_react.useEffect)(() => {
+		const mq = window.matchMedia("(orientation: portrait)");
+		const handler = (e) => setIsPortrait(e.matches);
+		mq.addEventListener("change", handler);
+		return () => mq.removeEventListener("change", handler);
+	}, []);
+	return isPortrait;
+}
 function LandingPage() {
 	const navigate = useNavigate();
 	const { to, name } = Route$3.useSearch();
+	const isPortrait = useIsPortrait();
 	const hasGuest = Boolean(to && name);
 	const [recipientLabel, setRecipientLabel] = (0, import_react.useState)(WEDDING.recipient);
 	(0, import_react.useEffect)(() => {
@@ -25,7 +43,7 @@ function LandingPage() {
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "cover__media-img",
-						style: { backgroundImage: `url('${WEDDING.bgImage}')` },
+						style: { backgroundImage: `url('${isPortrait ? BG_PORTRAIT : BG_LANDSCAPE}')` },
 						role: "img",
 						"aria-label": "Pasangan pengantin Chaca dan Fedrik"
 					}),

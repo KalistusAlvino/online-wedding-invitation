@@ -1,10 +1,89 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-BXd401_9.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-CKMt0Z6I.js
+import { Route$1 } from "./router-Bi9ogyfA.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-CIV87p7f.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
+function Preloader({ progress, isComplete }) {
+	if (isComplete) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "preloader",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "preloader__content",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "preloader__spinner" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "preloader__text",
+					children: "Memuat undangan..."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "preloader__bar",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "preloader__bar-fill",
+						style: { width: `${progress}%` }
+					})
+				})
+			]
+		})
+	});
+}
+function preloadImage(src) {
+	return new Promise((resolve, reject) => {
+		const img = new Image();
+		img.onload = () => resolve();
+		img.onerror = () => reject(/* @__PURE__ */ new Error(`Failed to load image: ${src}`));
+		img.src = src;
+	});
+}
+function preloadVideo(src) {
+	return new Promise((resolve) => {
+		const video = document.createElement("video");
+		video.preload = "auto";
+		video.onloadeddata = () => resolve();
+		video.onerror = () => resolve();
+		video.src = src;
+	});
+}
+function preloadAudio(src) {
+	return new Promise((resolve) => {
+		const audio = document.createElement("audio");
+		audio.preload = "auto";
+		audio.onloadeddata = () => resolve();
+		audio.onerror = () => resolve();
+		audio.src = src;
+	});
+}
+function usePreload({ assets, onComplete }) {
+	const [progress, setProgress] = (0, import_react.useState)(0);
+	const [isComplete, setIsComplete] = (0, import_react.useState)(false);
+	const completedRef = (0, import_react.useRef)(false);
+	(0, import_react.useEffect)(() => {
+		let loaded = 0;
+		const total = assets.length;
+		const promises = assets.map(async (asset) => {
+			try {
+				if (asset.type === "image") await preloadImage(asset.src);
+				else if (asset.type === "video") await preloadVideo(asset.src);
+				else if (asset.type === "audio") await preloadAudio(asset.src);
+			} catch {}
+			loaded++;
+			setProgress(Math.round(loaded / total * 100));
+		});
+		Promise.all(promises).then(() => {
+			setProgress(100);
+			setIsComplete(true);
+			if (!completedRef.current) {
+				completedRef.current = true;
+				onComplete?.();
+			}
+		});
+	}, []);
+	return {
+		progress,
+		isComplete
+	};
+}
 /**
 * Adds `.is-visible` to every `.js-reveal` element once it scrolls into view.
 * Call after the content that contains reveal elements has mounted.
@@ -42,12 +121,7 @@ var COUPLE = {
 	groomName: "Fedrik",
 	dateShort: "10 • 10 • 2026"
 };
-/**
-* YouTube video used as the autoplay hero background (replaces HERO_IMAGE).
-* Change HERO_VIDEO_ID to your wedding video id (the part after ?v= in the URL).
-*/
-var HERO_VIDEO_ID = "W6zu7qhXkAA";
-var CLOSING_IMAGE = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.jpg";
+var CLOSING_IMAGE = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.webp";
 var COUPLE_MEMBERS = [{
 	name: "Anastasia Imelda\nMei Liana Tobing",
 	firstName: "Chaca",
@@ -57,7 +131,7 @@ var COUPLE_MEMBERS = [{
 	handle: "@ch4ca__",
 	instagramUrl: "https://www.instagram.com/ch4ca__/?hl=id",
 	offset: false,
-	photos: ["https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-bridge/The%20Bride%201.jpg", "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-bridge/The%20Bride%202.jpg"],
+	photos: ["https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-bridge/The%20Bride%201.webp", "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-bridge/The%20Bride%202.webp"],
 	alt: "Portrait editorial Chaca dengan gaun sutra putih di latar ivory yang hangat"
 }, {
 	name: "Fedrik Andrean\nLehilaka",
@@ -68,7 +142,7 @@ var COUPLE_MEMBERS = [{
 	handle: "@fedrikstarsss",
 	instagramUrl: "https://www.instagram.com/fedrikstarsss/?hl=id",
 	offset: true,
-	photos: ["https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-groom/The%20Groom%201.jpg"],
+	photos: ["https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-groom/The%20Groom%201.webp"],
 	alt: "Potret editorial Fedrik dengan setelan hijau tua di latar ivory"
 }];
 var EVENTS = [{
@@ -92,75 +166,75 @@ var GALLERY_ROWS = [
 	{ items: [
 		{
 			tile: "a",
-			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/1.jpg",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/1.webp",
 			alt: "Foto 1"
 		},
 		{
 			tile: "b",
-			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/2.jpg",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/2.webp",
 			alt: "Foto 2"
 		},
 		{
 			tile: "c",
-			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.jpg",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.webp",
 			alt: "Foto 3"
 		},
 		{
 			tile: "d",
-			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/4.jpg",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/4.webp",
 			alt: "Foto 4"
 		}
 	] },
 	{ items: [
 		{
 			tile: "e",
-			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/5.jpg",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/5.webp",
 			alt: "Foto 5"
 		},
 		{
 			tile: "f",
-			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/6.jpg",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/6.webp",
 			alt: "Foto 6"
 		},
 		{
 			tile: "g",
-			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.jpg",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.webp",
 			alt: "Foto 7"
 		}
 	] },
 	{ items: [
 		{
 			tile: "h",
-			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/8.jpg",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/8.webp",
 			alt: "Foto 8"
 		},
 		{
 			tile: "i",
-			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.jpg",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.webp",
 			alt: "Foto 9"
 		},
 		{
 			tile: "j",
-			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/11.jpg",
+			photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/11.webp",
 			alt: "Foto 10"
 		}
 	] }
 ];
 var GALLERY_CAROUSEL = [
 	{
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.jpg",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.webp",
 		alt: "Momen besar bersama"
 	},
 	{
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%202.jpg",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%202.webp",
 		alt: "Momen besar bersama"
 	},
 	{
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%203.jpg",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%203.webp",
 		alt: "Momen besar bersama"
 	},
 	{
-		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%204.jpg",
+		photo: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%204.webp",
 		alt: "Momen besar bersama"
 	}
 ];
@@ -184,21 +258,21 @@ var CHAPTERS = [
 	{
 		year: "2016",
 		title: "The First Hello",
-		image: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20First%20Hello.jpg",
+		image: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20First%20Hello.webp",
 		alt: "Foto pertemuan pertama pasangan",
 		quote: "We met by chance, and the moment I saw her, it was love at first sight."
 	},
 	{
 		year: "2017",
 		title: "The Journey",
-		image: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Journey.jpg",
+		image: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Journey.webp",
 		alt: "Foto perjalanan cinta pasangan",
 		quote: "Our romantic journey officially began on October 19, 2017, with Dufan standing as the silent witness to my declaration of love."
 	},
 	{
 		year: "2024",
 		title: "The Proposal",
-		image: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.jpg",
+		image: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.webp",
 		alt: "Foto momen lamaran pasangan",
 		quote: "On October 19, 2024 exactly seven years later I asked her to marry me. As a symbol of my love and commitment, I gave her a ring, with Ancol witnessing the start of our next chapter together."
 	}
@@ -757,7 +831,7 @@ function GallerySection() {
 						className: cx("gallery__carousel-dot", index === currentSlide && "gallery__carousel-dot--active"),
 						onClick: () => setCurrentSlide(index),
 						"aria-label": `Slide ${index + 1}`
-					}, photo.alt))
+					}, index))
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -1107,13 +1181,26 @@ function GiftSection() {
 		})
 	})] });
 }
+var STILL_LANDSCAPE = CLOSING_IMAGE;
+var STILL_PORTRAIT = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.webp";
+function useIsPortrait() {
+	const [isPortrait, setIsPortrait] = (0, import_react.useState)(() => window.matchMedia("(orientation: portrait)").matches);
+	(0, import_react.useEffect)(() => {
+		const mq = window.matchMedia("(orientation: portrait)");
+		const handler = (e) => setIsPortrait(e.matches);
+		mq.addEventListener("change", handler);
+		return () => mq.removeEventListener("change", handler);
+	}, []);
+	return isPortrait;
+}
 function StillSection() {
+	const stillImage = useIsPortrait() ? STILL_PORTRAIT : STILL_LANDSCAPE;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		className: "still js-reveal",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "still__media",
-				style: { backgroundImage: `url('${CLOSING_IMAGE}')` }
+				style: { backgroundImage: `url('${stillImage}')` }
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "still__scrim" }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -1199,8 +1286,10 @@ function ClosingSection() {
 		})
 	});
 }
-var HERO_VIDEO_ID_DESKTOP = HERO_VIDEO_ID;
-var HERO_VIDEO_ID_MOBILE = "IT7q99KZurI";
+var VIDEO_DESKTOP = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/background/Landscape.mp4";
+var VIDEO_MOBILE = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/background/Potrait.mp4";
+var AUDIO_SRC = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/lagu/lagu.mp3";
+var AUDIO_START = 131;
 var MOBILE_BREAKPOINT = 768;
 function useIsMobile() {
 	const [isMobile, setIsMobile] = (0, import_react.useState)(false);
@@ -1215,36 +1304,131 @@ function useIsMobile() {
 }
 function InvitationPage() {
 	useRevealOnScroll();
-	const videoId = useIsMobile() ? HERO_VIDEO_ID_MOBILE : HERO_VIDEO_ID_DESKTOP;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", { children: [
-		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "fixed-bg",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("iframe", {
-				className: "fixed-bg__video",
-				title: "Video latar belakang undangan",
-				src: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0`,
-				allow: "autoplay; encrypted-media; picture-in-picture"
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "fixed-bg__overlay" })]
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeroSection, {}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CoupleSection, {}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "verse-countdown js-reveal",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(VerseSection, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CountdownSection, {})]
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChaptersSection, {}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(EventsSection, {}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GallerySection, {}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GiftSection, {}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StillSection, {}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClosingSection, {}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("iframe", {
-			className: "bg-music",
-			title: "Background music",
-			src: "https://www.youtube.com/embed/um-vJRZZPM8?autoplay=1&start=131&mute=0&controls=0&loop=1&playlist=um-vJRZZPM8&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1&fs=0",
-			allow: "autoplay; encrypted-media"
-		})
+	const videoSrc = useIsMobile() ? VIDEO_MOBILE : VIDEO_DESKTOP;
+	const audioRef = (0, import_react.useRef)(null);
+	const [isPlaying, setIsPlaying] = (0, import_react.useState)(true);
+	const { progress, isComplete } = usePreload({ assets: [
+		{
+			type: "video",
+			src: VIDEO_DESKTOP
+		},
+		{
+			type: "video",
+			src: VIDEO_MOBILE
+		},
+		{
+			type: "audio",
+			src: AUDIO_SRC
+		}
 	] });
+	(0, import_react.useEffect)(() => {
+		if (!isComplete) return;
+		const audio = audioRef.current;
+		if (!audio) return;
+		audio.currentTime = AUDIO_START;
+		audio.play().then(() => setIsPlaying(true)).catch(() => {
+			setIsPlaying(false);
+			const playOnInteraction = () => {
+				audio.currentTime = AUDIO_START;
+				audio.play().then(() => setIsPlaying(true)).catch(() => {});
+				document.removeEventListener("click", playOnInteraction);
+				document.removeEventListener("touchstart", playOnInteraction);
+			};
+			document.addEventListener("click", playOnInteraction, { once: true });
+			document.addEventListener("touchstart", playOnInteraction, { once: true });
+		});
+	}, [isComplete]);
+	const toggleMusic = () => {
+		const audio = audioRef.current;
+		if (!audio) return;
+		if (audio.paused) audio.play().then(() => setIsPlaying(true)).catch(() => {});
+		else {
+			audio.pause();
+			setIsPlaying(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Preloader, {
+		progress,
+		isComplete
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
+		style: {
+			opacity: isComplete ? 1 : 0,
+			transition: "opacity 0.6s ease"
+		},
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "fixed-bg",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("video", {
+					className: "fixed-bg__video",
+					autoPlay: true,
+					muted: true,
+					loop: true,
+					playsInline: true,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("source", {
+						src: videoSrc,
+						type: "video/mp4"
+					})
+				}, videoSrc), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "fixed-bg__overlay" })]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeroSection, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CoupleSection, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "verse-countdown js-reveal",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(VerseSection, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CountdownSection, {})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChaptersSection, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(EventsSection, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GallerySection, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GiftSection, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StillSection, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClosingSection, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("audio", {
+				ref: audioRef,
+				loop: true,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("source", {
+					src: AUDIO_SRC,
+					type: "audio/mpeg"
+				})
+			}),
+			isComplete && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				className: "music-fab",
+				onClick: toggleMusic,
+				"aria-label": isPlaying ? "Pause music" : "Play music",
+				children: isPlaying ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+					width: "20",
+					height: "20",
+					viewBox: "0 0 24 24",
+					fill: "none",
+					stroke: "currentColor",
+					strokeWidth: "2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M11 5L6 9H2v6h4l5 4V5z" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" })]
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+					width: "20",
+					height: "20",
+					viewBox: "0 0 24 24",
+					fill: "none",
+					stroke: "currentColor",
+					strokeWidth: "2",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M11 5L6 9H2v6h4l5 4V5z" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+							x1: "23",
+							y1: "9",
+							x2: "17",
+							y2: "15"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+							x1: "17",
+							y1: "9",
+							x2: "23",
+							y2: "15"
+						})
+					]
+				})
+			})
+		]
+	})] });
 }
 //#endregion
 export { InvitationPage as component };

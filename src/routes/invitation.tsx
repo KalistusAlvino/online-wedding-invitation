@@ -1,4 +1,6 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
+import { Preloader } from '../components/Preloader'
+import { usePreload } from '../lib/usePreload'
 import type { FormEvent } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
@@ -15,7 +17,6 @@ import {
   GALLERY_ROWS,
   GALLERY_CAROUSEL,
   GIFT_ADDRESS,
-  HERO_VIDEO_ID,
 } from '../data/wedding'
 
 const guestSchema = z.object({
@@ -459,7 +460,7 @@ function GallerySection() {
         <div className="gallery__carousel-dots">
           {GALLERY_CAROUSEL.map((photo, index) => (
             <button
-              key={photo.alt}
+              key={index}
               type="button"
               className={cx('gallery__carousel-dot', index === currentSlide && 'gallery__carousel-dot--active')}
               onClick={() => setCurrentSlide(index)}
@@ -775,10 +776,28 @@ function GiftSection() {
 /* -----------------------------------------------------------------------------
    Closing
    --------------------------------------------------------------------------- */
+const STILL_LANDSCAPE = CLOSING_IMAGE
+const STILL_PORTRAIT =
+  'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.webp'
+
+function useIsPortrait() {
+  const [isPortrait, setIsPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches)
+  useEffect(() => {
+    const mq = window.matchMedia('(orientation: portrait)')
+    const handler = (e: MediaQueryListEvent) => setIsPortrait(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return isPortrait
+}
+
 function StillSection() {
+  const isPortrait = useIsPortrait()
+  const stillImage = isPortrait ? STILL_PORTRAIT : STILL_LANDSCAPE
+
   return (
     <section className="still js-reveal">
-      <div className="still__media" style={{ backgroundImage: `url('${CLOSING_IMAGE}')` }} />
+      <div className="still__media" style={{ backgroundImage: `url('${stillImage}')` }} />
       <div className="still__scrim" />
       <div className="still__content">
         <p className="still__word">STILL</p>
@@ -821,8 +840,10 @@ function ClosingSection() {
 /* -----------------------------------------------------------------------------
    Page
    --------------------------------------------------------------------------- */
-const HERO_VIDEO_ID_DESKTOP = HERO_VIDEO_ID
-const HERO_VIDEO_ID_MOBILE = 'IT7q99KZurI'
+const VIDEO_DESKTOP = 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/background/Landscape.mp4'
+const VIDEO_MOBILE = 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/background/Potrait.mp4'
+const AUDIO_SRC = 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/lagu/lagu.mp3'
+const AUDIO_START = 131 // 2:11 in seconds
 const MOBILE_BREAKPOINT = 768
 
 function useIsMobile() {
@@ -840,41 +861,108 @@ function useIsMobile() {
 function InvitationPage() {
   useRevealOnScroll()
   const isMobile = useIsMobile()
-  const videoId = isMobile ? HERO_VIDEO_ID_MOBILE : HERO_VIDEO_ID_DESKTOP
+  const videoSrc = isMobile ? VIDEO_MOBILE : VIDEO_DESKTOP
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const [isPlaying, setIsPlaying] = useState(true)
+
+  const { progress, isComplete } = usePreload({
+    assets: [
+      { type: 'video', src: VIDEO_DESKTOP },
+      { type: 'video', src: VIDEO_MOBILE },
+      { type: 'audio', src: AUDIO_SRC },
+    ],
+  })
+
+  useEffect(() => {
+    if (!isComplete) return
+    const audio = audioRef.current
+    if (!audio) return
+    audio.currentTime = AUDIO_START
+    audio.play().then(() => setIsPlaying(true)).catch(() => {
+      setIsPlaying(false)
+      const playOnInteraction = () => {
+        audio.currentTime = AUDIO_START
+        audio.play().then(() => setIsPlaying(true)).catch(() => {})
+        document.removeEventListener('click', playOnInteraction)
+        document.removeEventListener('touchstart', playOnInteraction)
+      }
+      document.addEventListener('click', playOnInteraction, { once: true })
+      document.addEventListener('touchstart', playOnInteraction, { once: true })
+    })
+  }, [isComplete])
+
+  const toggleMusic = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    if (audio.paused) {
+      audio.play().then(() => setIsPlaying(true)).catch(() => {})
+    } else {
+      audio.pause()
+      setIsPlaying(false)
+    }
+  }
 
   return (
-    <main>
-      {/* Fixed video background */}
-      <div className="fixed-bg">
-        <iframe
-          className="fixed-bg__video"
-          title="Video latar belakang undangan"
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0`}
-          allow="autoplay; encrypted-media; picture-in-picture"
-        />
-        <div className="fixed-bg__overlay" />
-      </div>
+    <>
+      <Preloader progress={progress} isComplete={isComplete} />
 
-      <HeroSection />
-      <CoupleSection />
-      <div className="verse-countdown js-reveal">
-        <VerseSection />
-        <CountdownSection />
-      </div>
-      <ChaptersSection />
-      <EventsSection />
-      <GallerySection />
-      <GiftSection />
-      <StillSection />
-      <ClosingSection />
+      <main style={{ opacity: isComplete ? 1 : 0, transition: 'opacity 0.6s ease' }}>
+        {/* Fixed video background */}
+        <div className="fixed-bg">
+          <video
+            className="fixed-bg__video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            key={videoSrc}
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+          <div className="fixed-bg__overlay" />
+        </div>
 
-      {/* Background music */}
-      <iframe
-        className="bg-music"
-        title="Background music"
-        src="https://www.youtube.com/embed/um-vJRZZPM8?autoplay=1&start=131&mute=0&controls=0&loop=1&playlist=um-vJRZZPM8&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1&fs=0"
-        allow="autoplay; encrypted-media"
-      />
-    </main>
+        <HeroSection />
+        <CoupleSection />
+        <div className="verse-countdown js-reveal">
+          <VerseSection />
+          <CountdownSection />
+        </div>
+        <ChaptersSection />
+        <EventsSection />
+        <GallerySection />
+        <GiftSection />
+        <StillSection />
+        <ClosingSection />
+
+        {/* Background music */}
+        <audio ref={audioRef} loop>
+          <source src={AUDIO_SRC} type="audio/mpeg" />
+        </audio>
+
+        {/* Music FAB */}
+        {isComplete && (
+          <button
+            type="button"
+            className="music-fab"
+            onClick={toggleMusic}
+            aria-label={isPlaying ? 'Pause music' : 'Play music'}
+          >
+            {isPlaying ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                <line x1="23" y1="9" x2="17" y2="15" />
+                <line x1="17" y1="9" x2="23" y2="15" />
+              </svg>
+            )}
+          </button>
+        )}
+      </main>
+    </>
   )
 }

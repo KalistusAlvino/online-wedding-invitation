@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { z } from 'zod'
 
+const BG_LANDSCAPE =
+  'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.webp'
+const BG_PORTRAIT =
+  'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%203.webp'
+
 const WEDDING = {
   groomName: 'Fedrik',
   brideName: 'Chaca',
   date: '10 OCTOBER 2026',
   recipient: 'Bapak/Ibu Tamu',
-  bgImage:
-    'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.jpg',
 }
 
 const guestSchema = z.object({
@@ -22,28 +25,36 @@ const DEFAULT_DESC = 'Sabtu, 10 Oktober 2026 — Kami mengundang Anda untuk mera
 export const Route = createFileRoute('/')({ 
   component: LandingPage,
   validateSearch: guestSchema,
-  // head() does not receive search params in TanStack Start's asset context;
-  // we use static defaults here. Dynamic <title> is set client-side via useEffect.
   head: () => ({
     meta: [
       { title: DEFAULT_TITLE },
       { name: 'description', content: DEFAULT_DESC },
       { property: 'og:title', content: DEFAULT_TITLE },
       { property: 'og:description', content: DEFAULT_DESC },
-      { property: 'og:image', content: WEDDING.bgImage },
+      { property: 'og:image', content: BG_LANDSCAPE },
       { name: 'twitter:title', content: DEFAULT_TITLE },
       { name: 'twitter:description', content: DEFAULT_DESC },
-      { name: 'twitter:image', content: WEDDING.bgImage },
+      { name: 'twitter:image', content: BG_LANDSCAPE },
     ],
   }),
 })
 
+function useIsPortrait() {
+  const [isPortrait, setIsPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches)
+  useEffect(() => {
+    const mq = window.matchMedia('(orientation: portrait)')
+    const handler = (e: MediaQueryListEvent) => setIsPortrait(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return isPortrait
+}
+
 function LandingPage() {
   const navigate = useNavigate()
   const { to, name } = Route.useSearch()
+  const isPortrait = useIsPortrait()
 
-  // Defer recipient label to client-side only to avoid SSR hydration mismatch
-  // (React error #419). Server always renders the default; client updates after mount.
   const hasGuest = Boolean(to && name)
   const [recipientLabel, setRecipientLabel] = useState(WEDDING.recipient)
   useEffect(() => {
@@ -53,13 +64,14 @@ function LandingPage() {
     }
   }, [hasGuest, to, name])
 
+  const bgImage = isPortrait ? BG_PORTRAIT : BG_LANDSCAPE
+
   return (
     <main className="cover">
-      {/* Background media stack */}
       <div className="cover__media">
         <div
           className="cover__media-img"
-          style={{ backgroundImage: `url('${WEDDING.bgImage}')` }}
+          style={{ backgroundImage: `url('${bgImage}')` }}
           role="img"
           aria-label="Pasangan pengantin Chaca dan Fedrik"
         />
@@ -67,12 +79,10 @@ function LandingPage() {
         <div className="cover__media-fade" />
       </div>
 
-      {/* Top: THE WEDDING OF */}
       <header className="cover__top cover__content fade-in-up">
         <span className="cover__eyebrow label-caps text-muted">THE WEDDING OF</span>
       </header>
 
-      {/* Middle: Couple names + date */}
       <section className="cover__middle cover__content">
         <h1 className="cover__names display-hero text-primary">
           {WEDDING.brideName} <span className="display-hero__amp">&amp;</span>{' '}
@@ -81,7 +91,6 @@ function LandingPage() {
         <p className="cover__date body--lg text-muted fade-in-up delay-300">{WEDDING.date}</p>
       </section>
 
-      {/* Bottom: Guest greeting + CTA */}
       <footer className="cover__bottom cover__content">
         <div className="cover__guest fade-in-up delay-500">
           <span className="cover__guest-label body--sm text-muted">Kepada Yth.</span>

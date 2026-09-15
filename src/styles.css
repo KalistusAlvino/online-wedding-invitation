@@ -2341,3 +2341,109 @@ select option {
   opacity: 0;
   pointer-events: none;
 }
+
+/* ---------------------------------------------------------------------------
+   Preloader
+   --------------------------------------------------------------------------- */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-dark);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.preloader__content {
+  text-align: center;
+  color: var(--color-pure-white);
+}
+
+.preloader__spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--color-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.preloader__text {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 16px;
+}
+
+.preloader__bar {
+  width: 160px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.preloader__bar-fill {
+  height: 100%;
+  background: var(--color-gold);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.preloader__btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 1px solid var(--color-pure-white);
+  background: transparent;
+  color: var(--color-pure-white);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  margin-top: 24px;
+}
+
+.preloader__btn:hover {
+  background: var(--color-pure-white);
+  color: var(--color-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   Music FAB
+   --------------------------------------------------------------------------- */
+.music-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  color: var(--color-pure-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.music-fab:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.05);
+}

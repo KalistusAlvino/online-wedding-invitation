@@ -1,6 +1,6 @@
 import { HeadContent, Scripts, createFileRoute, createRootRoute, createRouter, lazyRouteComponent, require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { object, string } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BXd401_9.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-Bi9ogyfA.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -12,7 +12,7 @@ var __exportAll = (all, no_symbols) => {
 	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
 	return target;
 };
-var styles_default = "/assets/styles-DykJoxaM.css";
+var styles_default = "/assets/styles-O19EuuqF.css";
 var Route$4 = createRootRoute({
 	head: () => ({
 		meta: [
@@ -84,14 +84,8 @@ function RootDocument({ children }) {
 		})]
 	});
 }
-var WEDDING = {
-	groomName: "Fedrik",
-	brideName: "Chaca",
-	date: "10 OCTOBER 2026",
-	recipient: "Bapak/Ibu Tamu",
-	bgImage: "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.jpg"
-};
-var $$splitComponentImporter$3 = () => import("./routes-nxZqyowH.mjs");
+var BG_LANDSCAPE = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.webp";
+var $$splitComponentImporter$3 = () => import("./routes-IkYTAYZe.mjs");
 var guestSchema$1 = object({
 	to: string().optional(),
 	name: string().optional()
@@ -117,7 +111,7 @@ var Route$3 = createFileRoute("/")({
 		},
 		{
 			property: "og:image",
-			content: WEDDING.bgImage
+			content: BG_LANDSCAPE
 		},
 		{
 			name: "twitter:title",
@@ -129,7 +123,7 @@ var Route$3 = createFileRoute("/")({
 		},
 		{
 			name: "twitter:image",
-			content: WEDDING.bgImage
+			content: BG_LANDSCAPE
 		}
 	] })
 });
@@ -138,7 +132,7 @@ var Route$2 = createFileRoute("/dashboard")({
 	ssr: false,
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("./invitation-CKMt0Z6I.mjs");
+var $$splitComponentImporter$1 = () => import("./invitation-CIV87p7f.mjs");
 var guestSchema = object({
 	to: string().optional(),
 	name: string().optional()
@@ -182,4 +176,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { Route$1, Route$3, WEDDING, router_exports };
+export { BG_LANDSCAPE, Route$1, Route$3, router_exports };
