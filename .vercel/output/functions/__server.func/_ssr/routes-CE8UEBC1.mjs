@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
 import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { BG_LANDSCAPE, Route$3 } from "./router-CoXBbq9b.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BTQx5Zu5.js
+import { BG_LANDSCAPE, Route$3 } from "./router-BaubL39a.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CE8UEBC1.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var BG_PORTRAIT = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%203.webp";

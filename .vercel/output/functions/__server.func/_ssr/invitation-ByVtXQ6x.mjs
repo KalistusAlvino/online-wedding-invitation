@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-CoXBbq9b.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-BHQ8ySqx.js
+import { Route$1 } from "./router-BaubL39a.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-ByVtXQ6x.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Preloader({ progress, isComplete }) {
@@ -527,7 +527,7 @@ function CoupleCard({ member }) {
 }
 function CoupleSection() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-		className: "couple-section js-reveal",
+		className: "couple-section",
 		children: COUPLE_MEMBERS.map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CoupleCard, { member }, member.name))
 	});
 }
@@ -618,14 +618,14 @@ function CountdownSection() {
 }
 function ChaptersSection() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "section container js-reveal",
+		className: "section container",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHead, {
 			large: true,
 			children: "The Chapters We Share"
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "chapters",
 			children: CHAPTERS.map((chapter) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-				className: "chapter js-reveal",
+				className: "chapter",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "chapter__image-wrap",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
@@ -662,7 +662,7 @@ function ChaptersSection() {
 function EventsSection() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		id: "event",
-		className: "section container js-reveal",
+		className: "section container",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHead, {
 			large: true,
 			children: "Event Details"
@@ -769,7 +769,7 @@ function GallerySection() {
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		id: "gallery",
-		className: "section container js-reveal",
+		className: "section container",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHead, { children: "Our Moments" }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -837,7 +837,7 @@ function GallerySection() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "gallery__collage",
 				children: GALLERY_ROWS.flatMap((row) => row.items).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: cx("gallery__collage-item", `gallery__collage-item--${item.tile}`, "js-reveal"),
+					className: cx("gallery__collage-item", `gallery__collage-item--${item.tile}`),
 					style: { animationDelay: `${index * 60}ms` },
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 						className: "gallery__collage-img",
@@ -923,13 +923,13 @@ function GiftSection() {
 	const visibleMessages = messages.slice(0, msgLimit);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		id: "rsvp",
-		className: "section section--tan-strong js-reveal",
+		className: "section section--tan-strong",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "container",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "panel",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "panel__column js-reveal",
+					className: "panel__column",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "gift__intro",
 						children: [
@@ -1034,7 +1034,7 @@ function GiftSection() {
 						})]
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "panel__column js-reveal",
+					className: "panel__column",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "panel__intro",
@@ -1197,7 +1197,7 @@ function useIsPortrait() {
 function StillSection() {
 	const stillImage = useIsPortrait() ? STILL_PORTRAIT : STILL_LANDSCAPE;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "still js-reveal",
+		className: "still",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "still__media",
@@ -1229,7 +1229,7 @@ function StillSection() {
 }
 function ClosingSection() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-		className: "closing js-reveal",
+		className: "closing",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "closing__content",
 			children: [
@@ -1374,7 +1374,7 @@ function InvitationPage() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeroSection, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CoupleSection, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "verse-countdown js-reveal",
+				className: "verse-countdown",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(VerseSection, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CountdownSection, {})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChaptersSection, {}),

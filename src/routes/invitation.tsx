@@ -197,7 +197,7 @@ function CoupleCard({ member }: { member: (typeof COUPLE_MEMBERS)[number] }) {
 
 function CoupleSection() {
   return (
-    <section className="couple-section js-reveal">
+    <section className="couple-section">
       {COUPLE_MEMBERS.map((member) => (
         <CoupleCard key={member.name} member={member} />
       ))}
@@ -267,11 +267,11 @@ function CountdownSection() {
    --------------------------------------------------------------------------- */
 function ChaptersSection() {
   return (
-    <section className="section container js-reveal">
+    <section className="section container">
       <SectionHead large>The Chapters We Share</SectionHead>
       <div className="chapters">
         {CHAPTERS.map((chapter) => (
-          <article key={chapter.year} className="chapter js-reveal">
+          <article key={chapter.year} className="chapter">
             <div className="chapter__image-wrap">
               <img
                 className="chapter__image"
@@ -302,7 +302,7 @@ function ChaptersSection() {
    --------------------------------------------------------------------------- */
 function EventsSection() {
   return (
-    <section id="event" className="section container js-reveal">
+    <section id="event" className="section container">
       <SectionHead large>Event Details</SectionHead>
       <div className="events">
         {EVENTS.map((event, index) => (
@@ -399,7 +399,7 @@ function GallerySection() {
   }
 
   return (
-    <section id="gallery" className="section container js-reveal">
+    <section id="gallery" className="section container">
       <SectionHead>Our Moments</SectionHead>
 
       {/* Carousel with touch & mouse drag swipe */}
@@ -475,7 +475,7 @@ function GallerySection() {
         {GALLERY_ROWS.flatMap((row) => row.items).map((item, index) => (
           <div
             key={item.tile}
-            className={cx('gallery__collage-item', `gallery__collage-item--${item.tile}`, 'js-reveal')}
+            className={cx('gallery__collage-item', `gallery__collage-item--${item.tile}`)}
             style={{ animationDelay: `${index * 60}ms` }}
           >
             <img className="gallery__collage-img" src={item.photo} alt={item.alt} loading="lazy" />
@@ -581,11 +581,11 @@ function GiftSection() {
   return (
     <>
       {/* Gift + RSVP panel */}
-      <section id="rsvp" className="section section--tan-strong js-reveal">
+      <section id="rsvp" className="section section--tan-strong">
         <div className="container">
           <div className="panel">
             {/* Wedding gift column */}
-            <div className="panel__column js-reveal">
+            <div className="panel__column">
               <div className="gift__intro">
                 <span className="gift__eyebrow label-caps uppercase">Wedding Gift</span>
                 <span className="gift__rule" />
@@ -647,7 +647,7 @@ function GiftSection() {
             </div>
 
             {/* RSVP column */}
-            <div className="panel__column js-reveal">
+            <div className="panel__column">
               <div className="panel__intro">
                 <h2 className="panel__title uppercase">RSVP</h2>
                 <p className="body--sm">Kindly confirm your attendance by October 1st, 2026.</p>
@@ -797,7 +797,7 @@ function StillSection() {
   const stillImage = isPortrait ? STILL_PORTRAIT : STILL_LANDSCAPE
 
   return (
-    <section className="still js-reveal">
+    <section className="still">
       <div className="still__media" style={{ backgroundImage: `url('${stillImage}')` }} />
       <div className="still__scrim" />
       <div className="still__content">
@@ -814,7 +814,7 @@ function StillSection() {
 
 function ClosingSection() {
   return (
-    <section className="closing js-reveal">
+    <section className="closing">
       <div className="closing__content">
         <p className="closing__intro">
           We can't wait to start<br />this beautiful journey together.
@@ -925,7 +925,7 @@ function InvitationPage() {
 
         <HeroSection />
         <CoupleSection />
-        <div className="verse-countdown js-reveal">
+        <div className="verse-countdown">
           <VerseSection />
           <CountdownSection />
         </div>
