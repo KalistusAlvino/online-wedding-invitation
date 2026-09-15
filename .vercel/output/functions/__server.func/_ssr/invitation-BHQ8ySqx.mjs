@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-Bi9ogyfA.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-CIV87p7f.js
+import { Route$1 } from "./router-CoXBbq9b.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-BHQ8ySqx.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Preloader({ progress, isComplete }) {
@@ -1184,9 +1184,10 @@ function GiftSection() {
 var STILL_LANDSCAPE = CLOSING_IMAGE;
 var STILL_PORTRAIT = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.webp";
 function useIsPortrait() {
-	const [isPortrait, setIsPortrait] = (0, import_react.useState)(() => window.matchMedia("(orientation: portrait)").matches);
+	const [isPortrait, setIsPortrait] = (0, import_react.useState)(false);
 	(0, import_react.useEffect)(() => {
 		const mq = window.matchMedia("(orientation: portrait)");
+		setIsPortrait(mq.matches);
 		const handler = (e) => setIsPortrait(e.matches);
 		mq.addEventListener("change", handler);
 		return () => mq.removeEventListener("change", handler);

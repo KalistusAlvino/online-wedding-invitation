@@ -1,6 +1,6 @@
 import { HeadContent, Scripts, createFileRoute, createRootRoute, createRouter, lazyRouteComponent, require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { object, string } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-Bi9ogyfA.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CoXBbq9b.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -85,7 +85,7 @@ function RootDocument({ children }) {
 	});
 }
 var BG_LANDSCAPE = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.webp";
-var $$splitComponentImporter$3 = () => import("./routes-IkYTAYZe.mjs");
+var $$splitComponentImporter$3 = () => import("./routes-BTQx5Zu5.mjs");
 var guestSchema$1 = object({
 	to: string().optional(),
 	name: string().optional()
@@ -132,7 +132,7 @@ var Route$2 = createFileRoute("/dashboard")({
 	ssr: false,
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("./invitation-CIV87p7f.mjs");
+var $$splitComponentImporter$1 = () => import("./invitation-BHQ8ySqx.mjs");
 var guestSchema = object({
 	to: string().optional(),
 	name: string().optional()

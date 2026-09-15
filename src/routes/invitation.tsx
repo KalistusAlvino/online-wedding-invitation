@@ -781,9 +781,10 @@ const STILL_PORTRAIT =
   'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.webp'
 
 function useIsPortrait() {
-  const [isPortrait, setIsPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches)
+  const [isPortrait, setIsPortrait] = useState(false)
   useEffect(() => {
     const mq = window.matchMedia('(orientation: portrait)')
+    setIsPortrait(mq.matches)
     const handler = (e: MediaQueryListEvent) => setIsPortrait(e.matches)
     mq.addEventListener('change', handler)
     return () => mq.removeEventListener('change', handler)

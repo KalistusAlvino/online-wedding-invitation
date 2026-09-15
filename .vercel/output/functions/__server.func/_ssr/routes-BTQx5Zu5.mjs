@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
 import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { BG_LANDSCAPE, Route$3 } from "./router-Bi9ogyfA.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-IkYTAYZe.js
+import { BG_LANDSCAPE, Route$3 } from "./router-CoXBbq9b.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BTQx5Zu5.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var BG_PORTRAIT = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%203.webp";
@@ -12,9 +12,10 @@ var WEDDING = {
 	recipient: "Bapak/Ibu Tamu"
 };
 function useIsPortrait() {
-	const [isPortrait, setIsPortrait] = (0, import_react.useState)(() => window.matchMedia("(orientation: portrait)").matches);
+	const [isPortrait, setIsPortrait] = (0, import_react.useState)(false);
 	(0, import_react.useEffect)(() => {
 		const mq = window.matchMedia("(orientation: portrait)");
+		setIsPortrait(mq.matches);
 		const handler = (e) => setIsPortrait(e.matches);
 		mq.addEventListener("change", handler);
 		return () => mq.removeEventListener("change", handler);
