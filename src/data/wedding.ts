@@ -95,7 +95,7 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     firstName: 'Fedrik',
     role: 'HIM',
     parentsLabel: 'Putra ketiga dari',
-    parents: 'Bapak Jon Robinson Lehilaka (✝️) & Ibu Soeharni',
+    parents: 'Bapak Jon Robinson Lehilaka (✝︎) & Ibu Soeharni',
     handle: '@fedrikstarsss',
     instagramUrl: 'https://www.instagram.com/fedrikstarsss/?hl=id',
     offset: true,
