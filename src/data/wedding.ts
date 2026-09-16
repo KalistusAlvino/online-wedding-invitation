@@ -79,7 +79,7 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     name: 'Anastasia Imelda\nMei Liana Tobing',
     firstName: 'Chaca',
     role: 'HER',
-    parentsLabel: 'Putri dari',
+    parentsLabel: 'Putri pertama dari',
     parents: 'Bapak Maruhum Pandapotan Tobing & Ibu Rosdiana Jeminar Butarbutar',
     handle: '@ch4ca__',
     instagramUrl: 'https://www.instagram.com/ch4ca__/?hl=id',
@@ -94,7 +94,7 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     name: 'Fedrik Andrean\nLehilaka',
     firstName: 'Fedrik',
     role: 'HIM',
-    parentsLabel: 'Putra dari',
+    parentsLabel: 'Putra ketiga dari',
     parents: 'Bapak Jon Robinson Lehilaka (✝️) & Ibu Soeharni',
     handle: '@fedrikstarsss',
     instagramUrl: 'https://www.instagram.com/fedrikstarsss/?hl=id',
@@ -185,7 +185,7 @@ export const GIFT_ADDRESS: GiftAddress = {
   subtitle: 'For physical gifts, you may send them to the following address:',
   recipient: 'Chaca & Fedrik',
   address: 'Puri Nirwana 3 Blok DN 14 Jl. Anggur 1, Karadenan - Cibinong, Kab Bogor',
-  phone: '0812-3456-7890',
+  phone: '+62 896-8821-6860',
 }
 
 export const CHAPTERS: Chapter[] = [
