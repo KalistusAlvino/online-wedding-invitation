@@ -1,10 +1,10 @@
 import { __toESM } from "../_runtime.mjs";
 import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { BG_LANDSCAPE, Route$3 } from "./router-DA8DP6cG.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BrpCaW3e.js
+import { BG_LANDSCAPE, Route$3 } from "./router-BpJ-eryA.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BeUTtTBW.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var BG_PORTRAIT = "https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%203.webp";
+var BG_PORTRAIT = "/our_big_moment_3.webp";
 var WEDDING = {
 	groomName: "Fedrik",
 	brideName: "Chaca",

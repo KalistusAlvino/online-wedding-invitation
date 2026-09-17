@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DEPbedB9.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-C1DNrACQ.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "D:/VibeCode/online-wedding-invitation/src/routes/__root.tsx",
@@ -9,20 +9,20 @@ var tsrStartManifest = () => ({ routes: {
 			"/messages"
 		],
 		preloads: [
-			"/assets/index-DjMINP5u.js",
+			"/assets/index-H-kl-AgU.js",
 			"/assets/jsx-runtime-Cltr0gcK.js",
 			"/assets/preload-helper-CXOzJhwA.js"
 		],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-DjMINP5u.js"
+			src: "/assets/index-H-kl-AgU.js"
 		} }]
 	},
 	"/": {
 		filePath: "D:/VibeCode/online-wedding-invitation/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-DcDc65uA.js"]
+		preloads: ["/assets/routes-IrEkC2Tc.js"]
 	},
 	"/dashboard": {
 		filePath: "D:/VibeCode/online-wedding-invitation/src/routes/dashboard.tsx",
@@ -32,7 +32,7 @@ var tsrStartManifest = () => ({ routes: {
 	"/invitation": {
 		filePath: "D:/VibeCode/online-wedding-invitation/src/routes/invitation.tsx",
 		children: void 0,
-		preloads: ["/assets/invitation-CBJpYJRQ.js", "/assets/supabase-CBAtAmA8.js"]
+		preloads: ["/assets/invitation-ByV-P4M9.js", "/assets/supabase-CBAtAmA8.js"]
 	},
 	"/messages": {
 		filePath: "D:/VibeCode/online-wedding-invitation/src/routes/messages.tsx",

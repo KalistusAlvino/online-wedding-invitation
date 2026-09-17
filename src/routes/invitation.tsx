@@ -777,8 +777,7 @@ function GiftSection() {
    Closing
    --------------------------------------------------------------------------- */
 const STILL_LANDSCAPE = CLOSING_IMAGE
-const STILL_PORTRAIT =
-  'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.webp'
+const STILL_PORTRAIT = '/7.webp'
 
 function useIsPortrait() {
   const [isPortrait, setIsPortrait] = useState(false)
@@ -841,9 +840,9 @@ function ClosingSection() {
 /* -----------------------------------------------------------------------------
    Page
    --------------------------------------------------------------------------- */
-const VIDEO_DESKTOP = 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/background/Landscape.mp4'
-const VIDEO_MOBILE = 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/background/Potrait.mp4'
-const AUDIO_SRC = 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/lagu/lagu.mp3'
+const VIDEO_DESKTOP = '/landscape.mp4'
+const VIDEO_MOBILE = '/potrait.mp4'
+const AUDIO_SRC = '/lagu.mp3'
 const AUDIO_START = 131 // 2:11 in seconds
 const MOBILE_BREAKPOINT = 768
 

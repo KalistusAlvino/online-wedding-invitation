@@ -2,10 +2,8 @@ import { useEffect, useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { z } from 'zod'
 
-const BG_LANDSCAPE =
-  'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.webp'
-const BG_PORTRAIT =
-  'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%203.webp'
+const BG_LANDSCAPE = '/3.webp'
+const BG_PORTRAIT = '/our_big_moment_3.webp'
 
 const WEDDING = {
   groomName: 'Fedrik',

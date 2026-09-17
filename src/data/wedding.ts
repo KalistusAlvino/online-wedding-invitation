@@ -71,8 +71,7 @@ export const HERO_IMAGE =
  */
 export const HERO_VIDEO_ID = 'W6zu7qhXkAA'
 
-export const CLOSING_IMAGE =
-  'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.webp'
+export const CLOSING_IMAGE = '/9.webp'
 
 export const COUPLE_MEMBERS: CoupleMember[] = [
   {
@@ -85,8 +84,8 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     instagramUrl: 'https://www.instagram.com/ch4ca__/?hl=id',
     offset: false,
     photos: [
-      'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-bridge/The%20Bride%201.webp',
-      'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-bridge/The%20Bride%202.webp',
+      '/the_bridge_1.webp',
+      '/the_bride_2.webp',
     ],
     alt: 'Portrait editorial Chaca dengan gaun sutra putih di latar ivory yang hangat',
   },
@@ -100,7 +99,7 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     instagramUrl: 'https://www.instagram.com/fedrikstarsss/?hl=id',
     offset: true,
     photos: [
-      'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-groom/The%20Groom%201.webp',
+      '/the_groom_1.webp',
     ],
     alt: 'Potret editorial Fedrik dengan setelan hijau tua di latar ivory',
   },
@@ -134,43 +133,43 @@ export interface GalleryRow {
 export const GALLERY_ROWS: GalleryRow[] = [
   {
     items: [
-      { tile: 'a', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/1.webp', alt: 'Foto 1' },
-      { tile: 'b', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/2.webp', alt: 'Foto 2' },
-      { tile: 'c', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/3.webp', alt: 'Foto 3' },
-      { tile: 'd', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/4.webp', alt: 'Foto 4' },
+      { tile: 'a', photo: '/1.webp', alt: 'Foto 1' },
+      { tile: 'b', photo: '/2.webp', alt: 'Foto 2' },
+      { tile: 'c', photo: '/3.webp', alt: 'Foto 3' },
+      { tile: 'd', photo: '/4.webp', alt: 'Foto 4' },
     ],
   },
   {
     items: [
-      { tile: 'e', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/5.webp', alt: 'Foto 5' },
-      { tile: 'f', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/6.webp', alt: 'Foto 6' },
-      { tile: 'g', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/7.webp', alt: 'Foto 7' },
+      { tile: 'e', photo: '/5.webp', alt: 'Foto 5' },
+      { tile: 'f', photo: '/6.webp', alt: 'Foto 6' },
+      { tile: 'g', photo: '/7.webp', alt: 'Foto 7' },
     ],
   },
   {
     items: [
-      { tile: 'h', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/8.webp', alt: 'Foto 8' },
-      { tile: 'i', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/9.webp', alt: 'Foto 9' },
-      { tile: 'j', photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/gallery/11.webp', alt: 'Foto 10' },
+      { tile: 'h', photo: '/8.webp', alt: 'Foto 8' },
+      { tile: 'i', photo: '/9.webp', alt: 'Foto 9' },
+      { tile: 'j', photo: '/11.webp', alt: 'Foto 10' },
     ],
   },
 ]
 
 export const GALLERY_CAROUSEL: GalleryPhoto[] = [
   {
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.webp',
+    photo: '/the_proposal.webp',
     alt: 'Momen besar bersama',
   },
   {
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%202.webp',
+    photo: '/our_big_moment_2.webp',
     alt: 'Momen besar bersama',
   },
   {
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%203.webp',
+    photo: '/our_big_moment_3.webp',
     alt: 'Momen besar bersama',
   },
   {
-    photo: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/our-big-moments/Our%20Moment%20Big%204.webp',
+    photo: '/our_big_moment_4.webp',
     alt: 'Momen besar bersama',
   },
 ]
@@ -192,21 +191,21 @@ export const CHAPTERS: Chapter[] = [
   {
     year: '2016',
     title: 'The First Hello',
-    image: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20First%20Hello.webp',
+    image: '/the_firsy_hello.webp',
     alt: 'Foto pertemuan pertama pasangan',
     quote: 'We met by chance, and the moment I saw her, it was love at first sight.',
   },
   {
     year: '2017',
     title: 'The Journey',
-    image: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Journey.webp',
+    image: '/the_journey.webp',
     alt: 'Foto perjalanan cinta pasangan',
     quote: 'Our romantic journey officially began on October 19, 2017, with Dufan standing as the silent witness to my declaration of love.',
   },
   {
     year: '2024',
     title: 'The Proposal',
-    image: 'https://fgtkusducqyaretrhvub.supabase.co/storage/v1/object/public/wedding-photos/the-capter/The%20Proposal.webp',
+    image: '/the_proposal.webp',
     alt: 'Foto momen lamaran pasangan',
     quote: 'On October 19, 2024 exactly seven years later I asked her to marry me. As a symbol of my love and commitment, I gave her a ring, with Ancol witnessing the start of our next chapter together.',
   },
