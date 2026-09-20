@@ -114,6 +114,17 @@ function MessagesPage() {
             </div>
           </>
         )}
+        <div style={{ marginTop: 64, textAlign: 'center', fontSize: 12, color: 'var(--color-outline)', letterSpacing: '0.05em' }}>
+          Created with ❤️ by{' '}
+          <a
+            href="https://instagram.com/kalistusss_"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none' }}
+          >
+            @kalistusss_
+          </a>
+        </div>
       </div>
     </main>
   )

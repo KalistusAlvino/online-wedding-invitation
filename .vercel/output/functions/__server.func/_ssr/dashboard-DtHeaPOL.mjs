@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
-import { supabase } from "./supabase-BCsmZRy6.mjs";
+import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
 import { readSync, utils } from "../_libs/xlsx.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/dashboard-BQwwXqPY.js
+//#region node_modules/.nitro/vite/services/ssr/assets/dashboard-DtHeaPOL.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var PLACEHOLDER_HOST = "https://your-domain.com";
@@ -193,6 +193,7 @@ Terima kasih banyak atas perhatiannya.`;
 			"Bapak,Ahmad Susanto",
 			"Ibu,Dewi Lestari",
 			"Keluarga,Keluarga Besar Bpk. Suharto",
+			"Saudara/Saudari,Rizky & Ayu",
 			"Saudara,Rizky Pratama",
 			"Saudari,Ayu Maharani",
 			"Dr.,Siti Aminah",
@@ -272,6 +273,16 @@ Terima kasih banyak atas perhatiannya.`;
 												value: "Ibu",
 												style: S.option,
 												children: "Ibu"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "Saudara/Saudari",
+												style: S.option,
+												children: "Saudara/Saudari"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "Saudara/i",
+												style: S.option,
+												children: "Saudara/i"
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 												value: "Saudara",
@@ -442,6 +453,13 @@ Terima kasih banyak atas perhatiannya.`;
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
 													style: S.guideTdCode,
 													children: "Keluarga Besar Bpk. Suharto"
+												})] }),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+													style: S.guideTd,
+													children: "Saudara/Saudari"
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+													style: S.guideTdCode,
+													children: "Rizky & Ayu"
 												})] }),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
 													style: S.guideTd,
@@ -651,6 +669,20 @@ Terima kasih banyak atas perhatiannya.`;
 								})]
 							}, title))]
 						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
+						style: S.footer,
+						children: [
+							"Created with ❤️ by",
+							" ",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+								href: "https://instagram.com/kalistusss_",
+								target: "_blank",
+								rel: "noopener noreferrer",
+								style: S.footerLink,
+								children: "@kalistusss_"
+							})
+						]
 					})
 				]
 			}),
@@ -989,6 +1021,20 @@ var S = {
 		boxShadow: "0 8px 24px rgba(0,0,0,.15)",
 		animation: "toastIn .3s ease",
 		maxWidth: 400
+	},
+	footer: {
+		marginTop: 32,
+		paddingTop: 24,
+		borderTop: "1px solid #e6e2db",
+		textAlign: "center",
+		fontSize: 12,
+		letterSpacing: "0.05em",
+		color: "#737874"
+	},
+	footerLink: {
+		color: "#0f2019",
+		fontWeight: 600,
+		textDecoration: "none"
 	}
 };
 //#endregion

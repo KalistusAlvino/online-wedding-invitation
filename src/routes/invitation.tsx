@@ -832,6 +832,17 @@ function ClosingSection() {
         <p className="closing__names">
           {COUPLE.brideName} <span className="closing__names-amp">&amp;</span> {COUPLE.groomName}
         </p>
+        <div className="closing__created-by">
+          Created with ❤️ by{' '}
+          <a
+            href="https://instagram.com/kalistusss_"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="closing__created-link"
+          >
+            @kalistusss_
+          </a>
+        </div>
       </div>
     </section>
   )

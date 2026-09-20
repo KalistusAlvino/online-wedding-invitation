@@ -240,6 +240,7 @@ Terima kasih banyak atas perhatiannya.`
       'Bapak,Ahmad Susanto',
       'Ibu,Dewi Lestari',
       'Keluarga,Keluarga Besar Bpk. Suharto',
+      'Saudara/Saudari,Rizky & Ayu',
       'Saudara,Rizky Pratama',
       'Saudari,Ayu Maharani',
       'Dr.,Siti Aminah',
@@ -297,6 +298,8 @@ Terima kasih banyak atas perhatiannya.`
                 <option value="Bapak/Ibu" style={S.option}>Bapak/Ibu</option>
                 <option value="Bapak" style={S.option}>Bapak</option>
                 <option value="Ibu" style={S.option}>Ibu</option>
+                <option value="Saudara/Saudari" style={S.option}>Saudara/Saudari</option>
+                <option value="Saudara/i" style={S.option}>Saudara/i</option>
                 <option value="Saudara" style={S.option}>Saudara</option>
                 <option value="Saudari" style={S.option}>Saudari</option>
                 <option value="Keluarga" style={S.option}>Keluarga</option>
@@ -373,6 +376,7 @@ Terima kasih banyak atas perhatiannya.`
                   <tr><td style={S.guideTd}>Bapak</td><td style={S.guideTdCode}>Ahmad Susanto</td></tr>
                   <tr><td style={S.guideTd}>Ibu</td><td style={S.guideTdCode}>Dewi Lestari</td></tr>
                   <tr><td style={S.guideTd}>Keluarga</td><td style={S.guideTdCode}>Keluarga Besar Bpk. Suharto</td></tr>
+                  <tr><td style={S.guideTd}>Saudara/Saudari</td><td style={S.guideTdCode}>Rizky &amp; Ayu</td></tr>
                   <tr><td style={S.guideTd}>Saudara</td><td style={S.guideTdCode}>Rizky Pratama</td></tr>
                   <tr><td style={S.guideTd}>Dr.</td><td style={S.guideTdCode}>Siti Aminah</td></tr>
                   <tr><td style={S.guideTd}></td><td style={S.guideTdCode}>Budi Santoso (otomatis &quot;Bapak/Ibu&quot;)</td></tr>
@@ -503,6 +507,19 @@ Terima kasih banyak atas perhatiannya.`
             </div>
           </div>
         )}
+
+        {/* --- Footer --- */}
+        <footer style={S.footer}>
+          Created with ❤️ by{' '}
+          <a
+            href="https://instagram.com/kalistusss_"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={S.footerLink}
+          >
+            @kalistusss_
+          </a>
+        </footer>
       </div>
 
       {/* ── Toast notifications ── */}
@@ -850,5 +867,19 @@ const S: Record<string, React.CSSProperties> = {
     boxShadow: '0 8px 24px rgba(0,0,0,.15)',
     animation: 'toastIn .3s ease',
     maxWidth: 400,
+  },
+  footer: {
+    marginTop: 32,
+    paddingTop: 24,
+    borderTop: '1px solid #e6e2db',
+    textAlign: 'center' as const,
+    fontSize: 12,
+    letterSpacing: '0.05em',
+    color: '#737874',
+  },
+  footerLink: {
+    color: '#0f2019',
+    fontWeight: 600,
+    textDecoration: 'none',
   },
 }

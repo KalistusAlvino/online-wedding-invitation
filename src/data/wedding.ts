@@ -100,6 +100,7 @@ export const COUPLE_MEMBERS: CoupleMember[] = [
     offset: true,
     photos: [
       '/the_groom_1.webp',
+      '/the_groom_2.JPEG',
     ],
     alt: 'Potret editorial Fedrik dengan setelan hijau tua di latar ivory',
   },
@@ -183,7 +184,7 @@ export const GIFT_ADDRESS: GiftAddress = {
   title: 'PHYSICAL GIFT',
   subtitle: 'For physical gifts, you may send them to the following address:',
   recipient: 'Chaca & Fedrik',
-  address: 'Puri Nirwana 3 Blok DN 14 Jl. Anggur 1, Karadenan - Cibinong, Kab Bogor',
+  address: 'Perumahan Puri Nirwana 1 Blok U 12A Jl. Prambanan VI RT007/014 Kel. Pabuaran Kec. Cibinong 16916',
   phone: '+62 896-8821-6860',
 }
 

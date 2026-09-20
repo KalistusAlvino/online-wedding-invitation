@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
-import { supabase } from "./supabase-BCsmZRy6.mjs";
+import { supabase } from "./supabase-BhETzSkU.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-BpJ-eryA.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-Cairjx_O.js
+import { Route$1 } from "./router-BUF-r1Hm.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-Bhfa4uD8.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Preloader({ progress, isComplete }) {
@@ -142,7 +142,7 @@ var COUPLE_MEMBERS = [{
 	handle: "@fedrikstarsss",
 	instagramUrl: "https://www.instagram.com/fedrikstarsss/?hl=id",
 	offset: true,
-	photos: ["/the_groom_1.webp"],
+	photos: ["/the_groom_1.webp", "/the_groom_2.webp"],
 	alt: "Potret editorial Fedrik dengan setelan hijau tua di latar ivory"
 }];
 var EVENTS = [{
@@ -251,7 +251,7 @@ var GIFT_ADDRESS = {
 	title: "PHYSICAL GIFT",
 	subtitle: "For physical gifts, you may send them to the following address:",
 	recipient: "Chaca & Fedrik",
-	address: "Puri Nirwana 3 Blok DN 14 Jl. Anggur 1, Karadenan - Cibinong, Kab Bogor",
+	address: "Perumahan Puri Nirwana 1 Blok U 12A Jl. Prambanan VI RT007/014 Kel. Pabuaran Kec. Cibinong 16916",
 	phone: "+62 896-8821-6860"
 };
 var CHAPTERS = [
@@ -1281,6 +1281,20 @@ function ClosingSection() {
 						}),
 						" ",
 						COUPLE.groomName
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "closing__created-by",
+					children: [
+						"Created with ❤️ by",
+						" ",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+							href: "https://instagram.com/kalistusss_",
+							target: "_blank",
+							rel: "noopener noreferrer",
+							className: "closing__created-link",
+							children: "@kalistusss_"
+						})
 					]
 				})
 			]

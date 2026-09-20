@@ -2029,6 +2029,27 @@ select option {
   margin: 0 4px;
 }
 
+.closing__created-by {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--color-pure-white) 60%, transparent);
+  margin-top: 32px;
+}
+
+.closing__created-link {
+  color: var(--color-gold);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.closing__created-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
 /* -----------------------------------------------------------------------------
    7. Utilities & animations
    --------------------------------------------------------------------------- */
