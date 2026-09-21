@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
 import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { BG_LANDSCAPE, Route$3 } from "./router-BZwMfcqR.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-GJTeImXV.js
+import { BG_LANDSCAPE, Route$3 } from "./router-B9ja4_xe.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-Cad6kZc3.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var BG_PORTRAIT = "/our_big_moment_3.webp";
@@ -55,7 +55,7 @@ function LandingPage() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
 				className: "cover__top cover__content fade-in-up",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "cover__eyebrow label-caps text-muted",
+					className: "cover__eyebrow label-caps",
 					children: "THE WEDDING OF"
 				})
 			}),

@@ -79,7 +79,7 @@ function LandingPage() {
       </div>
 
       <header className="cover__top cover__content fade-in-up">
-        <span className="cover__eyebrow label-caps text-muted">THE WEDDING OF</span>
+        <span className="cover__eyebrow label-caps">THE WEDDING OF</span>
       </header>
 
       <section className="cover__middle cover__content">
