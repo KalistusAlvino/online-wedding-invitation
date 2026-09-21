@@ -510,7 +510,7 @@ Terima kasih banyak atas perhatiannya.`
 
         {/* --- Footer --- */}
         <footer style={S.footer}>
-          Created with ❤️ by{' '}
+          Created with 🩶 by{' '}
           <a
             href="https://instagram.com/kalistusss_"
             target="_blank"

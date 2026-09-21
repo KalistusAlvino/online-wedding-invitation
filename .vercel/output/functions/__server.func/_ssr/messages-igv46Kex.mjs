@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BCsmZRy6.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/messages-D_fgws_J.js
+//#region node_modules/.nitro/vite/services/ssr/assets/messages-igv46Kex.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function MessagesPage() {
@@ -146,7 +146,7 @@ function MessagesPage() {
 						letterSpacing: "0.05em"
 					},
 					children: [
-						"Created with ❤️ by",
+						"Created with 🩶 by",
 						" ",
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 							href: "https://instagram.com/kalistusss_",

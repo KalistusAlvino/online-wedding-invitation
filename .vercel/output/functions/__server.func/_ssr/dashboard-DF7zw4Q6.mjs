@@ -2,7 +2,7 @@ import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BCsmZRy6.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
 import { readSync, utils } from "../_libs/xlsx.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/dashboard-D6mCDMmd.js
+//#region node_modules/.nitro/vite/services/ssr/assets/dashboard-DF7zw4Q6.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var PLACEHOLDER_HOST = "https://your-domain.com";
@@ -673,7 +673,7 @@ Terima kasih banyak atas perhatiannya.`;
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
 						style: S.footer,
 						children: [
-							"Created with ❤️ by",
+							"Created with 🩶 by",
 							" ",
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 								href: "https://instagram.com/kalistusss_",
