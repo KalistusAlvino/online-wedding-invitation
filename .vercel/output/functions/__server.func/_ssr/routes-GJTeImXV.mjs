@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
 import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { BG_LANDSCAPE, Route$3 } from "./router-yqNUuMRO.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-6JLRyc8J.js
+import { BG_LANDSCAPE, Route$3 } from "./router-BZwMfcqR.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-GJTeImXV.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var BG_PORTRAIT = "/our_big_moment_3.webp";
@@ -62,7 +62,7 @@ function LandingPage() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 				className: "cover__middle cover__content",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h1", {
-					className: "cover__names display-hero text-primary",
+					className: "cover__names display-hero",
 					children: [
 						WEDDING.brideName,
 						" ",
@@ -74,7 +74,7 @@ function LandingPage() {
 						WEDDING.groomName
 					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "cover__date body--lg text-muted fade-in-up delay-300",
+					className: "cover__date body--lg fade-in-up delay-300",
 					children: WEDDING.date
 				})]
 			}),

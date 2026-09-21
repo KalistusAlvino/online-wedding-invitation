@@ -1,6 +1,6 @@
 import { HeadContent, Scripts, createFileRoute, createRootRoute, createRouter, lazyRouteComponent, require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { object, string } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-yqNUuMRO.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BZwMfcqR.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -12,7 +12,7 @@ var __exportAll = (all, no_symbols) => {
 	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
 	return target;
 };
-var styles_default = "/assets/styles-RHidhLoV.css";
+var styles_default = "/assets/styles-CyRwFHea.css";
 var Route$4 = createRootRoute({
 	head: () => ({
 		meta: [
@@ -85,7 +85,7 @@ function RootDocument({ children }) {
 	});
 }
 var BG_LANDSCAPE = "/3.webp";
-var $$splitComponentImporter$3 = () => import("./routes-6JLRyc8J.mjs");
+var $$splitComponentImporter$3 = () => import("./routes-GJTeImXV.mjs");
 var guestSchema$1 = object({
 	to: string().optional(),
 	name: string().optional()
@@ -127,12 +127,12 @@ var Route$3 = createFileRoute("/")({
 		}
 	] })
 });
-var $$splitComponentImporter$2 = () => import("./dashboard-DtHeaPOL.mjs");
+var $$splitComponentImporter$2 = () => import("./dashboard-D6mCDMmd.mjs");
 var Route$2 = createFileRoute("/dashboard")({
 	ssr: false,
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("./invitation-CADGGA7u.mjs");
+var $$splitComponentImporter$1 = () => import("./invitation-02HjGJKb.mjs");
 var guestSchema = object({
 	to: string().optional(),
 	name: string().optional()
@@ -141,7 +141,7 @@ var Route$1 = createFileRoute("/invitation")({
 	component: lazyRouteComponent($$splitComponentImporter$1, "component"),
 	validateSearch: guestSchema
 });
-var $$splitComponentImporter = () => import("./messages-i3zmyqid.mjs");
+var $$splitComponentImporter = () => import("./messages-D_fgws_J.mjs");
 var Route = createFileRoute("/messages")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$3.update({

@@ -231,7 +231,7 @@ select option {
 .display-hero .display-hero__amp {
   font-weight: 300;
   font-style: italic;
-  color: color-mix(in oklab, var(--color-pure-white) 70%, transparent);
+  color: var(--color-on-surface-variant);
 }
 
 /* Section headings */
@@ -491,10 +491,12 @@ select option {
 
 .cover__names {
   margin-bottom: 8px;
+  color: var(--color-on-surface); /* Black text for names on light cover */
 }
 
 .cover__date {
   margin-top: 8px;
+  color: var(--color-on-surface); /* Black text for date on light cover */
 }
 
 .cover__bottom {
@@ -1405,7 +1407,7 @@ select option {
 /* --- Gallery: Mobile masonry / Desktop editorial collage --- */
 .gallery__collage {
   columns: 2;
-  column-gap: 12px;
+  column-gap: 10px;
 }
 
 .gallery__collage-item {
@@ -1413,7 +1415,9 @@ select option {
   overflow: hidden;
   border-radius: var(--radius-sm);
   break-inside: avoid;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  /* Use auto height driven by image aspect-ratio so columns stay balanced */
+  height: auto;
 }
 
 .gallery__collage-item img {
@@ -1428,17 +1432,23 @@ select option {
   transform: scale(1.05);
 }
 
-/* Mobile item heights */
-.gallery__collage-item:nth-child(1) { height: 240px; }
-.gallery__collage-item:nth-child(2) { height: 180px; }
-.gallery__collage-item:nth-child(3) { height: 280px; }
-.gallery__collage-item:nth-child(4) { height: 200px; }
-.gallery__collage-item:nth-child(5) { height: 260px; }
-.gallery__collage-item:nth-child(6) { height: 220px; }
-.gallery__collage-item:nth-child(7) { height: 300px; }
-.gallery__collage-item:nth-child(8) { height: 190px; }
-.gallery__collage-item:nth-child(9) { height: 250px; }
-.gallery__collage-item:nth-child(10) { height: 210px; }
+/* Mobile: alternate portrait / landscape aspect ratios for visual rhythm */
+.gallery__collage-item:nth-child(odd)  img { aspect-ratio: 3 / 4; }
+.gallery__collage-item:nth-child(even) img { aspect-ratio: 4 / 5; }
+
+/* Landscape orientation on mobile — 3 columns, square-ish crops */
+@media (orientation: landscape) and (max-width: 47.9rem) {
+  .gallery__collage {
+    columns: 3;
+    column-gap: 8px;
+  }
+  .gallery__collage-item {
+    margin-bottom: 8px;
+  }
+  .gallery__collage-item img {
+    aspect-ratio: 1 / 1;
+  }
+}
 
 .gallery__shade {
   position: absolute;

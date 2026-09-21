@@ -83,11 +83,11 @@ function LandingPage() {
       </header>
 
       <section className="cover__middle cover__content">
-        <h1 className="cover__names display-hero text-primary">
+        <h1 className="cover__names display-hero">
           {WEDDING.brideName} <span className="display-hero__amp">&amp;</span>{' '}
           {WEDDING.groomName}
         </h1>
-        <p className="cover__date body--lg text-muted fade-in-up delay-300">{WEDDING.date}</p>
+        <p className="cover__date body--lg fade-in-up delay-300">{WEDDING.date}</p>
       </section>
 
       <footer className="cover__bottom cover__content">
