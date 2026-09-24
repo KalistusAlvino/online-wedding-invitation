@@ -1335,6 +1335,13 @@ select option {
   height: 400px;
 }
 
+.gallery__carousel-center picture,
+.gallery__carousel-side picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .gallery__carousel-center-img {
   width: 100%;
   height: 100%;

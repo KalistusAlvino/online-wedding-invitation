@@ -31,6 +31,7 @@ export interface GalleryItem {
 
 export interface GalleryPhoto {
   photo: string
+  photoMobile?: string // landscape variant used on narrow screens
   alt: string
 }
 
@@ -163,6 +164,7 @@ export const GALLERY_CAROUSEL: GalleryPhoto[] = [
   },
   {
     photo: '/our_big_moment_2.webp',
+    photoMobile: '/our_big_moment_2_landscape.webp',
     alt: 'Momen besar bersama',
   },
   {
@@ -171,6 +173,7 @@ export const GALLERY_CAROUSEL: GalleryPhoto[] = [
   },
   {
     photo: '/our_big_moment_4.webp',
+    photoMobile: '/our_big_moment_4_landscape.webp',
     alt: 'Momen besar bersama',
   },
 ]

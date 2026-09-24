@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BCsmZRy6.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-BMDQVhUd.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-B1wtFuwN.js
+import { Route$1 } from "./router-yRnqnlgj.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-CxZ2iKcP.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Preloader({ progress, isComplete }) {
@@ -227,6 +227,7 @@ var GALLERY_CAROUSEL = [
 	},
 	{
 		photo: "/our_big_moment_2.webp",
+		photoMobile: "/our_big_moment_2_landscape.webp",
 		alt: "Momen besar bersama"
 	},
 	{
@@ -235,6 +236,7 @@ var GALLERY_CAROUSEL = [
 	},
 	{
 		photo: "/our_big_moment_4.webp",
+		photoMobile: "/our_big_moment_4_landscape.webp",
 		alt: "Momen besar bersama"
 	}
 ];
@@ -793,35 +795,44 @@ function GallerySection() {
 							className: "gallery__carousel-side gallery__carousel-side--left",
 							onClick: () => setCurrentSlide((prev) => (prev - 1 + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length),
 							style: { cursor: "pointer" },
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("picture", { children: [GALLERY_CAROUSEL[getSlideIndex(-1)].photoMobile && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("source", {
+								media: "(max-width: 768px)",
+								srcSet: GALLERY_CAROUSEL[getSlideIndex(-1)].photoMobile
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 								className: "gallery__carousel-side-img",
 								src: GALLERY_CAROUSEL[getSlideIndex(-1)].photo,
 								alt: GALLERY_CAROUSEL[getSlideIndex(-1)].alt,
 								loading: "lazy",
 								draggable: false
-							})
+							})] })
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "gallery__carousel-center",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("picture", { children: [GALLERY_CAROUSEL[currentSlide].photoMobile && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("source", {
+								media: "(max-width: 768px)",
+								srcSet: GALLERY_CAROUSEL[currentSlide].photoMobile
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 								className: "gallery__carousel-center-img",
 								src: GALLERY_CAROUSEL[currentSlide].photo,
 								alt: GALLERY_CAROUSEL[currentSlide].alt,
 								loading: "lazy",
 								draggable: false
-							})
+							})] })
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "gallery__carousel-side gallery__carousel-side--right",
 							onClick: () => setCurrentSlide((prev) => (prev + 1) % GALLERY_CAROUSEL.length),
 							style: { cursor: "pointer" },
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("picture", { children: [GALLERY_CAROUSEL[getSlideIndex(1)].photoMobile && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("source", {
+								media: "(max-width: 768px)",
+								srcSet: GALLERY_CAROUSEL[getSlideIndex(1)].photoMobile
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 								className: "gallery__carousel-side-img",
 								src: GALLERY_CAROUSEL[getSlideIndex(1)].photo,
 								alt: GALLERY_CAROUSEL[getSlideIndex(1)].alt,
 								loading: "lazy",
 								draggable: false
-							})
+							})] })
 						})
 					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {

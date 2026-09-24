@@ -421,24 +421,40 @@ function GallerySection() {
             onClick={() => setCurrentSlide((prev) => (prev - 1 + GALLERY_CAROUSEL.length) % GALLERY_CAROUSEL.length)}
             style={{ cursor: 'pointer' }}
           >
-            <img
-              className="gallery__carousel-side-img"
-              src={GALLERY_CAROUSEL[getSlideIndex(-1)].photo}
-              alt={GALLERY_CAROUSEL[getSlideIndex(-1)].alt}
-              loading="lazy"
-              draggable={false}
-            />
+            <picture>
+              {GALLERY_CAROUSEL[getSlideIndex(-1)].photoMobile && (
+                <source
+                  media="(max-width: 768px)"
+                  srcSet={GALLERY_CAROUSEL[getSlideIndex(-1)].photoMobile}
+                />
+              )}
+              <img
+                className="gallery__carousel-side-img"
+                src={GALLERY_CAROUSEL[getSlideIndex(-1)].photo}
+                alt={GALLERY_CAROUSEL[getSlideIndex(-1)].alt}
+                loading="lazy"
+                draggable={false}
+              />
+            </picture>
           </div>
 
           {/* Center main slide */}
           <div className="gallery__carousel-center">
-            <img
-              className="gallery__carousel-center-img"
-              src={GALLERY_CAROUSEL[currentSlide].photo}
-              alt={GALLERY_CAROUSEL[currentSlide].alt}
-              loading="lazy"
-              draggable={false}
-            />
+            <picture>
+              {GALLERY_CAROUSEL[currentSlide].photoMobile && (
+                <source
+                  media="(max-width: 768px)"
+                  srcSet={GALLERY_CAROUSEL[currentSlide].photoMobile}
+                />
+              )}
+              <img
+                className="gallery__carousel-center-img"
+                src={GALLERY_CAROUSEL[currentSlide].photo}
+                alt={GALLERY_CAROUSEL[currentSlide].alt}
+                loading="lazy"
+                draggable={false}
+              />
+            </picture>
           </div>
 
           {/* Right peek */}
@@ -447,13 +463,21 @@ function GallerySection() {
             onClick={() => setCurrentSlide((prev) => (prev + 1) % GALLERY_CAROUSEL.length)}
             style={{ cursor: 'pointer' }}
           >
-            <img
-              className="gallery__carousel-side-img"
-              src={GALLERY_CAROUSEL[getSlideIndex(1)].photo}
-              alt={GALLERY_CAROUSEL[getSlideIndex(1)].alt}
-              loading="lazy"
-              draggable={false}
-            />
+            <picture>
+              {GALLERY_CAROUSEL[getSlideIndex(1)].photoMobile && (
+                <source
+                  media="(max-width: 768px)"
+                  srcSet={GALLERY_CAROUSEL[getSlideIndex(1)].photoMobile}
+                />
+              )}
+              <img
+                className="gallery__carousel-side-img"
+                src={GALLERY_CAROUSEL[getSlideIndex(1)].photo}
+                alt={GALLERY_CAROUSEL[getSlideIndex(1)].alt}
+                loading="lazy"
+                draggable={false}
+              />
+            </picture>
           </div>
         </div>
 

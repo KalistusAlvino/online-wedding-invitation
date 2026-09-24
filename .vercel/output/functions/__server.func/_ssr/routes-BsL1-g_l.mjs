@@ -1,7 +1,7 @@
 import { __toESM } from "../_runtime.mjs";
 import { require_jsx_runtime, require_react, useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { BG_LANDSCAPE, Route$3 } from "./router-BMDQVhUd.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DP2kcEDO.js
+import { BG_LANDSCAPE, Route$3 } from "./router-yRnqnlgj.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BsL1-g_l.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var BG_PORTRAIT = "/our_big_moment_3.webp";
