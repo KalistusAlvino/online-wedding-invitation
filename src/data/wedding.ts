@@ -160,6 +160,7 @@ export const GALLERY_ROWS: GalleryRow[] = [
 export const GALLERY_CAROUSEL: GalleryPhoto[] = [
   {
     photo: '/the_proposal.webp',
+    photoMobile: '/our_big_moment_1.webp',
     alt: 'Momen besar bersama',
   },
   {
