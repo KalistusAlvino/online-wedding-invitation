@@ -1,8 +1,8 @@
 import { __toESM } from "../_runtime.mjs";
 import { supabase } from "./supabase-BCsmZRy6.mjs";
 import { require_jsx_runtime, require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { Route$1 } from "./router-yRnqnlgj.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/invitation-CxZ2iKcP.js
+import { Route$1 } from "./router-CPdvURjx.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/invitation-D25nQgPO.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Preloader({ progress, isComplete }) {
@@ -223,6 +223,7 @@ var GALLERY_ROWS = [
 var GALLERY_CAROUSEL = [
 	{
 		photo: "/the_proposal.webp",
+		photoMobile: "/our_big_moment_1.webp",
 		alt: "Momen besar bersama"
 	},
 	{
